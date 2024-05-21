@@ -12,7 +12,12 @@ st.title('Estatísticas 📊️')
 # Adicionando descrição do projeto
 st.write("Estatísticas de pedidos subjudice 15.23.")
 
-option = {
+# Função para renderizar o gráfico selecionado
+def render_chart(chart_option):
+    st_echarts(options=chart_option, height="400px")
+
+# Define as opções para os dois gráficos
+option1 = {
     "xAxis": {
         "type": "category",
         "data": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
@@ -21,8 +26,23 @@ option = {
     "series": [{"data": [820, 932, 901, 934, 1290, 1330, 1320], "type": "line"}],
 }
 
-st.title('My Streamlit ECharts App')
-st_echarts(options=option, height="400px")
+option2 = {
+    "xAxis": {
+        "type": "category",
+        "data": ["A", "B", "C", "D", "E"],
+    },
+    "yAxis": {"type": "value"},
+    "series": [{"data": [10, 20, 30, 40, 50], "type": "bar"}],
+}
+
+# Widget de seleção para escolher entre os gráficos
+chart_selection = st.radio("Selecione o gráfico:", ("Gráfico 1", "Gráfico 2"))
+
+# Renderiza o gráfico selecionado com base na seleção do usuário
+if chart_selection == "Gráfico 1":
+    render_chart(option1)
+else:
+    render_chart(option2)
 
 
 url = "http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={%22mysql_query%22:%22divisao,count(*)%20FROM%20arquivados%20where%20despacho=%2715.23%27%20and%20year(data)%3E=2000%20group%20by%20divisao%20order%20by%20count(*)%20desc%22}"
