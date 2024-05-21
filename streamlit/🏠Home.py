@@ -26,7 +26,7 @@ etapas = [
         "nome": "AnalisePatente",
         "icone": "📄",
         "descricao": "Uma ferramenta que faz resumo de documentos e destaca as diferenças com o pedido de epatente que você está examinando.",
-        "pagina": "[AnalisePatente](https://empregoconnect.streamlit.app/AnalisePatente)"
+        "pagina": "[AnalisePatente](https://patenttools.streamlit.app/AnalisePatente)"
     }
 ]
 
