@@ -36,7 +36,7 @@ option2 = {
 }
 
 # Widget de seleção para escolher entre os gráficos
-chart_selection = st.radio("Selecione o gráfico:", ("Gráfico 1", "Gráfico 2", "Grafico3"))
+chart_selection = st.radio("Selecione o gráfico:", ("Gráfico 1", "Gráfico 2", "Grafico 3"))
 
 # Renderiza o gráfico selecionado com base na seleção do usuário
 if chart_selection == "Gráfico 1":
