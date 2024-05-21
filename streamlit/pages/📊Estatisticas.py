@@ -65,7 +65,7 @@ elif chart_selection == "Gráfico 3":
         b, key="echarts"
     )  # Add key argument to not remount component at every Streamlit run
     st.button("Randomize data")
-elif char_selection == "Gráfico 4":
+elif chart_selection == "Gráfico 4":
     options = {
         "title": {"text": "Coordenações"},
         "tooltip": {"trigger": "axis"},
