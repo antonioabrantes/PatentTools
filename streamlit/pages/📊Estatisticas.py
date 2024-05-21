@@ -36,13 +36,29 @@ option2 = {
 }
 
 # Widget de seleção para escolher entre os gráficos
-chart_selection = st.radio("Selecione o gráfico:", ("Gráfico 1", "Gráfico 2", "Grafico 3"))
+chart_selection = st.radio("Selecione o gráfico:", ("Gráfico 1", "Gráfico 2", "Grafico 3", "Gráfico 4"))
 
 # Renderiza o gráfico selecionado com base na seleção do usuário
 if chart_selection == "Gráfico 1":
     render_chart(option1)
 elif chart_selection == "Gráfico 2":
     render_chart(option2)
+elif chart_selection == "Gráfico 3":
+    b = (
+        Bar()
+        .add_xaxis(["Microsoft", "Amazon", "IBM", "Oracle", "Google", "Alibaba"])
+        .add_yaxis("2017-2018 Revenue in (billion $)", random.sample(range(100), 10))
+        .set_global_opts(
+            title_opts=opts.TitleOpts(
+                title="Top cloud providers 2018", subtitle="2017-2018 Revenue"
+            ),
+            toolbox_opts=opts.ToolboxOpts(),
+        )
+    )
+    st_pyecharts(
+        b, key="echarts"
+    )  # Add key argument to not remount component at every Streamlit run
+    st.button("Randomize data")
 else:
     url = "http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={%22mysql_query%22:%22divisao,count(*)%20FROM%20arquivados%20where%20despacho=%2715.23%27%20and%20year(data)%3E=2000%20group%20by%20divisao%20order%20by%20count(*)%20desc%22}"
     # Definindo cabeçalhos para a requisição

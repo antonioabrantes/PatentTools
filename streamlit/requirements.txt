@@ -4,3 +4,4 @@ requests
 matplotlib
 numpy
 streamlit_echarts
+pyecharts 
