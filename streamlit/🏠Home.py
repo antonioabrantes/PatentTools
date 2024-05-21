@@ -11,12 +11,6 @@ st.write("Ferramentas que auxiliam o exame de patentes com recursos de Inteligê
 # Adicionando as diversas ferramentas
 etapas = [
     {
-        "nome": "Estatísticas",
-        "icone": "📊️",
-        "descricao": "Estatísticas diversas em patentes.",
-        "pagina": "[Estatisticas](https://patenttools.streamlit.app/Estatisticas)"
-    },
-    {
         "nome": "BatePapo",
         "icone": "💬",
         "descricao": "Tire suas dúvidas sobre o novo fluxo de processamento de recurso de pedidos de patente.",
@@ -27,6 +21,12 @@ etapas = [
         "icone": "📄",
         "descricao": "Uma ferramenta que faz resumo de documentos e destaca as diferenças com o pedido de epatente que você está examinando.",
         "pagina": "[AnalisePatente](https://patenttools.streamlit.app/AnalisePatente)"
+    },
+    {
+        "nome": "Estatísticas",
+        "icone": "📊️",
+        "descricao": "Estatísticas diversas em patentes.",
+        "pagina": "[Estatisticas](https://patenttools.streamlit.app/Estatisticas)"
     }
 ]
 
