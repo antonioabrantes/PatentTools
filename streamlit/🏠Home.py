@@ -14,19 +14,19 @@ etapas = [
         "nome": "Estatísticas",
         "icone": "📊️",
         "descricao": "Estatísticas diversas em patentes.",
-        "pagina": "[Estatisticas](https://patenttools.streamlit.app/📊️Estatisticas)"
+        "pagina": "[Estatisticas](https://patenttools.streamlit.app/Estatisticas)"
     },
     {
         "nome": "BatePapo",
         "icone": "💬",
         "descricao": "Tire suas dúvidas sobre o novo fluxo de processamento de recurso de pedidos de patente.",
-        "pagina": "[BatePapo](https://patenttools.streamlit.app/💬BatePapo)"
+        "pagina": "[BatePapo](https://patenttools.streamlit.app/BatePapo)"
     },
     {
         "nome": "AnalisePatente",
         "icone": "📄",
         "descricao": "Uma ferramenta que faz resumo de documentos e destaca as diferenças com o pedido de epatente que você está examinando.",
-        "pagina": "[AnalisePatente](https://empregoconnect.streamlit.app/📄AnalisePatente)"
+        "pagina": "[AnalisePatente](https://empregoconnect.streamlit.app/AnalisePatente)"
     }
 ]
 
