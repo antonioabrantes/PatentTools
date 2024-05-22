@@ -6,4 +6,4 @@ numpy
 streamlit_echarts
 pyecharts 
 python-dotenv
-generativeai
+google-generativeai
