@@ -7,12 +7,17 @@ import pandas as pd
 import numpy as np
 import os
 import time
+from jobs_details import jobs_details as data
+from dotenv import load_dotenv
 
 # Carrega as variáveis de ambiente do arquivo .env
 load_dotenv()
 
-# Importa os detalhes das vagas de emprego
-from jobs_details import jobs_details as data
+# Configura a API para o modelo genai
+# Obtém a chave da API da variável de ambiente
+# no streamlit https://share.streamlit.io/ escolha o app / Settings / Secrets e guarde a chave API do Google
+api_key = os.getenv("GEMINI_API_KEY")
+genai.configure(api_key=os.getenv("gemini_api_key"))
 
 # Instrução do sistema para o modelo generativo
 system_instruction = f"""
@@ -28,10 +33,6 @@ Tenha certeza de perguntar sobre as razões do indeferimento do pedido e se o us
 Quando entender a pergunta do usuário, sugerir o modelo de parecer mais provável a ser usado, se este pedido deve retornar ao primeiro exame ou se deve sofrer exigência.
 
 """
-
-# Configura a API para o modelo genai
-genai.configure(api_key=os.getenv("gemini_api_key"))
-
 
 # Inicializa o modelo generativo
 model = genai.GenerativeModel(

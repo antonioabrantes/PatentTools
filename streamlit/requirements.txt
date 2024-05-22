@@ -5,3 +5,4 @@ matplotlib
 numpy
 streamlit_echarts
 pyecharts 
+python-dotenv
