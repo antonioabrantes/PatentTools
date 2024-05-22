@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 import pandas as pd
 import numpy as np
 import os
+import sys
 import time
 from jobs_details import jobs_details as data
 from dotenv import load_dotenv
@@ -33,6 +34,14 @@ Tenha certeza de perguntar sobre as razões do indeferimento do pedido e se o us
 Quando entender a pergunta do usuário, sugerir o modelo de parecer mais provável a ser usado, se este pedido deve retornar ao primeiro exame ou se deve sofrer exigência.
 
 """
+
+model = genai.GenerativeModel("gemini-pro")
+
+response = model.generate_content("O que é uma patente ?")
+
+print(response.text)
+
+sys.exit(0)
 
 # Inicializa o modelo generativo
 model = genai.GenerativeModel(
