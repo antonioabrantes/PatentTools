@@ -36,13 +36,10 @@ Quando entender a pergunta do usuário, sugerir o modelo de parecer mais prováv
 
 """
 
-model = genai.GenerativeModel("gemini-pro")
-
-response = model.generate_content("O que é uma patente ?")
-
-st.write(response.text)
-
-sys.exit(0)
+#model = genai.GenerativeModel("gemini-pro") # teste
+#response = model.generate_content("O que é uma patente ?")
+#st.write(response.text)
+#sys.exit(0)
 
 # Inicializa o modelo generativo
 model = genai.GenerativeModel(
