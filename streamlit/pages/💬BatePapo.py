@@ -18,7 +18,7 @@ load_dotenv()
 # Obtém a chave da API da variável de ambiente
 # no streamlit https://share.streamlit.io/ escolha o app / Settings / Secrets e guarde a chave API do Google
 api_key = os.getenv("GEMINI_API_KEY")
-st.write(api_key)
+#st.write(api_key)
 genai.configure(api_key=os.getenv("gemini_api_key"))
 
 # Instrução do sistema para o modelo generativo
@@ -36,11 +36,11 @@ Quando entender a pergunta do usuário, sugerir o modelo de parecer mais prováv
 
 """
 
-#model = genai.GenerativeModel("gemini-pro")
+model = genai.GenerativeModel("gemini-pro")
 
-#response = model.generate_content("O que é uma patente ?")
+response = model.generate_content("O que é uma patente ?")
 
-#print(response.text)
+st.write(response.text)
 
 sys.exit(0)
 
