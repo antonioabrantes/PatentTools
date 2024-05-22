@@ -41,7 +41,7 @@ Quando entender a pergunta do usuário, sugerir o modelo de parecer mais prováv
 
 #response = model.generate_content("O que é uma patente ?")
 
-print(response.text)
+#print(response.text)
 
 sys.exit(0)
 
