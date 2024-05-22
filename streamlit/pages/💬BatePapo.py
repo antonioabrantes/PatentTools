@@ -19,7 +19,7 @@ load_dotenv()
 # no streamlit https://share.streamlit.io/ escolha o app / Settings / Secrets e guarde a chave API do Google
 api_key = os.getenv("GEMINI_API_KEY")
 #st.write(api_key)
-genai.configure(api_key=os.getenv("gemini_api_key"))
+genai.configure(api_key=api_key)
 
 # Instrução do sistema para o modelo generativo
 system_instruction = f"""
