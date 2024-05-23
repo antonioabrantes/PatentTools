@@ -14,6 +14,8 @@ from dotenv import load_dotenv
 # Carrega as variáveis de ambiente do arquivo .env
 load_dotenv()
 
+# arquivo JSON https://jsoneditoronline.org/
+
 # Configura a API para o modelo genai
 # Obtém a chave da API da variável de ambiente
 # no streamlit https://share.streamlit.io/ escolha o app / Settings / Secrets e guarde a chave API do Google
@@ -24,15 +26,15 @@ genai.configure(api_key=api_key)
 # Instrução do sistema para o modelo generativo
 system_instruction = f"""
 
-Seu nome é Sophia, um assistente virtual que ajuda a tirar suas dúvidas sobre o processamento de pedidos de patentes na fase recursal no INPI.  
+Seu nome é Sophia, um assistente virtual que ajuda o examinador de patentes a tirar suas dúvidas sobre o processamento de pedidos de patentes que foram indeferidos e estão na fase recursal no INPI.  
 
 Informação sobre o processamento em formato JSON: {data}
 
-Seu trabalho é entender a pergunta do usuário por meio de perguntas, para no final indicar a resposta. 
+Seu trabalho é entender a pergunta do examinador por meio de perguntas, para no final indicar a resposta. 
 
-Tenha certeza de perguntar sobre as razões do indeferimento do pedido e se o usuário apresenta em sua petição de recurso um novo quadro reivindicatório. 
+Tenha certeza de perguntar sobre as razões do indeferimento do pedido e se foi apresentado um novo quadro reivindicatório na petição de recurso. 
 
-Quando entender a pergunta do usuário, sugerir o modelo de parecer mais provável a ser usado, se este pedido deve retornar ao primeiro exame ou se deve sofrer exigência.
+Quando entender a pergunta do examinador, sugerir o modelo de parecer mais provável a ser usado e o código de despacho mais adequado.
 
 """
 
@@ -49,8 +51,6 @@ model = genai.GenerativeModel(
 
 # Mensagem inicial do modelo
 initial_model_message = "Olá, eu sou Sophia, um assistente virtual que te ajuda a tirar suas dúvidas sobre o processamento de recursos de pedidos de patente. Como você se chama?"
-
-# Mensagem com as vagas disponíveis
 
 # Inicializa a conversa do assistente virtual
 if "chat_encontra" not in st.session_state:
@@ -73,7 +73,6 @@ for i, message in enumerate(st.session_state.chat_encontra.history):
 
 # Entrada do usuário
 user_query = st.chat_input('Você pode falar ou digitar sua resposta aqui:')
-
 
 # Processamento da entrada do usuário e resposta do assistente
 if user_query is not None and user_query != '':

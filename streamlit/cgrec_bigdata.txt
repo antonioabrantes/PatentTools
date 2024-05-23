@@ -1,4 +1,4 @@
-jobs_details = [
+[
   {
 	"id": 1,
 	"Tema": "Vício formal",
