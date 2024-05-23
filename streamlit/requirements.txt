@@ -7,3 +7,4 @@ streamlit_echarts
 pyecharts 
 python-dotenv
 google-generativeai
+PyPDF2 
