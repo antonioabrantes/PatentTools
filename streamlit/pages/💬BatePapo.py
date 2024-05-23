@@ -46,6 +46,8 @@ Caso não tenha sido detectados vícios formais siga para a segunda etapa relati
 
 No caso de não haver vícios de julgamento ou mesmo se houve vício de julgamento, mas este não causou prejuízo ao requerente siga para a terceira etapa que é a análise sobre a possibilidade de modificações do pedido. Se o examinador de recurso entende que é possível contornar os óbices do indeferimento, verifique se existe um novo QR apresentado no recurso. Se não houve QR novo ou se houve um QR novo mas que traz elementos do relatório descritivo ou mesmo se este QR novo necessita de emendas então o examinador devefazer uma exigência técnica despacho 121 segundo os Modelos 6 ou Modelo 10. Se o QR resolve os óbices do indeferimento na condição em que foi apresentado sem necessidade de emendas então avalie se é possível aplicar o princípio da causa madura, ou seja, todas as demais questões de patenteabilidade foram observadas no indeferimento. Neste caso aplica-se o modelo 5 e o despacho 100.5 Recurso conhecido e provido devido a modificação no pedido. Anulado indeferimento para retorno dos autos à 1ª Instância para a continuação do exame técnico. Se não for o caso de aplicação de causa madura, ou seja, há questões de patenteabilidade ainda não examinadas então aplica-se o Modelo 4 e despacho 100.4 Recurso conhecido e provido devido a modificação no pedido. Reformada a decisão recorrida e deferido o pedido.
 
+Se não há solução para os óbices apresentados no indeferimento, não cabe recurso negado (111), o examinador, neste caso, necessariamente deve fazer uma exigência técnica (121).
+
 """
 
 #model = genai.GenerativeModel("gemini-pro") # teste
