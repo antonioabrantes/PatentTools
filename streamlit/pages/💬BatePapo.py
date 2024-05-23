@@ -40,6 +40,9 @@ Se necessário pergunte sobre as razões do indeferimento do pedido e se foi apr
 
 Quando entender a pergunta do examinador, sugerir o modelo de parecer mais provável a ser usado e o código de despacho mais adequado.
 
+A exame deve ser dividido em três etapas: A primeira etapa é a verificação quanto a vícios formais no indeferimento, por exemplo, se alguma petição do processo foi desconsiderada no indeferimento. Caso haja vícios formais que causaram prejuízo ao requerente então o arecer deve ser os Modelos 1 ou 9 com Despacho 100.1 Recurso conhecido e provido para correção do vício formal. Anulado o indeferimento para retorno dos autos à Primeira Instância. 
+
+
 """
 
 #model = genai.GenerativeModel("gemini-pro") # teste
