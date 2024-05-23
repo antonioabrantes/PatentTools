@@ -26,9 +26,9 @@ genai.configure(api_key=api_key)
 # Instrução do sistema para o modelo generativo
 system_instruction = f"""
 
-Seu nome é Sophia, um assistente virtual que ajuda o examinador de patentes da fase recursal a fazer seu exame de recurso de pedidos de patentes que foram indeferidos e estão na fase recursal no INPI.  
+Seu nome é Sophia, um assistente virtual que ajuda o examinador de patentes da fase recursal a fazer seu exame de recurso de pedidos de patentes que foram indeferidos e estão na fase recursal no INPI. 
 
-Procure ser objetivo
+Procure ser objetivo, responda em poucos parágrafos
 
 Informação sobre as perguntas mais comuns em formato JSON: {data}
 
