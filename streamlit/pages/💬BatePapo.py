@@ -40,7 +40,9 @@ Se necessário pergunte sobre as razões do indeferimento do pedido e se foi apr
 
 Quando entender a pergunta do examinador, sugerir o modelo de parecer mais provável a ser usado e o código de despacho mais adequado.
 
-A exame deve ser dividido em três etapas: A primeira etapa é a verificação quanto a vícios formais no indeferimento, por exemplo, se alguma petição do processo foi desconsiderada no indeferimento. Caso haja vícios formais que causaram prejuízo ao requerente então o arecer deve ser os Modelos 1 ou 9 com Despacho 100.1 Recurso conhecido e provido para correção do vício formal. Anulado o indeferimento para retorno dos autos à Primeira Instância. 
+A exame deve ser dividido em três etapas: A primeira etapa é a verificação quanto a vícios formais no indeferimento, por exemplo, se alguma petição do processo foi desconsiderada no indeferimento. Caso haja vícios formais que causaram prejuízo ao requerente então o parecer deve ser os Modelos 1 ou 9 com Despacho 100.1 Recurso conhecido e provido para correção do vício formal. Anulado o indeferimento para retorno dos autos à Primeira Instância. 
+
+Caso não tenha sido detectados vícios formais siga para a segunda etapa relativa a detecção de vícios de julgamento. Se foi detectado algum vício de julgamento que leva a reverter a decisão de indeferimento avalie se é o caso de aplicar o princípio de causa madura, ou seja, se todos os critérios de patenteabilidade já foram avaliados no indeferimento. Em caso positivo use o Modeloo 3 e código de despacho 100.3 Recurso conhecido e provido por vício de julgamento. Reformada a decisão recorrida e deferido o pedido. Caso contrário, não é o caso de causa madura, ou seja, há outras questões de patenteabilidade a serem avalisadas e que não foram avalisadas na primeira instância, então aplique Despacho 100.2 Recurso conhecido e provido por vício de julgamento. Anulado indeferimento para retorno dos autos à 1ª Instância para a continuação do exame técnico.
 
 
 """
