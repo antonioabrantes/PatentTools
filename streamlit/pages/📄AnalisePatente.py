@@ -57,8 +57,8 @@ if pedido is not None:
     initial_message = f"Olá Sophia, faça o resumo do pedido {patent_text}."
     if st.button('Faça resumo do pedido'):
         with st.spinner("Processando..."):
-            ai_query = model.generate_content(initial_message)
-            st.markdown(ai_query.text)
+            ai_query_patent = model.generate_content(initial_message)
+            st.markdown(f"**Resumo do Pedido:**\n\n{ai_query_patent.text}")
 
     st.write("Envie a anterioridade.")
     prior_art = st.file_uploader("Upload da anterioridade:", type=['pdf'])
@@ -83,7 +83,7 @@ if pedido is not None:
             if st.button('Faça resumo da anterioridade'):
                 with st.spinner("Processando..."):
                     ai_query_prior_art = model.generate_content(initial_message_prior_art)
-                    st.markdown(ai_query_prior_art.text)
+                    st.markdown(f"**Resumo da Anterioridade:**\n\n{ai_query_prior_art.text}")
 
             initial_message_analysis = (
                 f"Olá Sophia, aponte as diferenças do pedido com a anterioridade. "
