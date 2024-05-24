@@ -46,8 +46,9 @@ if cv is not None:
     with st.spinner('Carregando pedido...'):
         text = text_from_pdf(cv)
     st.success('Pedido carregado com sucesso!')
+    
     initial_message = f"Olá Sophia, faça o resumo do pedido {text}."
-    button = st.button('Enviar')
+    button = st.button('Faça resumo do pedido')
     if button:
         with st.spinner("Processando..."):
             ai_query = model.generate_content(initial_message)
@@ -55,18 +56,20 @@ if cv is not None:
 
     st.write("Envie a anterioridade.")
     st.write("Por favor, faça o upload da anterioridade em formato PDF")
+    
     cv = st.file_uploader("Upload da anterioridade:", type=['pdf'])
+    if cv is not None:
+        with st.spinner('Carregando anterioridade...'):
+            text_anterioridade = text_from_pdf(cv)
+        st.success('Anterioridade carregada com sucesso!')
 
-    vaga = st.text_input('Agora faça o upload da anterioridade.')
-    if vaga:
         initial_message = f"Olá Sophia, faça o resumo da anterioridade e traduza para o português {text}."
-        button = st.button('Enviar')
+        button = st.button('Faça resumo da anterioridade')
         if button:
             with st.spinner("Processando..."):
-                ai_query = model.generate_content(initial_message)
-                st.markdown(ai_query.text)
-
+                ai_query_anterioridade = model.generate_content(initial_message)
+                st.markdown(ai_query_anterioridade.text)
     else:
-        st.warning('Por favor, preencha o campo da vaga antes de continuar.')
+        st.warning('Por favor, faça o upload da anterioridade antes de continuar.')
 else:
     st.warning('Por favor, faça o upload do pedido antes de continuar.')
