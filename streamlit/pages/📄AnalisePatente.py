@@ -8,28 +8,23 @@ from PyPDF2 import PdfReader
 from pathlib import Path
 import hashlib
 
-
 load_dotenv()
+# Obtém a chave da API da variável de ambiente
+# no streamlit https://share.streamlit.io/ escolha o app / Settings / Secrets e guarde a chave API do Google
+api_key = os.getenv("GEMINI_API_KEY")
+genai.configure(api_key=api_key)
 
 # Carregando as instruções do sistema para o Gemini
 system_instruction = """
-Seu nome é Ana, uma assistente virtual que ajuda um usuário a preparar um currículo.
-Você deve fornecer feedback sobre o currículo de um usuário.
-Você irá receber a vaga que o usuário deseja e o currículo atual dele em formato PDF.
-Você deve analisar o currículo e fornecer feedbacks construtivos para o usuário melhorar o currículo dele.
-E no final, evidencie uma nota de 0 a 10 para o currículo dele.
-Sempre que fornecer um feedback, forneça uma sugestão de melhoria com os pontos positivos e negativos.
+Seu nome é Sophia, uma assistente virtual que ajuda um examinador de patentes a analisar um pedido de patente.
+Você deve fornecer o resumo do pedido de patente enviado em formato PDF.
 """
-
-# Configurando a API para o modelo Gemini
-genai.configure(api_key=os.getenv("gemini_api_key"))
 
 # Inicializando o modelo Gemini (gemini-1.5-pro-latest)
 model = genai.GenerativeModel(
     model_name="gemini-1.5-pro-latest",
     system_instruction=system_instruction
 )
-
 
 def text_from_pdf(pdf):
     text = ""
@@ -38,26 +33,33 @@ def text_from_pdf(pdf):
         text += page.extract_text()
     return text
 
-
-
 # Título da página
 st.title('AnalisePatente 📄')
-
-
-st.write("Envie seu currículo atual e vaga desejada para receber feedbacks construtivos sobre o seu currículo.")
+st.write("Envie o pedido de patente.")
 
 # Upload do currículo
-st.write("Por favor, faça o upload do seu currículo atual em formato PDF")
-cv = st.file_uploader("Upload do currículo", type=['pdf'])
+st.write("Por favor, faça o upload do pedido em formato PDF")
+cv = st.file_uploader("Upload do pedido:", type=['pdf'])
 
 # Botões de ação
 if cv is not None:
-    with st.spinner('Carregando currículo...'):
+    with st.spinner('Carregando pedido...'):
         text = text_from_pdf(cv)
-    st.success('Currículo carregado com sucesso!')
-    vaga = st.text_input('Qual vaga você deseja se candidatar? Seja o mais específico possível.')
+    st.success('Pedido carregado com sucesso!')
+    initial_message = f"Olá Sophia, faça o resumo do pedido {text}."
+    button = st.button('Enviar')
+    if button:
+        with st.spinner("Processando..."):
+            ai_query = model.generate_content(initial_message)
+            st.markdown(ai_query.text)
+
+    st.write("Envie a anterioridade.")
+    st.write("Por favor, faça o upload da anterioridade em formato PDF")
+    cv = st.file_uploader("Upload da anterioridade:", type=['pdf'])
+
+    vaga = st.text_input('Agora faça o upload da anterioridade.')
     if vaga:
-        initial_message = f"Olá Ana, gostaria de me candidatar para a vaga de {vaga}. Aqui está o meu currículo atual {text}."
+        initial_message = f"Olá Sophia, faça o resumo da anterioridade e traduza para o português {text}."
         button = st.button('Enviar')
         if button:
             with st.spinner("Processando..."):
@@ -67,4 +69,4 @@ if cv is not None:
     else:
         st.warning('Por favor, preencha o campo da vaga antes de continuar.')
 else:
-    st.warning('Por favor, faça o upload do seu currículo antes de continuar.')
+    st.warning('Por favor, faça o upload do pedido antes de continuar.')
