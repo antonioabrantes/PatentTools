@@ -63,12 +63,20 @@ if cv is not None:
             text_anterioridade = text_from_pdf(cv)
         st.success('Anterioridade carregada com sucesso!')
 
-        initial_message = f"Olá Sophia, faça o resumo da anterioridade e traduza para o português {text}."
+        initial_message = f"Olá Sophia, faça o resumo da anterioridade e traduza para o português {text_anterioridade}."
         button = st.button('Faça resumo da anterioridade')
         if button:
             with st.spinner("Processando..."):
                 ai_query_anterioridade = model.generate_content(initial_message)
                 st.markdown(ai_query_anterioridade.text)
+
+        initial_message = f"Olá Sophia, aponte as diferenças do pedido com a anterioridade."
+        button = st.button('Análise dos documentos:')
+        if button:
+            with st.spinner("Processando..."):
+                ai_query_analise = model.generate_content(initial_message)
+                st.markdown(ai_query_analise.text)
+
     else:
         st.warning('Por favor, faça o upload da anterioridade antes de continuar.')
 else:
