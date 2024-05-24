@@ -51,10 +51,10 @@ st.write("Por favor, faça o upload do pedido em formato PDF")
 pedido = st.file_uploader("Upload do pedido:", type=['pdf'])
 if pedido is not None:
     with st.spinner('Carregando pedido...'):
-        text = text_from_pdf(pedido)
+        patent_text = text_from_pdf(pedido)
     st.success('Pedido carregado com sucesso!')
     
-    initial_message = f"Olá Sophia, faça o resumo do pedido {text}."
+    initial_message = f"Olá Sophia, faça o resumo do pedido {patent_text}."
     if st.button('Faça resumo do pedido'):
         with st.spinner("Processando..."):
             ai_query = model.generate_content(initial_message)
