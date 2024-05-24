@@ -60,6 +60,8 @@ if pedido is not None:
         with st.spinner('Carregando anterioridade...'):
             text_anterioridade = text_from_pdf(prior_art)
         st.success('Anterioridade carregada com sucesso!')
+        
+        st.write(text_anterioridade)
 
         initial_message = f"Olá Sophia, faça o resumo da anterioridade e traduza para o português {text_anterioridade}."
         if st.button('Faça resumo da anterioridade'):
