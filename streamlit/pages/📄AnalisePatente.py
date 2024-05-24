@@ -61,28 +61,41 @@ if pedido is not None:
             st.markdown(ai_query.text)
 
     st.write("Envie a anterioridade.")
-    st.write("Por favor, faça o upload da anterioridade em formato PDF")
-    
     prior_art = st.file_uploader("Upload da anterioridade:", type=['pdf'])
+
     if prior_art is not None:
-        with st.spinner('Carregando anterioridade...'):
-            text_anterioridade = text_from_pdf(prior_art)
-        st.success('Anterioridade carregada com sucesso!')
+        st.write("Qual o idioma original da seção de anterioridade?")
+        original_language = st.text_input("Idioma original:", "")
         
-        st.write(text_anterioridade)
+        st.write("Há algum ponto específico que você gostaria que eu focasse no resumo?")
+        specific_focus = st.text_input("Pontos específicos para focar:", "")
 
-        initial_message = f"Olá Sophia, faça o resumo da anterioridade e traduza para o português {text_anterioridade}."
-        if st.button('Faça resumo da anterioridade'):
-            with st.spinner("Processando..."):
-                ai_query_anterioridade = model.generate_content(initial_message)
-                st.markdown(ai_query_anterioridade.text)
+        if original_language and specific_focus:
+            with st.spinner('Carregando anterioridade...'):
+                prior_art_text = text_from_pdf(prior_art)
+            st.success('Anterioridade carregada com sucesso!')
 
-        initial_message = f"Olá Sophia, aponte as diferenças do primeiro PDF carregado com o segundo PDF carregado."
-        if st.button('Faça análise dos documentos'):
-            with st.spinner("Processando..."):
-                ai_query_analise = model.generate_content(initial_message)
-                st.markdown(ai_query_analise.text)
+            initial_message_prior_art = (
+                f"Olá Sophia, faça o resumo da anterioridade no idioma original ({original_language}) "
+                f"e traduza para o português, focando nos seguintes pontos: {specific_focus}. "
+                f"Aqui está o texto da anterioridade: {prior_art_text}"
+            )
+            if st.button('Faça resumo da anterioridade'):
+                with st.spinner("Processando..."):
+                    ai_query_prior_art = model.generate_content(initial_message_prior_art)
+                    st.markdown(ai_query_prior_art.text)
 
+            initial_message_analysis = (
+                f"Olá Sophia, aponte as diferenças do pedido com a anterioridade. "
+                f"Aqui está o pedido: {patent_text} "
+                f"E aqui está a anterioridade: {prior_art_text}"
+            )
+            if st.button('Faça análise dos documentos'):
+                with st.spinner("Processando..."):
+                    ai_query_analysis = model.generate_content(initial_message_analysis)
+                    st.markdown(ai_query_analysis.text)
+        else:
+            st.warning('Por favor, preencha o idioma original da anterioridade e os pontos específicos para focar antes de continuar.')
     else:
         st.warning('Por favor, faça o upload da anterioridade antes de continuar.')
 else:
