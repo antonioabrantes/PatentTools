@@ -78,23 +78,19 @@ if chart_selection == "Gráfico 1":
         # Mostrar o DataFrame
         # st.write("Valores", df)
 
+        anos = df['ano'].tolist()
+        counts = df['count'].tolist()
+
         option3 = {
             "xAxis": {
                 "type": "category",
-                "data": ["A", "B", "C", "D", "E"],
+                "data": anos,
             },
             "yAxis": {"type": "value"},
-            "series": [{"data": [10, 20, 30, 40, 50], "type": "bar"}],
+            "series": [{"data": counts, "type": "bar"}],
         }
         
-        plt.figure(figsize=(10, 6))
-        plt.bar(df['ano'], df['count'], color='blue')
-        plt.xlabel('Ano')
-        plt.ylabel('Count')
-        plt.title('Count de Patentes por Ano')
-        plt.xticks(rotation=45)
-        plt.tight_layout()
-        plt.show()
+        render_chart(option3)
 
     except requests.exceptions.HTTPError as http_err:
         st.error(f"HTTP error occurred: {http_err}")
