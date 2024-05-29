@@ -50,7 +50,7 @@ chart_selection = st.radio("Selecione o gráfico:", ("Gráfico 1", "Gráfico 2",
 
 if chart_selection == "Gráfico 1":
     my_sql = "divisao, count(*) FROM arquivados where despacho='15.23' and year(data)>=2000 group by divisao order by count(*) desc"
-    url = "http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={mysql_query:" + '"' + mysql + '"'
+    url = "http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={mysql_query:" + '"' + my_sql + '"'
     # Definindo cabeçalhos para a requisição
     headers = {
         "Accept": "application/json",
