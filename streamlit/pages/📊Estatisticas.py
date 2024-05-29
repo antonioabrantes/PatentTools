@@ -76,7 +76,18 @@ if chart_selection == "Gráfico 1":
         df['count'] = pd.to_numeric(df['count'], errors='coerce')
 
         # Mostrar o DataFrame
-        st.write("Valores", df)
+        # st.write("Valores", df)
+
+        option3 = {
+            "xAxis": {
+                "type": "category",
+                "data": ["A", "B", "C", "D", "E"],
+            },
+            "yAxis": {"type": "value"},
+            "series": [{"data": [10, 20, 30, 40, 50], "type": "bar"}],
+        }
+        
+        render_chart(option3)
 
     except requests.exceptions.HTTPError as http_err:
         st.error(f"HTTP error occurred: {http_err}")
