@@ -87,7 +87,14 @@ if chart_selection == "Gráfico 1":
             "series": [{"data": [10, 20, 30, 40, 50], "type": "bar"}],
         }
         
-        render_chart(option3)
+        plt.figure(figsize=(10, 6))
+        plt.bar(df['ano'], df['count'], color='blue')
+        plt.xlabel('Ano')
+        plt.ylabel('Count')
+        plt.title('Count de Patentes por Ano')
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+        plt.show()
 
     except requests.exceptions.HTTPError as http_err:
         st.error(f"HTTP error occurred: {http_err}")
