@@ -20,14 +20,6 @@ def render_chart(chart_option):
     st_echarts(options=chart_option, height="400px")
 
 # Define as opções para os dois gráficos
-option1 = {
-    "xAxis": {
-        "type": "category",
-        "data": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-    },
-    "yAxis": {"type": "value"},
-    "series": [{"data": [820, 932, 901, 934, 1290, 1330, 1320], "type": "line"}],
-}
 
 option2 = {
     "xAxis": {
@@ -39,19 +31,16 @@ option2 = {
 }
 
 # Widget de seleção para escolher entre os gráficos
-chart_selection = st.radio("Selecione o gráfico:", ("Gráfico 1", "Gráfico 2", "Gráfico 3", "Gráfico 4", "Gráfico 5"))
+chart_selection = st.radio("Selecione o gráfico:", ("Patentes concedidas (16.1)", "Gráfico 2", "Gráfico 3", "Gráfico 4", "Gráfico 5"))
 
 # Renderiza o gráfico selecionado com base na seleção do usuário
-#if chart_selection == "Gráfico 1":
-#    render_chart(option1)
 
-if chart_selection == "Gráfico 1":
+if chart_selection == "Patentes concedidas (16.1)":
     
-    texto = "Estatísticas de Patentes conceidas 16.1"
+    texto = "Estatísticas de Patentes concedidas 16.1"
     # st.write(texto)
     st.markdown(f"""<div style="text-align: center; font-weight: bold; font-size: 14px;">{texto}</div>""", unsafe_allow_html=True)
     
-    url = "http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={%22mysql_query%22:%22divisao,count(*) FROM arquivados where despacho='15.23' and year(data)>=2000 group by divisao order by count(*) desc%22}"
     # SELECT year(data),count(*) FROM `arquivados` WHERE despacho='16.1' and year(data)>=2000 group by year(data) order by year(data) asc
     url = "http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={%22mysql_query%22:%22year(data) as ano,count(*) FROM arquivados where despacho='16.1' and year(data)>=2000 group by year(data) order by year(data) asc%22}"
 
@@ -83,7 +72,7 @@ if chart_selection == "Gráfico 1":
         anos = df['ano'].tolist()
         counts = df['count'].tolist()
 
-        option3 = {
+        option1 = {
             "xAxis": {
                 "type": "category",
                 "data": anos,
@@ -92,7 +81,7 @@ if chart_selection == "Gráfico 1":
             "series": [{"data": counts, "type": "bar"}],
         }
         
-        render_chart(option3)
+        render_chart(option1)
 
     except requests.exceptions.HTTPError as http_err:
         st.error(f"HTTP error occurred: {http_err}")
@@ -193,7 +182,7 @@ else:
         df['count'] = pd.to_numeric(df['count'], errors='coerce')
 
         # Mostrar o DataFrame
-        st.write("Valores", df)
+        ## st.write("Valores", df)
 
         # Exibir o gráfico de linhas
         # st.line_chart(df.set_index('divisao')['count'])
