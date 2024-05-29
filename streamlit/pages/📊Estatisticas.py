@@ -31,7 +31,7 @@ option2 = {
 }
 
 # Widget de seleção para escolher entre os gráficos
-chart_selection = st.radio("Selecione o gráfico:", ("Patentes concedidas (16.1)", "Gráfico 2", "Gráfico 3", "Gráfico 4", "Gráfico 5"))
+chart_selection = st.radio("Selecione o gráfico:", ("Patentes concedidas (16.1)", "Gráfico 2", "Gráfico 3", "Gráfico 4", "Pedidos sub judice por Divisão Técnica (15.23)"))
 
 # Renderiza o gráfico selecionado com base na seleção do usuário
 
@@ -201,7 +201,7 @@ else:
         # Adicionar rótulos e título
         ax.set_xlabel('Divisão')
         ax.set_ylabel('Count')
-        ax.set_title('Incidência por Divisão Técnica')
+        ax.set_title('Pedidos sub judice por Divisão Técnica (15.23)')
         ax.set_xticks(range(len(df['divisao'])))
         ax.set_xticklabels(df['divisao'], rotation=90)
 
