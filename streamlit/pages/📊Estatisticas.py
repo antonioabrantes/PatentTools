@@ -48,8 +48,8 @@ chart_selection = st.radio("Selecione o gráfico:", ("Gráfico 1", "Gráfico 2",
 if chart_selection == "Gráfico 1":
     
     texto = "Estatísticas de Patentes conceidas 16.1"
-    st.write(texto)
-    # st.markdown(f"""<div style="text-align: center; font-weight: bold; font-size: 14px;">{texto}</div>""", unsafe_allow_html=True)
+    # st.write(texto)
+    st.markdown(f"""<div style="text-align: center; font-weight: bold; font-size: 14px;">{texto}</div>""", unsafe_allow_html=True)
     
     url = "http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={%22mysql_query%22:%22divisao,count(*) FROM arquivados where despacho='15.23' and year(data)>=2000 group by divisao order by count(*) desc%22}"
     # SELECT year(data),count(*) FROM `arquivados` WHERE despacho='16.1' and year(data)>=2000 group by year(data) order by year(data) asc
