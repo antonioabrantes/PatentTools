@@ -15,9 +15,6 @@ from streamlit_echarts import st_pyecharts
 # https://emojipedia.org/search?q=spy
 st.title('Estatísticas 📊️')
 
-# Adicionando descrição do projeto
-st.write("Estatísticas de pedidos subjudice 15.23.")
-
 # Função para renderizar o gráfico selecionado
 def render_chart(chart_option):
     st_echarts(options=chart_option, height="400px")
@@ -49,6 +46,8 @@ chart_selection = st.radio("Selecione o gráfico:", ("Gráfico 1", "Gráfico 2",
 #    render_chart(option1)
 
 if chart_selection == "Gráfico 1":
+    
+    st.write("Estatísticas de Patentes conceidas 16.1")
     url = "http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={%22mysql_query%22:%22divisao,count(*) FROM arquivados where despacho='15.23' and year(data)>=2000 group by divisao order by count(*) desc%22}"
     # SELECT year(data),count(*) FROM `arquivados` WHERE despacho='16.1' and year(data)>=2000 group by year(data) order by year(data) asc
     url = "http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={%22mysql_query%22:%22year(data) as ano,count(*) FROM arquivados where despacho='16.1' and year(data)>=2000 group by year(data) order by year(data) asc%22}"
