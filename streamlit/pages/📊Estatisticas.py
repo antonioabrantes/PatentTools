@@ -93,7 +93,7 @@ if chart_selection == "Patentes concedidas (16.1)":
         st.error(f"An unexpected error occurred: {err}")
         
 elif chart_selection == "Tempo de concessão de PI":
-    texto = "Tempo de concessão de PI"
+    texto = "Tempo de concessão de PI em anos x 100"
     # st.write(texto)
     st.markdown(f"""<div style="text-align: center; font-weight: bold; font-size: 14px;">{texto}</div>""", unsafe_allow_html=True)
     
