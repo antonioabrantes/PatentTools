@@ -199,11 +199,11 @@ elif chart_selection == "Tempo de concessão de PI (zoom)":
                 ),
                 xaxis_opts=opts.AxisOpts(
                     name="Itens",
-                    axislabel_opts=opts.LabelOpts(formatter="{value}")
+                    axislabel_opts=opts.LabelOpts(formatter="{value/100}")
                 ),
                 yaxis_opts=opts.AxisOpts(
                     name="Tempo (anos)",
-                    axislabel_opts=opts.LabelOpts(formatter="{value} anos")
+                    axislabel_opts=opts.LabelOpts(formatter="{value/100} anos")
                 )
             )
         )
