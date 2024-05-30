@@ -31,7 +31,7 @@ option2 = {
 }
 
 # Widget de seleção para escolher entre os gráficos
-chart_selection = st.radio("Selecione o gráfico:", ("Patentes concedidas (16.1)", "Gráfico 2", "Gráfico 3", "Gráfico 4", "Pedidos sub judice por Divisão Técnica (15.23)"))
+chart_selection = st.radio("Selecione o gráfico:", ("Patentes concedidas (16.1)", "Tempo de concessão de PI", "Gráfico 3", "Gráfico 4", "Pedidos sub judice por Divisão Técnica (15.23)"))
 
 # Renderiza o gráfico selecionado com base na seleção do usuário
 
@@ -92,8 +92,62 @@ if chart_selection == "Patentes concedidas (16.1)":
     except Exception as err:
         st.error(f"An unexpected error occurred: {err}")
         
-elif chart_selection == "Gráfico 2":
-    render_chart(option2)
+elif chart_selection == "Tempo de concessão de PI":
+    texto = "Tempo de concessão de PI"
+    # st.write(texto)
+    st.markdown(f"""<div style="text-align: center; font-weight: bold; font-size: 14px;">{texto}</div>""", unsafe_allow_html=True)
+    
+    # SELECT data,tempo_concessoes FROM estoque WHERE ano>=2010 order by data asc
+    url = "http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={%22mysql_query%22:%22data,tempo_concessoes FROM estoque WHERE ano>=2010 order by data asc%22}"
+
+    # Definindo cabeçalhos para a requisição
+    headers = {
+        "Accept": "application/json",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    }
+
+
+    try:
+        # Requisição para obter os dados JSON
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()  # Verificar se a requisição foi bem-sucedida
+
+        # Tentar decodificar o JSON
+        data = response.json()
+
+        # Carregar os dados JSON em um DataFrame
+        df = pd.DataFrame(data['patents'])
+        df['data'] = df['data'].fillna('Unknown')
+
+        # Verificar e converter a coluna 'count' para inteiro
+        df['tempo_concessoes'] = pd.to_numeric(1000*df['tempo_concessoes'], errors='coerce')
+
+        # Mostrar o DataFrame
+        # st.write("Valores", df)
+
+        data = df['data'].tolist()
+        tempo_concessoes = df['tempo_concessoes'].tolist()
+
+        option2 = {
+            "xAxis": {
+                "type": "category",
+                "data": data,
+            },
+            "yAxis": {"type": "value"},
+            "series": [{"data": tempo_concessoes, "type": "line"}],
+        }
+        
+        render_chart(option2)
+
+    except requests.exceptions.HTTPError as http_err:
+        st.error(f"HTTP error occurred: {http_err}")
+    except requests.exceptions.RequestException as req_err:
+        st.error(f"Error occurred during request: {req_err}")
+    except ValueError as json_err:
+        st.error(f"JSON decode error: {json_err}")
+    except Exception as err:
+        st.error(f"An unexpected error occurred: {err}")
+
 elif chart_selection == "Gráfico 3":
     b = (
         Bar()
