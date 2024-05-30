@@ -193,6 +193,18 @@ elif chart_selection == "Tempo de concessão de PI (zoom)":
                     title="Tempo de concessão de PI", subtitle="anos x 100"
                 ),
                 toolbox_opts=opts.ToolboxOpts(),
+                tooltip_opts=opts.TooltipOpts(
+                    trigger="axis", 
+                    formatter="{a} <br/>{b}: {c} anos"
+                ),
+                xaxis_opts=opts.AxisOpts(
+                    name="Itens",
+                    axislabel_opts=opts.LabelOpts(formatter="{value}")
+                ),
+                yaxis_opts=opts.AxisOpts(
+                    name="Tempo (anos)",
+                    axislabel_opts=opts.LabelOpts(formatter="{value} anos")
+                )
             )
         )
         st_pyecharts(
