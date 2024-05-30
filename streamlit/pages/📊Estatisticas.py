@@ -31,7 +31,7 @@ option2 = {
 }
 
 # Widget de seleção para escolher entre os gráficos
-chart_selection = st.radio("Selecione o gráfico:", ("Patentes concedidas (16.1)", "Tempo de concessão de PI", "Gráfico 3", "Gráfico 4", "Pedidos sub judice por Divisão Técnica (15.23)"))
+chart_selection = st.radio("Selecione o gráfico:", ("Patentes concedidas (16.1)", "Tempo de concessão de PI", "Tempo de concessão de PI (zoom)", "Gráfico 4", "Pedidos sub judice por Divisão Técnica (15.23)"))
 
 # Renderiza o gráfico selecionado com base na seleção do usuário
 
@@ -148,7 +148,7 @@ elif chart_selection == "Tempo de concessão de PI":
     except Exception as err:
         st.error(f"An unexpected error occurred: {err}")
 
-elif chart_selection == "Tempo de concessão de PI em anos x 100":
+elif chart_selection == "Tempo de concessão de PI (zoom)":
     texto = "Tempo de concessão de PI em anos x 100"
     # st.write(texto)
     st.markdown(f"""<div style="text-align: center; font-weight: bold; font-size: 14px;">{texto}</div>""", unsafe_allow_html=True)
