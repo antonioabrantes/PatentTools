@@ -195,7 +195,7 @@ elif chart_selection == "Tempo de concessão de PI (zoom)":
                 toolbox_opts=opts.ToolboxOpts(),
                 tooltip_opts=opts.TooltipOpts(
                     trigger="axis", 
-                    formatter="{a} <br/>{b}: {c/100} anos"
+                    formatter="{a} <br/>{b}: {c} anos"
                 ),
                 xaxis_opts=opts.AxisOpts(
                     name="Itens",
@@ -203,7 +203,7 @@ elif chart_selection == "Tempo de concessão de PI (zoom)":
                 ),
                 yaxis_opts=opts.AxisOpts(
                     name="Tempo (anos)",
-                    axislabel_opts=opts.LabelOpts(formatter="{value} anos")
+                    axislabel_opts=opts.LabelOpts(formatter=lambda x: f"{x / 100:.0f} anos")
                 )
             )
         )
