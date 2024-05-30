@@ -148,22 +148,66 @@ elif chart_selection == "Tempo de concessão de PI":
     except Exception as err:
         st.error(f"An unexpected error occurred: {err}")
 
-elif chart_selection == "Gráfico 3":
-    b = (
-        Bar()
-        .add_xaxis(["Microsoft", "Amazon", "IBM", "Oracle", "Google", "Alibaba"])
-        .add_yaxis("2017-2018 Revenue in (billion $)", random.sample(range(100), 10))
-        .set_global_opts(
-            title_opts=opts.TitleOpts(
-                title="Top cloud providers 2018", subtitle="2017-2018 Revenue"
-            ),
-            toolbox_opts=opts.ToolboxOpts(),
+elif chart_selection == "Tempo de concessão de PI em anos x 100":
+    texto = "Tempo de concessão de PI em anos x 100"
+    # st.write(texto)
+    st.markdown(f"""<div style="text-align: center; font-weight: bold; font-size: 14px;">{texto}</div>""", unsafe_allow_html=True)
+    
+    # SELECT data,round(100*tempo_concessoes) as tempo FROM estoque WHERE ano>=2010 and data<='2024-05-01' order by data asc;
+    url = "http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={%22mysql_query%22:%22data,round(100*tempo_concessoes) as tempo FROM estoque WHERE ano>=2010 and data<='2024-05-01' order by data asc%22}"
+
+    # Definindo cabeçalhos para a requisição
+    headers = {
+        "Accept": "application/json",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    }
+
+
+    try:
+        # Requisição para obter os dados JSON
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()  # Verificar se a requisição foi bem-sucedida
+
+        # Tentar decodificar o JSON
+        data = response.json()
+
+        # Carregar os dados JSON em um DataFrame
+        df = pd.DataFrame(data['patents'])
+        df['data'] = df['data'].fillna('Unknown')
+
+        # Verificar e converter a coluna 'count' para inteiro
+        df['tempo'] = pd.to_numeric(df['tempo'], errors='coerce')
+
+        # Mostrar o DataFrame
+        # st.write("Valores", df)
+
+        data = df['data'].tolist()
+        tempo = df['tempo'].tolist()
+
+        b = (
+            Bar()
+            .add_xaxis(tempo)
+            .add_yaxis("Tempo concessão de PI", data)
+            .set_global_opts(
+                title_opts=opts.TitleOpts(
+                    title="Tempo de concessão de PI", subtitle="anos x 100"
+                ),
+                toolbox_opts=opts.ToolboxOpts(),
+            )
         )
-    )
-    st_pyecharts(
-        b, key="echarts"
-    )  # Add key argument to not remount component at every Streamlit run
-    st.button("Randomize data")
+        st_pyecharts(
+            b, key="echarts"
+        )  
+
+    except requests.exceptions.HTTPError as http_err:
+        st.error(f"HTTP error occurred: {http_err}")
+    except requests.exceptions.RequestException as req_err:
+        st.error(f"Error occurred during request: {req_err}")
+    except ValueError as json_err:
+        st.error(f"JSON decode error: {json_err}")
+    except Exception as err:
+        st.error(f"An unexpected error occurred: {err}")
+
 elif chart_selection == "Gráfico 4":
     options = {
         "title": {"text": "Coordenações"},
