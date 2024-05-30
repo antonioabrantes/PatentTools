@@ -97,8 +97,8 @@ elif chart_selection == "Tempo de concessão de PI":
     # st.write(texto)
     st.markdown(f"""<div style="text-align: center; font-weight: bold; font-size: 14px;">{texto}</div>""", unsafe_allow_html=True)
     
-    # SELECT data,round(100*tempo_concessoes) FROM estoque WHERE ano>=2010 order by data asc;
-    url = "http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={%22mysql_query%22:%22data,round(100*tempo_concessoes) FROM estoque WHERE ano>=2023 order by data asc%22}"
+    # SELECT data,round(100*tempo_concessoes) as tempo FROM estoque WHERE ano>=2010 order by data asc;
+    url = "http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={%22mysql_query%22:%22data,round(100*tempo_concessoes) as tempo FROM estoque WHERE ano>=2023 order by data asc%22}"
 
     # Definindo cabeçalhos para a requisição
     headers = {
@@ -120,13 +120,13 @@ elif chart_selection == "Tempo de concessão de PI":
         df['data'] = df['data'].fillna('Unknown')
 
         # Verificar e converter a coluna 'count' para inteiro
-        df['tempo_concessoes'] = pd.to_numeric(df['tempo_concessoes'], errors='coerce')
+        df['tempo'] = pd.to_numeric(df['tempo'], errors='coerce')
 
         # Mostrar o DataFrame
         # st.write("Valores", df)
 
         data = df['data'].tolist()
-        tempo_concessoes = df['tempo_concessoes'].tolist()
+        tempo = df['tempo'].tolist()
 
         option2 = {
             "xAxis": {
@@ -134,7 +134,7 @@ elif chart_selection == "Tempo de concessão de PI":
                 "data": data,
             },
             "yAxis": {"type": "value"},
-            "series": [{"data": tempo_concessoes, "type": "line"}],
+            "series": [{"data": tempo, "type": "line"}],
         }
         
         render_chart(option2)
