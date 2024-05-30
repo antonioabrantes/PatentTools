@@ -97,8 +97,8 @@ elif chart_selection == "Tempo de concessão de PI":
     # st.write(texto)
     st.markdown(f"""<div style="text-align: center; font-weight: bold; font-size: 14px;">{texto}</div>""", unsafe_allow_html=True)
     
-    # SELECT data,round(100*tempo_concessoes) as tempo FROM estoque WHERE ano>=2010 order by data asc;
-    url = "http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={%22mysql_query%22:%22data,round(100*tempo_concessoes) as tempo FROM estoque WHERE ano>=2023 order by data asc%22}"
+    # SELECT data,round(100*tempo_concessoes) as tempo FROM estoque WHERE ano>=2010 and data<='2024-05-01' order by data asc;
+    url = "http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={%22mysql_query%22:%22data,round(100*tempo_concessoes) as tempo FROM estoque WHERE ano>=2010 and data<='2024-05-01' order by data asc%22}"
 
     # Definindo cabeçalhos para a requisição
     headers = {
