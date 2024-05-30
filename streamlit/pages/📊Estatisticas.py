@@ -186,8 +186,8 @@ elif chart_selection == "Tempo de concessão de PI (zoom)":
 
         b = (
             Bar()
-            .add_xaxis(tempo)
-            .add_yaxis("Tempo concessão de PI", data)
+            .add_xaxis(data)
+            .add_yaxis("Tempo concessão de PI", tempo)
             .set_global_opts(
                 title_opts=opts.TitleOpts(
                     title="Tempo de concessão de PI", subtitle="anos x 100"
