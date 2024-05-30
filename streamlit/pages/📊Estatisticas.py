@@ -182,7 +182,7 @@ elif chart_selection == "Tempo de concessão de PI (zoom)":
         # st.write("Valores", df)
 
         data = df['data'].tolist()
-        tempo = df['tempo'].tolist()
+        tempo = df['tempo'].tolist()/100
 
         b = (
             Bar()
@@ -199,11 +199,11 @@ elif chart_selection == "Tempo de concessão de PI (zoom)":
                 ),
                 xaxis_opts=opts.AxisOpts(
                     name="Itens",
-                    axislabel_opts=opts.LabelOpts(formatter="{value/100}")
+                    axislabel_opts=opts.LabelOpts(formatter="{value}")
                 ),
                 yaxis_opts=opts.AxisOpts(
                     name="Tempo (anos)",
-                    axislabel_opts=opts.LabelOpts(formatter="{value/100} anos")
+                    axislabel_opts=opts.LabelOpts(formatter="{value} anos")
                 )
             )
         )
