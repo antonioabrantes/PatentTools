@@ -18,7 +18,7 @@ st.title('FAQ ❓')
 st.write("Perguntas mais frequentes.")
 st.write(f"perguntas = {data}")
 
-try
+try:
     # Converte a string para uma lista de dicionários
     data_list = ast.literal_eval(data)
 
