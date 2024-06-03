@@ -26,11 +26,11 @@ try:
     # Função para imprimir os campos de forma formatada
     def print_data(data):
         for item in data:
-            st.write(f"\033[1mTema:\033[0m {item['Tema']}")
-            st.write(f"Pergunta: {item['Pergunta']}")
-            st.write(f"Resposta: {item['Resposta']}")
-            st.write(f"Modelos: {item['Modelos']}")
-            st.write(f"Despacho: {item['Despacho']}")
+            st.markdown(f"**Tema:** {item['Tema']}")
+            st.write(f"**Pergunta:** {item['Pergunta']}")
+            st.write(f"**Resposta:** {item['Resposta']}")
+            st.write(f"**Modelos:** {item['Modelos']}")
+            st.write(f"**Despacho:** {item['Despacho']}")
             st.write("\n\n")
 
     # Executa a função para imprimir os dados
