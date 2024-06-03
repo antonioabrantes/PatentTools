@@ -9,4 +9,3 @@ python-dotenv
 google-generativeai
 PyPDF2 
 pdfplumber
-ast
