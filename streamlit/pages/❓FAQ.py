@@ -31,7 +31,7 @@ try:
             st.write(f"**Resposta:** {item['Resposta']}")
             st.write(f"**Modelos:** {item['Modelos']}")
             st.write(f"**Despacho:** {item['Despacho']}")
-            st.write("\n\n")
+            st.write("\n" + "="*20 + "\n")
 
     # Executa a função para imprimir os dados
     print_data(data_list)
