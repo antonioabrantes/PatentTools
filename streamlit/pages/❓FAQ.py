@@ -16,11 +16,12 @@ load_dotenv()
 
 st.title('FAQ ❓')
 st.write("Perguntas mais frequentes.")
-st.write(f"perguntas = {data}")
+#st.write(f"perguntas = {data}")
 
 try:
     # Converte a string para uma lista de dicionários
-    data_list = ast.literal_eval(data)
+    #data_list = ast.literal_eval(data)
+    data_list = data
 
     # Função para imprimir os campos de forma formatada
     def print_data(data):
