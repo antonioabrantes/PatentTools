@@ -430,5 +430,21 @@ jobs_details = [
     "Resposta": "Não, constatado um vício formal que impede prosseguimento de exame, por exemplo, que o QR do indeferimento foi baseado na petição errada, o exame de recurso deve suspender e o pedido retornar à primeira instância. ",
     "Modelos": [1],
     "Despacho": "Despacho 100.1. Recurso conhecido e provido para correção do vício formal. Anulado o indeferimento para retorno dos autos à Primeira Instância."
+  },
+  {
+	"id": 55,
+	"Tema": "Parecer recursal",
+    "Pergunta": "Pedido foi indeferido por falta de atividade inventiva. No recurso recorrente apresentou novo quadro reivindicatório em que restringe escopo de proteção. Na avaliação do recurso ao indeferimento, o examinador da segunda instância entendeu que houve vício de julgamento e que o quadro reivindicatório usado no indeferimento tem atividade inventiva. Neste caso o recurso deve ser provido com o quadro do indeferimento ?",
+    "Resposta": "Sim. Se o examinador concluir que o quadro reivindicatório do indeferimento está em condições de deferimento, então é este quadro reivindicatório que deve ser escolhido. O quadro reivindicatório apresentado no recurso seria escolhido apenas se este corrigisse um problema já apontado no quadro do reivindicatório, independente do novo quadro reivindicatório também estiver em condições de concessão. Neste caso descrito na pergunta, o recorrente restringiu o quadro reivindicatório desnecessariamente porque a objeção do indeferimento foi indevida.  ",
+    "Modelos": [3],
+    "Despacho": "Despacho 100.3. Recurso conhecido e provido por vício de julgamento. Reformada a decisão recorrida e deferido o pedido."
+  },
+  {
+	"id": 56,
+	"Tema": "Parecer recursal",
+    "Pergunta": "Um pedido foi indeferido por falta de atividade inventiva. No recurso o examinador conclui que a reivindicação de método trata de método financeiro além de ter problemas no artigo 25 da LPI. Tais questões não foram tratadas no parecer de indeferimento. O pedido volta para primeira instância ?",
+    "Resposta": "Sim. Se o examinador entender que este quadro reivindicatório pudesse superar as questões de artigo 10 e artigo 25 com uma nova redação, caberia o examinador apontar vício de procedimento e explicar estas questões no seu parecer mas de qualquer forma o pedido deve retornar à primeira instância porque não houve propriamente um julgamento destas questões na primeira instância. Desta forma, fica garantido o duplo grau de jurisdição, ou seja, a possibilidade do recorrente recorrer novamente desta decisão. Como o parecer de indeferimento em nenhum momento fez qualquer objeção baseado no artigo 10 da LPI, então temos um erro formal. Vício de julgamento seria se o parecer de indeferimento tivesse feito uma objeção do artigo 10 da LPI. Neste caso, a mudança de entendimento do examinador de segunda instância é vista como tendo detectado um vício de julgamento da primeira instância. Se por outro lado, o examinador consegue manter o indeferimento por outras razões, então não cabe retornar este pedido à primeira instância, mas manter o indeferimento com base nestas razões já contempladas no indeferimento. Se o examinador encontrar algum documento citado nas buscas de outros escritórios e que entenda ser relevante para o exame de atividade inventiva, tal documento deve ser apontado em seu parecer para subsidiar o examinador de primeira instância quando do retorno deste pedido à primeira instância. Caso o examinador entendesse que o quadro reivindicatório poderia ser emendado de forma a ser concedido, então caberia ao examinador de segunda instância formular uma exigência sugerindo as correções devidas. Caso essas correções não sejam cumpridas, então somente agora o examinador de segunda instância poderia emitir novo parecer enviando o pedido para primeira instância apontando a violação do artigo 10 da LPI e as demais objeções encontradas no pedido.  ",
+    "Modelos": [1],
+    "Despacho": "Despacho 100.1. Recurso conhecido e provido para correção do vício formal. Anulado o indeferimento para retorno dos autos à Primeira Instância."
   }
 ]
