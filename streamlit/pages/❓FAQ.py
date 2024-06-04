@@ -27,7 +27,7 @@ try:
     def print_data(data):
         for item in data:
             st.markdown(f"**Tema:** {item['Tema']}")
-            st.write(f"**Pergunta:** {item['Pergunta']}")
+            st.markdown(f"*Pergunta:* {item['Pergunta']}")
             st.write(f"**Resposta:** {item['Resposta']}")
             st.write(f"**Modelos:** {item['Modelos']}")
             st.write(f"**Despacho:** {item['Despacho']}")
