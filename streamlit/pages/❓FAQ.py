@@ -23,25 +23,8 @@ try:
     #data_list = ast.literal_eval(data)
     data_list = data
 
-    texto = """## Instrutora
-    <table>
-      <tr>
-        <td>
-          <img width="80px" align="center" src="https://myoctocat.com/assets/images/base-octocat.svg"/>
-        </td>
-        <td align="left">
-          <a href="https://github.com/elidianaandrade">
-            <span><b>Elidiana Andrade</b></span>
-          </a>
-          <br>
-          <span>Desenvolvedora Front-end</span>
-        </td>
-      </tr>
-    </table>"""
-
-    # st.markdown("![Screenshot of a comment](https://myoctocat.com/assets/images/base-octocat.svg)")
-    st.markdown(texto)
-    
+    st.markdown("![Screenshot of a comment](https://myoctocat.com/assets/images/base-octocat.svg)")
+   
     
     # Função para imprimir os campos de forma formatada
     def print_data(data):
