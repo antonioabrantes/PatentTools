@@ -28,9 +28,9 @@ try:
         for item in data:
             st.markdown(f"**Tema:** {item['Tema']}")
             st.write(f"**Pergunta:** {item['Pergunta']}")
-            st.write(f"**Resposta:** {item['Resposta']}")
-            st.write(f"**Modelos:** {item['Modelos']}")
-            st.write(f"**Despacho:** {item['Despacho']}")
+            st.write(f"###Resposta:### {item['Resposta']}")
+            st.write(f"##Modelos:## {item['Modelos']}")
+            st.write(f"#Despacho:# {item['Despacho']}")
             st.write("\n" + "="*20 + "\n")
 
     # Executa a função para imprimir os dados
