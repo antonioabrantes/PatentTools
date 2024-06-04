@@ -23,6 +23,7 @@ try:
     #data_list = ast.literal_eval(data)
     data_list = data
 
+    st.markdown("![Screenshot of a comment](https://myoctocat.com/assets/images/base-octocat.svg)")
     # Função para imprimir os campos de forma formatada
     def print_data(data):
         for item in data:
