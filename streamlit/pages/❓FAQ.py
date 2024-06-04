@@ -28,7 +28,7 @@ try:
         for item in data:
             st.markdown(f"**Tema:** {item['Tema']}")
             st.markdown(f"*Pergunta:* {item['Pergunta']}")
-            st.write(f"**Resposta:** {item['Resposta']}")
+            st.markdown(f"**_Resposta:_** {item['Resposta']}")
             st.write(f"**Modelos:** {item['Modelos']}")
             st.write(f"**Despacho:** {item['Despacho']}")
             st.write("\n" + "="*20 + "\n")
