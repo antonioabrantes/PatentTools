@@ -26,7 +26,7 @@ try:
     # Função para imprimir os campos de forma formatada
     def print_data(data):
         for item in data:
-            st.markdown(f"**Tema:** {item['Tema']}")
+            st.markdown(f"#Tema: {item['Tema']}")
             st.write(f"**Pergunta:** {item['Pergunta']}")
             st.write(f"**Resposta:** {item['Resposta']}")
             st.write(f"**Modelos:** {item['Modelos']}")
