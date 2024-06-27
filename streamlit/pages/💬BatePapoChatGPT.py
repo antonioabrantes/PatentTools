@@ -12,6 +12,9 @@ import os
 from dotenv import load_dotenv
 import pandas as pd
 
+from langchain_community.document_loaders.pdf import PyPDFLoader
+from langchain_openai import OpenAIEmbeddings
+
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY2")
 openai.api_key = api_key
@@ -24,18 +27,14 @@ st.write("A Assistente Virtual Sophia está aqui para te ajudar a tirar suas dú
 
 
 # Listar todos os arquivos e diretórios no diretório atual
-arquivos = os.listdir('.')
-
+#arquivos = os.listdir('.')
 # Filtrar para mostrar apenas arquivos (não diretórios)
-arquivos = [f for f in arquivos if os.path.isfile(f)]
-
-st.write("Arquivos no diretório atual:")
-for arquivo in arquivos:
-    st.write(arquivo)
-    
-    
-from langchain_community.document_loaders.pdf import PyPDFLoader
-
+#arquivos = [f for f in arquivos if os.path.isfile(f)]
+#st.write("Arquivos no diretório atual:")
+#for arquivo in arquivos:
+#    st.write(arquivo)
+  
+   
 pdf_path = "streamlit/chatbot_cgrec.pdf"  # Especifique o caminho do PDF
 
 # Verificar se o arquivo existe no caminho especificado
@@ -47,7 +46,6 @@ else:
     
 pages = loader.load_and_split()
 
-from langchain_openai import OpenAIEmbeddings
 embeddings = OpenAIEmbeddings(openai_api_key=api_key)
 
 from langchain_community.vectorstores.faiss import FAISS # banco de dados vetorial FAISS
