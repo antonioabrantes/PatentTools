@@ -22,6 +22,18 @@ st.title('BatePapo 💬')
 # Introdução do assistente virtual
 st.write("A Assistente Virtual Sophia está aqui para te ajudar a tirar suas dúvidas sobre o processamento de recursos de paedidos de patente! Atualmente o assistente tem informações mais comuns já cadastradas. Vamos começar?")
 
+
+# Listar todos os arquivos e diretórios no diretório atual
+arquivos = os.listdir('.')
+
+# Filtrar para mostrar apenas arquivos (não diretórios)
+arquivos = [f for f in arquivos if os.path.isfile(f)]
+
+st.write("Arquivos no diretório atual:")
+for arquivo in arquivos:
+    st.write(arquivo)
+    
+    
 from langchain_community.document_loaders.pdf import PyPDFLoader
 
 pdf_path = "../.chatbot_cgrec.pdf"  # Especifique o caminho do PDF
