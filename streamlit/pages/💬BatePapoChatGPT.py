@@ -36,7 +36,7 @@ for arquivo in arquivos:
     
 from langchain_community.document_loaders.pdf import PyPDFLoader
 
-pdf_path = "../.chatbot_cgrec.pdf"  # Especifique o caminho do PDF
+pdf_path = "streamlit/chatbot_cgrec.pdf"  # Especifique o caminho do PDF
 
 # Verificar se o arquivo existe no caminho especificado
 if os.path.exists(pdf_path):
