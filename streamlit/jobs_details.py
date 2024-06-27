@@ -328,84 +328,84 @@ jobs_details = [
         "Despacho": "Despacho 121. Exigência técnica."
     },
     {
-        "id": 6,
+        "id": 41,
+        "Tema": "Parecer recursal",
+        "Pergunta": "Se indeferimento foi por duas razões, mas a requerente no recurso se manifesta apenas para uma das razões e o examinador de recurso mantém indeferimento, cabe fazer exigência na fase recursal para requerente se manifestar sobre a segunda razão ? ",
+        "Resposta": "Sim, mas apenas se na fase transitória. Passada a fase transitória não cabe fazer exigência para requerente se manifestar sobre a segunda razão, porque a primeira já decide a questão.  ",
+        "Modelos": [6],
+        "Despacho": "Despacho 121. Exigência técnica."
+    },
+    {
+        "id": 42,
+        "Tema": "Parecer recursal",
+        "Pergunta": "Um indeferimento por falta de atividade inventiva é baseado em D1 ou D2. No recurso, o examinador concluiu que o pedido não é inventivo em relação a D1, mas é inventivo em relação a D2. Houve vício de julgamento ?",
+        "Resposta": "Não, porque a decisão de indeferimento continua mantida com D1. Essa discussão deve estar toda na parte do parecer que avalia vício de julgamento.",
+        "Modelos": [6],
+        "Despacho": "Despacho 121. Exigência técnica."
+    },
+    {
+        "id": 43,
         "Tema": "Vício de procedimento",
-        "Pergunta": "O parecer de indeferimento encontra-se com falta de motivação adequada e, portanto, apresenta inconsistências prejudiciais à ampla defesa e contraditório. Existe vício de procedimento? ",
-        "Resposta": "Sim, o parecer de indeferimento não encontra-se devidamente motivado. A não motivação da decisão recorrida prejudica a defesa por parte do recorrente, na medida em que este não discute de forma suficiente todas as alegações relevantes do depositante. Não se trata de avaliar o mérito aqui, mas apenas se o parecer não apresenta minimamente uma justificativa (correta ou não) para o indeferimento. A motivação da decisão emanada pela primeira instância deve permitir que a 2ª instância e o próprio requerente compreendam claramente a justificativa do indeferimento.",
+        "Pergunta": "Primeira instância indeferiu um pedido dividido, por dupla proteção sendo que o pedido principal não tem patente concedida. Há Vício de procedimento ?",
+        "Resposta": "Sim, o pedido deve ser devolvido para primeira instância. Pode sugerir que a primeira instância aproveite o QR apresentado no recurso, se houver.  ",
         "Modelos": [1],
         "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
     },
     {
-        "id": 6,
+        "id": 44,
         "Tema": "Vício de procedimento",
-        "Pergunta": "O parecer de indeferimento encontra-se com falta de motivação adequada e, portanto, apresenta inconsistências prejudiciais à ampla defesa e contraditório. Existe vício de procedimento? ",
-        "Resposta": "Sim, o parecer de indeferimento não encontra-se devidamente motivado. A não motivação da decisão recorrida prejudica a defesa por parte do recorrente, na medida em que este não discute de forma suficiente todas as alegações relevantes do depositante. Não se trata de avaliar o mérito aqui, mas apenas se o parecer não apresenta minimamente uma justificativa (correta ou não) para o indeferimento. A motivação da decisão emanada pela primeira instância deve permitir que a 2ª instância e o próprio requerente compreendam claramente a justificativa do indeferimento.",
+        "Pergunta": "Pedido indeferido por violação do artigo 6 da lei de biossegurança ao invés do artigo 6 da LPI que trata de dupla proteção. O indeferimento não discutiu dupla proteção, mas houve discussão de dupla proteção no 7.1. Há Vício de procedimento ?",
+        "Resposta": "Não. O recurso deve fazer exigência para requerente apresentar manifestação quanto a dupla proteção. Não é necessário retornar pedido para primeira instância. ",
+        "Modelos": [6],
+        "Despacho": "Despacho 121. Exigência técnica."
+    },
+    {
+        "id": 45,
+        "Tema": "Vício de julgamento",
+        "Pergunta": "Pedido trata da reivindicação de composição e uso do ativo para tratamento de doenças. Indeferimento na primeira instância analisa como não novo e não inventivo e cita D1 e D2 que tratam somente do uso da composição. Houve erro de julgamento ?",
+        "Resposta": "Sim. O Vício de procedimento diz respeito a algo que impede de prosseguir exame de recurso, o que não é o caso. Existe vício de julgamento na avaliação de atividade inventiva, pois a composição não esta em D1 e D2.  Causa não madura, retorna à primeira instância. Parecer recursal pode indicar D3 encontrado em nova busca como subsídio para primeira instância considerar. ",
+        "Modelos": [2],
+        "Despacho": "Despacho 100.2. Recurso conhecido e provido por vício de julgamento. Anulado indeferimento para retorno dos autos à 1ª Instância para a continuação do exame técnico."
+    },
+    {
+        "id": 46,
+        "Tema": "Vício de julgamento",
+        "Pergunta": "Indeferimento por dupla proteção, no recurso requerente apresenta novo QR com disclaimer. O examinador no recurso constata que o novo QR viola o artigo 32 da LPI. Esse pedido deve voltar para primeira instância ?",
+        "Resposta": "Sim.  Existe um Vício de procedimento que impede o prosseguimento do exame, logo pedido deve retornar à primeira instância.",
         "Modelos": [1],
         "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
     },
     {
-        "id": 6,
-        "Tema": "Vício de procedimento",
-        "Pergunta": "O parecer de indeferimento encontra-se com falta de motivação adequada e, portanto, apresenta inconsistências prejudiciais à ampla defesa e contraditório. Existe vício de procedimento? ",
-        "Resposta": "Sim, o parecer de indeferimento não encontra-se devidamente motivado. A não motivação da decisão recorrida prejudica a defesa por parte do recorrente, na medida em que este não discute de forma suficiente todas as alegações relevantes do depositante. Não se trata de avaliar o mérito aqui, mas apenas se o parecer não apresenta minimamente uma justificativa (correta ou não) para o indeferimento. A motivação da decisão emanada pela primeira instância deve permitir que a 2ª instância e o próprio requerente compreendam claramente a justificativa do indeferimento.",
+        "id": 47,
+        "Tema": "Parecer recursal",
+        "Pergunta": "O recurso conclui por vício de julgamento, mas a causa não está madura e o pedido deve retornar à primeira instância. O requerente apresentou novas vias de QR no recurso. O examinador recursal deve apontar qual quadro reivindicatório (QR) a primeira instância deve analisar ?",
+        "Resposta": "Sim. Sempre que possível o examinador recursal deve apontar qual dos QRs apresentados devem ser considerados neste retorno à primeira instância.",
         "Modelos": [1],
         "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
     },
     {
-        "id": 6,
-        "Tema": "Vício de procedimento",
-        "Pergunta": "O parecer de indeferimento encontra-se com falta de motivação adequada e, portanto, apresenta inconsistências prejudiciais à ampla defesa e contraditório. Existe vício de procedimento? ",
-        "Resposta": "Sim, o parecer de indeferimento não encontra-se devidamente motivado. A não motivação da decisão recorrida prejudica a defesa por parte do recorrente, na medida em que este não discute de forma suficiente todas as alegações relevantes do depositante. Não se trata de avaliar o mérito aqui, mas apenas se o parecer não apresenta minimamente uma justificativa (correta ou não) para o indeferimento. A motivação da decisão emanada pela primeira instância deve permitir que a 2ª instância e o próprio requerente compreendam claramente a justificativa do indeferimento.",
+        "id": 48,
+        "Tema": "Parecer recursal",
+        "Pergunta": "Pedido com 6.21 seguido de 9.2 indeferido em primeiro exame. Existe Vício de procedimento ?",
+        "Resposta": "Sim. Pedido deve retornar ao primeiro exame. Se for pedido dividido considerar o caso de que a discussão do indeferimento já ter sido apresentada no parecer do pedido principal, antes da divisão, neste caso não há Vício de procedimento e é aceito o indeferimento em primeiro exame, porque houve a oportunidade ao contraditório quanto às razões de indeferimento.",
         "Modelos": [1],
         "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
     },
     {
-        "id": 6,
-        "Tema": "Vício de procedimento",
-        "Pergunta": "O parecer de indeferimento encontra-se com falta de motivação adequada e, portanto, apresenta inconsistências prejudiciais à ampla defesa e contraditório. Existe vício de procedimento? ",
-        "Resposta": "Sim, o parecer de indeferimento não encontra-se devidamente motivado. A não motivação da decisão recorrida prejudica a defesa por parte do recorrente, na medida em que este não discute de forma suficiente todas as alegações relevantes do depositante. Não se trata de avaliar o mérito aqui, mas apenas se o parecer não apresenta minimamente uma justificativa (correta ou não) para o indeferimento. A motivação da decisão emanada pela primeira instância deve permitir que a 2ª instância e o próprio requerente compreendam claramente a justificativa do indeferimento.",
-        "Modelos": [1],
-        "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
+        "id": 49,
+        "Tema": "Parecer recursal",
+        "Pergunta": "É possível mudança de natureza na fase recursal ?",
+        "Resposta": "Sim, mas apenas na fase transitória, visto que passada a fase transitória aplica-se a regra geral da preclusão e já não se aceita mais a possibilidade de mudanças de quadro reivindicatório na fase recursal",
+        "Modelos": [0],
+        "Despacho": ""
     },
     {
-        "id": 6,
-        "Tema": "Vício de procedimento",
-        "Pergunta": "O parecer de indeferimento encontra-se com falta de motivação adequada e, portanto, apresenta inconsistências prejudiciais à ampla defesa e contraditório. Existe vício de procedimento? ",
-        "Resposta": "Sim, o parecer de indeferimento não encontra-se devidamente motivado. A não motivação da decisão recorrida prejudica a defesa por parte do recorrente, na medida em que este não discute de forma suficiente todas as alegações relevantes do depositante. Não se trata de avaliar o mérito aqui, mas apenas se o parecer não apresenta minimamente uma justificativa (correta ou não) para o indeferimento. A motivação da decisão emanada pela primeira instância deve permitir que a 2ª instância e o próprio requerente compreendam claramente a justificativa do indeferimento.",
-        "Modelos": [1],
-        "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
-    },
-    {
-        "id": 6,
-        "Tema": "Vício de procedimento",
-        "Pergunta": "O parecer de indeferimento encontra-se com falta de motivação adequada e, portanto, apresenta inconsistências prejudiciais à ampla defesa e contraditório. Existe vício de procedimento? ",
-        "Resposta": "Sim, o parecer de indeferimento não encontra-se devidamente motivado. A não motivação da decisão recorrida prejudica a defesa por parte do recorrente, na medida em que este não discute de forma suficiente todas as alegações relevantes do depositante. Não se trata de avaliar o mérito aqui, mas apenas se o parecer não apresenta minimamente uma justificativa (correta ou não) para o indeferimento. A motivação da decisão emanada pela primeira instância deve permitir que a 2ª instância e o próprio requerente compreendam claramente a justificativa do indeferimento.",
-        "Modelos": [1],
-        "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
-    },
-    {
-        "id": 6,
-        "Tema": "Vício de procedimento",
-        "Pergunta": "O parecer de indeferimento encontra-se com falta de motivação adequada e, portanto, apresenta inconsistências prejudiciais à ampla defesa e contraditório. Existe vício de procedimento? ",
-        "Resposta": "Sim, o parecer de indeferimento não encontra-se devidamente motivado. A não motivação da decisão recorrida prejudica a defesa por parte do recorrente, na medida em que este não discute de forma suficiente todas as alegações relevantes do depositante. Não se trata de avaliar o mérito aqui, mas apenas se o parecer não apresenta minimamente uma justificativa (correta ou não) para o indeferimento. A motivação da decisão emanada pela primeira instância deve permitir que a 2ª instância e o próprio requerente compreendam claramente a justificativa do indeferimento.",
-        "Modelos": [1],
-        "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
-    },
-    {
-        "id": 6,
-        "Tema": "Vício de procedimento",
-        "Pergunta": "O parecer de indeferimento encontra-se com falta de motivação adequada e, portanto, apresenta inconsistências prejudiciais à ampla defesa e contraditório. Existe vício de procedimento? ",
-        "Resposta": "Sim, o parecer de indeferimento não encontra-se devidamente motivado. A não motivação da decisão recorrida prejudica a defesa por parte do recorrente, na medida em que este não discute de forma suficiente todas as alegações relevantes do depositante. Não se trata de avaliar o mérito aqui, mas apenas se o parecer não apresenta minimamente uma justificativa (correta ou não) para o indeferimento. A motivação da decisão emanada pela primeira instância deve permitir que a 2ª instância e o próprio requerente compreendam claramente a justificativa do indeferimento.",
-        "Modelos": [1],
-        "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
-    },
-    {
-        "id": 6,
-        "Tema": "Vício de procedimento",
-        "Pergunta": "O parecer de indeferimento encontra-se com falta de motivação adequada e, portanto, apresenta inconsistências prejudiciais à ampla defesa e contraditório. Existe vício de procedimento? ",
-        "Resposta": "Sim, o parecer de indeferimento não encontra-se devidamente motivado. A não motivação da decisão recorrida prejudica a defesa por parte do recorrente, na medida em que este não discute de forma suficiente todas as alegações relevantes do depositante. Não se trata de avaliar o mérito aqui, mas apenas se o parecer não apresenta minimamente uma justificativa (correta ou não) para o indeferimento. A motivação da decisão emanada pela primeira instância deve permitir que a 2ª instância e o próprio requerente compreendam claramente a justificativa do indeferimento.",
-        "Modelos": [1],
-        "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
+        "id": 50,
+        "Tema": "Parecer recursal",
+        "Pergunta": "Pedido indeferido foi analisado na fase recursal e devolvido à primeira instância. No recurso o requerente pede a divisão do pedido. Este pedido poderá ser dividido ?",
+        "Resposta": "Sim, com o pedido na primeira instância ele volta a ter a possibilidade de divisão, algo que era vetado na fase recursal.",
+        "Modelos": [0],
+        "Despacho": ""
     },
     {
         "id": 6,
