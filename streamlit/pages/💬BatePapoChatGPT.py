@@ -96,7 +96,44 @@ docs = db.similarity_search(query)
 
 chain = load_qa_chain(OpenAI(openai_api_key=api_key, temperature=0), chain_type="stuff")
 resposta = chain.run(input_documents=docs, question=query)    
+st.write(query)
 st.write(resposta)
+
+# Introdução do assistente virtual
+st.write("A Assistente Virtual Sophia está aqui para te ajudar a tirar suas dúvidas sobre o processamento de recursos de pedidos de patente! Atualmente o assistente tem informações mais comuns já cadastradas. Vamos começar?")
+
+# Exibe o histórico de conversa
+for message in st.session_state.chat_history:
+    if message['role'] == "user":
+        with st.chat_message("user"):
+            st.markdown(message['content'])
+    else:
+        with st.chat_message("assistant"):
+            st.markdown(message['content'])
+
+# Entrada do usuário
+user_query = st.chat_input('Você pode falar ou digitar sua resposta aqui:')
+
+# Processamento da entrada do usuário e resposta do assistente
+if user_query is not None and user_query != '':
+    # Adiciona a mensagem do usuário ao histórico
+    st.session_state.chat_history.append({'role': 'user', 'content': user_query})
+    
+    # Exibe a mensagem do usuário
+    with st.chat_message("user"):
+        st.markdown(user_query)
+
+    # Processa a mensagem do usuário e gera a resposta
+    resposta = chain.run(input_documents=docs, question=user_query)
+    
+    # Adiciona a resposta do assistente ao histórico
+    st.session_state.chat_history.append({'role': 'assistant', 'content': resposta})
+    
+    # Exibe a resposta do assistente
+    with st.chat_message("assistant"):
+        st.markdown(resposta)
+
+
 
 # pages = loader.load_and_split()
 
