@@ -88,84 +88,84 @@ jobs_details = [
         "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
     },
     {
-        "id": 6,
+        "id": 11,
         "Tema": "Vício de procedimento",
-        "Pergunta": "O parecer de indeferimento encontra-se com falta de motivação adequada e, portanto, apresenta inconsistências prejudiciais à ampla defesa e contraditório. Existe vício de procedimento? ",
-        "Resposta": "Sim, o parecer de indeferimento não encontra-se devidamente motivado. A não motivação da decisão recorrida prejudica a defesa por parte do recorrente, na medida em que este não discute de forma suficiente todas as alegações relevantes do depositante. Não se trata de avaliar o mérito aqui, mas apenas se o parecer não apresenta minimamente uma justificativa (correta ou não) para o indeferimento. A motivação da decisão emanada pela primeira instância deve permitir que a 2ª instância e o próprio requerente compreendam claramente a justificativa do indeferimento.",
+        "Pergunta": "Vícios formais dizem respeito a questões processuais, de procedimento, na primeira instância ?",
+        "Resposta": "Sim. Se ocorreram vícios formais (questões processuais, de procedimento) que provocam prejuízo ao recorrente então o parecer recursal deve encerrar com Despacho 100.1 Recurso conhecido e provido para correção do vício de procedimento. Anulado indeferimento para retorno dos autos à Primeira Instância. Vícios formais tratam de qualquer questão diferente dos óbices que fundamentam o indeferimento. Os vícios de julgamento envolvem questões que não fazem parte objetiva da impugnação, isto é, não são óbices apontados pela primeira Instância e que justificam o indeferimento, todavia, colocam em dúvida substancial o desfecho final da decisão recorrida. Tais óbices apontados na conclusão do parecer que fundamentam o indeferimento devem ser considerados pelo examinador de segunda instância e caso venha a divergir dos mesmos deverá justificar claramente sua decisão. Toda vez que houver vícios formais que impedem a sequência do exame de recurso, estes terão de ser claramente apontados no parecer de segunda instância para instrução da devolução para primeira instância.",
+        "Modelos": [0],
+        "Despacho": ""
+    },
+    {
+        "id": 12,
+        "Tema": "Vício de procedimento",
+        "Pergunta": "O parecer de indeferimento, por um lado, se refere a uma referência errada do documento de anterioridade que fundamenta a falta de atividade inventiva do pedido em exame, mas na sua petição de recurso o recorrente entende que houve um lapso, e consegue reconhecer a referência certa a que o examinador se refere no indeferimento, de modo que isso em nada prejudica o seu direito de defesa. Isso é um Vício de procedimento ?",
+        "Resposta": "Não, pois o direito de defesa foi respeitado. ",
+        "Modelos": [0],
+        "Despacho": ""
+    },
+    {
+        "id": 13,
+        "Tema": "Vício de procedimento",
+        "Pergunta": "O indeferimento conclui que o pedido está de acordo com o artigo 32 da LPI, mas marca um X no quadro II indicando que há violação do artigo 32 da LPI. Temos um exemplo de vício de julgamento ?",
+        "Resposta": "Não, mas um Vício de procedimento. Houve um erro de preenchimento do Quadro II, porque há uma contradição entre o que está no quadro e o que está no texto do parecer de indeferimento. Se o indeferimento diz que o pedido atende ao artigo 32 da LPI mas marca um X no quadro dizendo que tem um problemas mas sem nenhuma desenvolvimento no texto do parecer, então não tem como o examinador da fase recursal alegar que houve um vício de julgamento se não há um julgamento expresso, pis apesar de apontar problemas no Quadro II o parecer de indeferimento nada discute sobre isso, que não aparece no fundamento do indeferimento. Caso o examinador recursal verifique que há um problema do artigo 32 da LPI então trata-se de um Vício de procedimento: o artigo 32 da LPI não foi avaliado corretamente. Se o artigo 32 consta do fundamento do indeferimento como óbice, mas existe uma divergência do examinador de segunda instância sobre este ponto, então temos um vício de julgamento. ",
         "Modelos": [1],
         "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
     },
     {
-        "id": 6,
+        "id": 14,
         "Tema": "Vício de procedimento",
-        "Pergunta": "O parecer de indeferimento encontra-se com falta de motivação adequada e, portanto, apresenta inconsistências prejudiciais à ampla defesa e contraditório. Existe vício de procedimento? ",
-        "Resposta": "Sim, o parecer de indeferimento não encontra-se devidamente motivado. A não motivação da decisão recorrida prejudica a defesa por parte do recorrente, na medida em que este não discute de forma suficiente todas as alegações relevantes do depositante. Não se trata de avaliar o mérito aqui, mas apenas se o parecer não apresenta minimamente uma justificativa (correta ou não) para o indeferimento. A motivação da decisão emanada pela primeira instância deve permitir que a 2ª instância e o próprio requerente compreendam claramente a justificativa do indeferimento.",
+        "Pergunta": "Ao devolver à primeira instância o examinador de segunda instância pode adicionalmente (opcional) apontar outras objeções do pedido que não foram apontadas no indeferimento ?",
+        "Resposta": "Sim, mas raramente, pois o examinador deve procurar se ater às razões de indeferimento e as argumentações levantadas pela requerente em sua petição de recurso.  Ao devolver à primeira instância o examinador de segunda instância pode adicionalmente (opcional) apontar outras objeções do pedido que não foram apontadas no indeferimento, como exemplo, algum documento relevante encontrado nas busca EP, por exemplo e não mencionados no parecer no parecer de indeferimento, mas sempre como sugestão, apontando as características técnicas do documento mas sem emitir qualquer opinião conclusiva de mérito dos mesmos.",
+        "Modelos": [0],
+        "Despacho": ""
+    },
+    {
+        "id": 15,
+        "Tema": "Vício de procedimento",
+        "Pergunta": "Um parecer de indeferimento aponta falta de atividade inventiva. O examinador na fase recursal entende que a matéria viola o artigo 18 da LPI, mas isso em nenhum momento foi discutido no parecer de indeferimento. Trata-se de um vício de procedimento?",
+        "Resposta": "Sim, O examinador de segunda instância deve examinar se existe alguma objeção quanto aos artigos da LPI 10 (matéria não considerada invenção), 18 (matéria não patenteável, como por exemplos seres vivos), 22 ((falta de unidade de invenção), 32 (acréscimo de matéria) e 24 (insuficiência descritiva) que não tenham sido observadas em primeiras instância e que impedem o prosseguimento do exame de mérito. Se há questões prejudiciais de mérito, isto é, questões que impediriam alcançar a decisão do indeferimento caso sejam observadas (por exemplo o parecer de indeferimento conclui por falta de atividade inventiva, mas existe um problema de artigo 32 não observado no parecer),  então parecer deve encerrar com Despacho 100.1 Recurso conhecido e provido para correção do vício de procedimento. Anulado indeferimento para retorno dos autos à Primeira Instância",
         "Modelos": [1],
         "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
     },
     {
-        "id": 6,
-        "Tema": "Vício de procedimento",
-        "Pergunta": "O parecer de indeferimento encontra-se com falta de motivação adequada e, portanto, apresenta inconsistências prejudiciais à ampla defesa e contraditório. Existe vício de procedimento? ",
-        "Resposta": "Sim, o parecer de indeferimento não encontra-se devidamente motivado. A não motivação da decisão recorrida prejudica a defesa por parte do recorrente, na medida em que este não discute de forma suficiente todas as alegações relevantes do depositante. Não se trata de avaliar o mérito aqui, mas apenas se o parecer não apresenta minimamente uma justificativa (correta ou não) para o indeferimento. A motivação da decisão emanada pela primeira instância deve permitir que a 2ª instância e o próprio requerente compreendam claramente a justificativa do indeferimento.",
-        "Modelos": [1],
-        "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
+        "id": 16,
+        "Tema": "Parecer recursal",
+        "Pergunta": "Quais as três etapas básicas no exame de recurso que o examinador recursal deve contemplar em seu parecer ?",
+        "Resposta": "A primeira etapa consiste em verificar a existência de vícios formais na tramitação do pedido na primeira instância (Despacho 100.1). Superada a situação de Despacho 100.1 o exame segue para segunda etapa onde o examinador de segunda instância deve investigar se ocorreram vícios de julgamento (questões de fato e de direito) que provocam prejuízo ao recorrente, ou seja, as razões apontadas para o indeferimento estão corretas. Se o examinador entender que não há vícios de julgamento, ou seja, ele concorda com o parecer de indeferimento e que o pedido não tem condições de deferimento ele segue para a terceira etapa do exame de mérito, em que deve investigar se há solução para os óbices apontados no parecer de indeferimento. Se entender que não há solução para tais óbices deve emitir Despacho 111 Recurso conhecido e negado provimento. Mantido o indeferimento.",
+        "Modelos": [],
+        "Despacho": ""
     },
     {
-        "id": 6,
-        "Tema": "Vício de procedimento",
-        "Pergunta": "O parecer de indeferimento encontra-se com falta de motivação adequada e, portanto, apresenta inconsistências prejudiciais à ampla defesa e contraditório. Existe vício de procedimento? ",
-        "Resposta": "Sim, o parecer de indeferimento não encontra-se devidamente motivado. A não motivação da decisão recorrida prejudica a defesa por parte do recorrente, na medida em que este não discute de forma suficiente todas as alegações relevantes do depositante. Não se trata de avaliar o mérito aqui, mas apenas se o parecer não apresenta minimamente uma justificativa (correta ou não) para o indeferimento. A motivação da decisão emanada pela primeira instância deve permitir que a 2ª instância e o próprio requerente compreendam claramente a justificativa do indeferimento.",
-        "Modelos": [1],
-        "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
+        "id": 17,
+        "Tema": "Vício de julgamento",
+        "Pergunta": "O parecer de indeferimento aponta insuficiência descritiva, falta de clareza e falta de atividade inventiva como razões de indeferimento. O examinador recursal concorda apenas com a falta de atividade inventiva. Existe vício de julgamento ?",
+        "Resposta": "Não, porque no final fica mantida a decisão de indeferimento, apenas os fundamentos mudaram. Na fase transitória o examinador recursal deve emitir um parecer de exigência indicando que conclui que não procedem as alegações apresentadas uma vez que a matéria reivindicada não atende aos requisitos de patenteabilidade do artigo 8 e 13 da LPI por falta de atividade inventiva.",
+        "Modelos": [6],
+        "Despacho": "Despacho 121. Exigência técnica."
     },
     {
-        "id": 6,
-        "Tema": "Vício de procedimento",
-        "Pergunta": "O parecer de indeferimento encontra-se com falta de motivação adequada e, portanto, apresenta inconsistências prejudiciais à ampla defesa e contraditório. Existe vício de procedimento? ",
-        "Resposta": "Sim, o parecer de indeferimento não encontra-se devidamente motivado. A não motivação da decisão recorrida prejudica a defesa por parte do recorrente, na medida em que este não discute de forma suficiente todas as alegações relevantes do depositante. Não se trata de avaliar o mérito aqui, mas apenas se o parecer não apresenta minimamente uma justificativa (correta ou não) para o indeferimento. A motivação da decisão emanada pela primeira instância deve permitir que a 2ª instância e o próprio requerente compreendam claramente a justificativa do indeferimento.",
-        "Modelos": [1],
-        "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
+        "id": 18,
+        "Tema": "Parecer recursal",
+        "Pergunta": "O parecer recursal pode emitir exigências técnicas ?",
+        "Resposta": "Sim, para pequenos ajustes no pedido. Na elaboração de novas exigências o examinador de segunda instância não deve aplicar exigência já formulada na primeira instância e não atendida, pois há preclusão nestes casos. Nos casos de 7.1 não respondidos, em que há o 9.2 administrativo, nunca se aplica a preclusão de qualquer exigência. Como estamos na fase transitória para aqueles pedidos que o primeiro despacho de exigência (despacho 6.1) ou ciência (despacho 7.1) ocorrer até 1º de abril de 2024 então a fase recursal deve primeiro emitir uma exigência em que pergunta ao recorrente o por que dele não ter atendido esta mesma exigência em primeiro exame. Independente da motivação apresentada, desde que o recorrente responda esta exigência, o cumprimento desta mesma deve ser acolhida, pois para este período transitório não se aplica a preclusão, apenas que faz-se necessário esta etapa adicional para manifestação do recorrente.",
+        "Modelos": [0],
+        "Despacho": ""
     },
     {
-        "id": 6,
-        "Tema": "Vício de procedimento",
-        "Pergunta": "O parecer de indeferimento encontra-se com falta de motivação adequada e, portanto, apresenta inconsistências prejudiciais à ampla defesa e contraditório. Existe vício de procedimento? ",
-        "Resposta": "Sim, o parecer de indeferimento não encontra-se devidamente motivado. A não motivação da decisão recorrida prejudica a defesa por parte do recorrente, na medida em que este não discute de forma suficiente todas as alegações relevantes do depositante. Não se trata de avaliar o mérito aqui, mas apenas se o parecer não apresenta minimamente uma justificativa (correta ou não) para o indeferimento. A motivação da decisão emanada pela primeira instância deve permitir que a 2ª instância e o próprio requerente compreendam claramente a justificativa do indeferimento.",
-        "Modelos": [1],
-        "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
+        "id": 19,
+        "Tema": "Parecer recursal",
+        "Pergunta": "Na primeira instância o INPI fez uma exigência técnica para excluir a reivindicação 7 por violação do artigo 10 da LPI. O requerente manteve o quadro reivindicatório inalterado e teve seu pedido indeferido por artigo 10 da LPI. No recurso o requerente que apresente novo quadro reivindicatório sem esta reivindicação 7, pode ter este novo quadro reivindicatório aceito ?",
+        "Resposta": "Sim na fase transitória, mas a resposta é não, se após a fase transitória, pois neste caso aplicam-se as regras de preclusão. Segundo o Parecer 0016/2023 CGPI/PFE-INPI/PGF/AGU publicado na RPI 2762 de 12/12/2023 no item  16. Preclusão impede inovações em fase recursal. No item 28. Por força da preclusão se um pleito deveria ter sido apresentado em determinada oportunidade processual e não foi, tal pleito não pode mais ser apresentado. Parecer 0019/2023 CGPI/PFE-INPI/PGF/AGU item 23. A preclusão administrativa impede a apresentação de novo pleito na fase recursal. Ora, se um pleito deveria ter sido apresentado em determinada oportunidade processual e não foi, tal pleito não pode ser mais apresentado. E mais, tal pleito, ainda que tenha sido apresentado em recurso, não pode ser conhecido na instância recursal por força da preclusão.",
+        "Modelos": [],
+        "Despacho": ""
     },
     {
-        "id": 6,
-        "Tema": "Vício de procedimento",
-        "Pergunta": "O parecer de indeferimento encontra-se com falta de motivação adequada e, portanto, apresenta inconsistências prejudiciais à ampla defesa e contraditório. Existe vício de procedimento? ",
-        "Resposta": "Sim, o parecer de indeferimento não encontra-se devidamente motivado. A não motivação da decisão recorrida prejudica a defesa por parte do recorrente, na medida em que este não discute de forma suficiente todas as alegações relevantes do depositante. Não se trata de avaliar o mérito aqui, mas apenas se o parecer não apresenta minimamente uma justificativa (correta ou não) para o indeferimento. A motivação da decisão emanada pela primeira instância deve permitir que a 2ª instância e o próprio requerente compreendam claramente a justificativa do indeferimento.",
-        "Modelos": [1],
-        "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
-    },
-    {
-        "id": 6,
-        "Tema": "Vício de procedimento",
-        "Pergunta": "O parecer de indeferimento encontra-se com falta de motivação adequada e, portanto, apresenta inconsistências prejudiciais à ampla defesa e contraditório. Existe vício de procedimento? ",
-        "Resposta": "Sim, o parecer de indeferimento não encontra-se devidamente motivado. A não motivação da decisão recorrida prejudica a defesa por parte do recorrente, na medida em que este não discute de forma suficiente todas as alegações relevantes do depositante. Não se trata de avaliar o mérito aqui, mas apenas se o parecer não apresenta minimamente uma justificativa (correta ou não) para o indeferimento. A motivação da decisão emanada pela primeira instância deve permitir que a 2ª instância e o próprio requerente compreendam claramente a justificativa do indeferimento.",
-        "Modelos": [1],
-        "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
-    },
-    {
-        "id": 6,
-        "Tema": "Vício de procedimento",
-        "Pergunta": "O parecer de indeferimento encontra-se com falta de motivação adequada e, portanto, apresenta inconsistências prejudiciais à ampla defesa e contraditório. Existe vício de procedimento? ",
-        "Resposta": "Sim, o parecer de indeferimento não encontra-se devidamente motivado. A não motivação da decisão recorrida prejudica a defesa por parte do recorrente, na medida em que este não discute de forma suficiente todas as alegações relevantes do depositante. Não se trata de avaliar o mérito aqui, mas apenas se o parecer não apresenta minimamente uma justificativa (correta ou não) para o indeferimento. A motivação da decisão emanada pela primeira instância deve permitir que a 2ª instância e o próprio requerente compreendam claramente a justificativa do indeferimento.",
-        "Modelos": [1],
-        "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
-    },
-    {
-        "id": 6,
-        "Tema": "Vício de procedimento",
-        "Pergunta": "O parecer de indeferimento encontra-se com falta de motivação adequada e, portanto, apresenta inconsistências prejudiciais à ampla defesa e contraditório. Existe vício de procedimento? ",
-        "Resposta": "Sim, o parecer de indeferimento não encontra-se devidamente motivado. A não motivação da decisão recorrida prejudica a defesa por parte do recorrente, na medida em que este não discute de forma suficiente todas as alegações relevantes do depositante. Não se trata de avaliar o mérito aqui, mas apenas se o parecer não apresenta minimamente uma justificativa (correta ou não) para o indeferimento. A motivação da decisão emanada pela primeira instância deve permitir que a 2ª instância e o próprio requerente compreendam claramente a justificativa do indeferimento.",
-        "Modelos": [1],
-        "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
+        "id": 20,
+        "Tema": "Parecer recursal",
+        "Pergunta": "Constatado um Vício de procedimento que impede o prosseguimento do exame, este pedido deve ser remetido de volta à primeira instância ?",
+        "Resposta": "Sim. Segundo Parecer 0016/2023 CGPI/PFE-INPI/PGF/AGU publicado na RPI 2762 de 12/12/2023 item 46. Em não ocorrendo a preclusão, o erro in procedendo (erro formal/processual cometido pelo órgão julgador) deve ser reconhecido, devendo a petição ser objeto de análise. Item 47 A regra geral seria remeter os autos à primeira instância para que esta analise a situação e possa eventualmente reconhecer o erro in procedendo. Item 50. É de se destacar o princípio da pluralidade das instâncias",
+        "Modelos": [],
+        "Despacho": ""
     },
     {
         "id": 6,
