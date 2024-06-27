@@ -50,6 +50,13 @@ Se não há solução para os óbices apresentados no indeferimento, não cabe r
 
 """
 
+
+# Título da página
+st.title('BatePapo 💬')
+
+# Introdução do assistente virtual
+st.write("A Assistente Virtual Sophia está aqui para te ajudar a tirar suas dúvidas sobre o processamento de recursos de paedidos de patente! Atualmente o assistente tem informações mais comuns já cadastradas. Vamos começar?")
+
 #model = genai.GenerativeModel("gemini-pro") # teste
 #response = model.generate_content("O que é uma patente ?")
 #st.write(response.text)
@@ -67,12 +74,6 @@ initial_model_message = "Olá, eu sou Sophia, um assistente virtual que te ajuda
 # Inicializa a conversa do assistente virtual
 if "chat_encontra" not in st.session_state:
     st.session_state.chat_encontra = model.start_chat(history=[{'role':'model', 'parts': [initial_model_message]}])
-
-# Título da página
-st.title('BatePapo 💬')
-
-# Introdução do assistente virtual
-st.write("A Assistente Virtual Sophia está aqui para te ajudar a tirar suas dúvidas sobre o processamento de recursos de paedidos de patente! Atualmente o assistente tem informações mais comuns já cadastradas. Vamos começar?")
 
 # Exibe o histórico de conversa
 for i, message in enumerate(st.session_state.chat_encontra.history):
