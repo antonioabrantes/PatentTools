@@ -91,31 +91,33 @@ embeddings = OpenAIEmbeddings(openai_api_key=api_key, model="text-embedding-ada-
 db = FAISS.from_documents(chunks, embeddings)
 
 query = "Na segunda instância existe prescrição para uma exigência técnica não cumprida na primeira instância?"
-trecho = db.similarity_search(query)
-st.write(trecho[0].page_content)
-    
-"""
-pages = loader.load_and_split()
+docs = db.similarity_search(query)
+# st.write(docs[0].page_content)
 
-embeddings = OpenAIEmbeddings(openai_api_key=api_key)
+chain = load_qa_chain(OpenAI(openai_api_key=api_key, temperature=0), chain_type="stuff")
+resposta = chain.run(input_documents=docs, question=query)    
+st.write(resposta)
 
-from langchain_community.vectorstores.faiss import FAISS # banco de dados vetorial FAISS
-db = FAISS.from_documents(pages, embeddings)
+# pages = loader.load_and_split()
 
-q = "Uma exigência não cumprida na primeira instância sofre preclusão na fase recursal ?"
-trecho_relevante = db.similarity_search(q)[0] # ele acessa o texto e localiza trecho relevante
+# embeddings = OpenAIEmbeddings(openai_api_key=api_key)
 
-from langchain.chains.retrieval_qa.base import RetrievalQA
-from langchain_openai import OpenAI
-llm = OpenAI(openai_api_key=api_key)
-chain = RetrievalQA.from_llm(llm=llm, retriever=db.as_retriever())
-resposta = chain(q, return_only_outputs=True)
+# from langchain_community.vectorstores.faiss import FAISS # banco de dados vetorial FAISS
+# db = FAISS.from_documents(pages, embeddings)
 
-st.write(resposta.result)
-st.write("=====")
-st.write(trecho_relevante.page_content)
-st.write("=====")
-st.write(trecho_relevante.page)
-st.write("=====")
+# q = "Uma exigência não cumprida na primeira instância sofre preclusão na fase recursal ?"
+# trecho_relevante = db.similarity_search(q)[0] # ele acessa o texto e localiza trecho relevante
 
-"""
+# from langchain.chains.retrieval_qa.base import RetrievalQA
+# from langchain_openai import OpenAI
+# llm = OpenAI(openai_api_key=api_key)
+# chain = RetrievalQA.from_llm(llm=llm, retriever=db.as_retriever())
+# resposta = chain(q, return_only_outputs=True)
+
+# st.write(resposta.result)
+# st.write("=====")
+# st.write(trecho_relevante.page_content)
+# st.write("=====")
+# st.write(trecho_relevante.page)
+# st.write("=====")
+
