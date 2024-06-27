@@ -23,7 +23,7 @@ st.title('BatePapo 💬')
 st.write("A Assistente Virtual Sophia está aqui para te ajudar a tirar suas dúvidas sobre o processamento de recursos de paedidos de patente! Atualmente o assistente tem informações mais comuns já cadastradas. Vamos começar?")
 
 from langchain_community.document_loaders.pdf import PyPDFLoader
-loader = PyPDFLoader("chatbot_cgrec.pdf")
+loader = PyPDFLoader("../chatbot_cgrec.pdf")
 pages = loader.load_and_split()
 
 from langchain_openai import OpenAIEmbeddings
