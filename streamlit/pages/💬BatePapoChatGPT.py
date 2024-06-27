@@ -70,7 +70,29 @@ with open(pdf_path, "rb") as file:
     #with open("bitcoin.txt", "w", encoding="utf-8") as output_file:
     #    output_file.write(all_text)
     
-st.write(all_text)
+# st.write(all_text)
+text = all_text
+
+tokenizer = GPT2TokenizerFast.from_pretrained("gpt2", use_ssl=False)  # este gpt2 é gratuito não precisa de api_key
+
+def count_tokens(text: str) -> int:
+    return len(tokenizer.encode(text))
+
+text_splitter = RecursiveCharacterTextSplitter( # divide o PDF em blocos/chunks de 512 tokens
+    chunk_size = 512,
+    chunk_overlap  = 24,
+    length_function = count_tokens,
+)
+
+chunks = text_splitter.create_documents([text])
+
+embeddings = OpenAIEmbeddings(openai_api_key=api_key, model="text-embedding-ada-002")
+
+db = FAISS.from_documents(chunks, embeddings)
+
+query = "Na segunda instância existe prescrição para uma exigência técnica não cumprida na primeira instância?"
+trecho = db.similarity_search(query)
+st.write(trecho[0].page_content)
     
 """
 pages = loader.load_and_split()
@@ -88,7 +110,6 @@ from langchain_openai import OpenAI
 llm = OpenAI(openai_api_key=api_key)
 chain = RetrievalQA.from_llm(llm=llm, retriever=db.as_retriever())
 resposta = chain(q, return_only_outputs=True)
-"""
 
 st.write(resposta.result)
 st.write("=====")
@@ -96,3 +117,5 @@ st.write(trecho_relevante.page_content)
 st.write("=====")
 st.write(trecho_relevante.page)
 st.write("=====")
+
+"""
