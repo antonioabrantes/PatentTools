@@ -16,3 +16,4 @@ langchain-core
 pypdf
 tiktoken
 faiss-cpu
+transformers
