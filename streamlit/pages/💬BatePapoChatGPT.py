@@ -23,7 +23,16 @@ st.title('BatePapo 💬')
 st.write("A Assistente Virtual Sophia está aqui para te ajudar a tirar suas dúvidas sobre o processamento de recursos de paedidos de patente! Atualmente o assistente tem informações mais comuns já cadastradas. Vamos começar?")
 
 from langchain_community.document_loaders.pdf import PyPDFLoader
-loader = PyPDFLoader("../chatbot_cgrec.pdf")
+
+pdf_path = "chatbot_cgrec.pdf"  # Especifique o caminho do PDF
+
+# Verificar se o arquivo existe no caminho especificado
+if os.path.exists(pdf_path):
+    loader = PyPDFLoader(pdf_path)
+    st.write("PDF carregado com sucesso!")
+else:
+    st.error(f"O arquivo {pdf_path} não foi encontrado. Verifique o caminho e tente novamente.")
+    
 pages = loader.load_and_split()
 
 from langchain_openai import OpenAIEmbeddings
