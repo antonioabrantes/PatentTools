@@ -30,6 +30,22 @@ jobs_details = [
         "Resposta": "Sim, a contradição deve ser apontada no parecer recursal e o pedido devolvido à primeira instância caso na manifestação de recurso fique claro que o requerente não pode exercer plenamente seu direito de defesa. No caso em que apesar do erro do parecer de indeferimento ele expôs a sua argumentação contra todas as objeções citadas no parecer então o exame de recurso deve prosseguir sem a necessidade de remeter este pedido novamente à primeira instância, pois o Vício de procedimento foi sanado pelo próprio requerente. O parecer de primeira instância que fundamenta um indeferimento sem citar o artigo correto, ou inconsistente com os erros apontados nos quadros do parecer, pode constituir Vício de procedimento se de fato o recorrente não exercer seu direito de defesa por conta desses problemas.",
         "Modelos": [1],
         "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
+    },
+    {
+        "id": 5,
+        "Tema": "Vício de procedimento",
+        "Pergunta": "O parecer de indeferimento é sumário em sua argumentação, e, portanto, apresenta inconsistências prejudiciais à ampla defesa e contraditório. Existe vício de procedimento ?",
+        "Resposta": "Sim, segundo Parecer n. 00016/2023/CGPI/PFE-INPI/PGF/AGU item 50 é de se destacar o princípio da pluralidade das instâncias. Para que este direito seja exercido plenamente é fundamental que o parecer de indeferimento seja fundamentado e exponha claramente as razões para sua conclusão. O parecer de indeferimento que apresenta inconsistências prejudiciais, por exemplo um parecer incoerente ou que se contradiz, ou que é pouco claro em sua argumentação lógica constitui um Vício de procedimento. Tais inconsistências no parecer impedem ou dificultam o exercício da ampla defesa e contraditório.",
+        "Modelos": [1],
+        "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
+    },
+    {
+        "id": 6,
+        "Tema": "Vício de procedimento",
+        "Pergunta": "O parecer de indeferimento encontra-se com falta de motivação adequada e, portanto, apresenta inconsistências prejudiciais à ampla defesa e contraditório. Existe vício de procedimento? ",
+        "Resposta": "Sim, o parecer de indeferimento não encontra-se devidamente motivado. A não motivação da decisão recorrida prejudica a defesa por parte do recorrente, na medida em que este não discute de forma suficiente todas as alegações relevantes do depositante. Não se trata de avaliar o mérito aqui, mas apenas se o parecer não apresenta minimamente uma justificativa (correta ou não) para o indeferimento. A motivação da decisão emanada pela primeira instância deve permitir que a 2ª instância e o próprio requerente compreendam claramente a justificativa do indeferimento.",
+        "Modelos": [1],
+        "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
     }
 ]
 
