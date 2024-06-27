@@ -24,7 +24,7 @@ st.write("A Assistente Virtual Sophia está aqui para te ajudar a tirar suas dú
 
 from langchain_community.document_loaders.pdf import PyPDFLoader
 
-pdf_path = "chatbot_cgrec.pdf"  # Especifique o caminho do PDF
+pdf_path = "../.chatbot_cgrec.pdf"  # Especifique o caminho do PDF
 
 # Verificar se o arquivo existe no caminho especificado
 if os.path.exists(pdf_path):
