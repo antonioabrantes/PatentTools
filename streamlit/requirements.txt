@@ -9,3 +9,10 @@ python-dotenv
 google-generativeai
 PyPDF2 
 pdfplumber
+openai
+langchain
+langchain-community 
+langchain-core
+pypdf
+tiktoken
+faiss-cpu
