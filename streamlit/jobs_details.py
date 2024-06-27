@@ -22,6 +22,14 @@ jobs_details = [
         "Resposta": "Sim, todo o indeferimento foi baseado no quadro reivindicatório errado, o que impede o exame de mérito desta decisão de indeferimento. O pedido deve retornar à primeira instância.",
         "Modelos": [1],
         "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
+    },
+    {
+        "id": 4,
+        "Tema": "Vício de procedimento",
+        "Pergunta": "Os Quadros I e II indicam inconformidades no pedido de patente, mas na conclusão final do parecer de indeferimento estas inconformidades não estão todas listadas. Isso é um Vício de procedimento",
+        "Resposta": "Sim, a contradição deve ser apontada no parecer recursal e o pedido devolvido à primeira instância caso na manifestação de recurso fique claro que o requerente não pode exercer plenamente seu direito de defesa. No caso em que apesar do erro do parecer de indeferimento ele expôs a sua argumentação contra todas as objeções citadas no parecer então o exame de recurso deve prosseguir sem a necessidade de remeter este pedido novamente à primeira instância, pois o Vício de procedimento foi sanado pelo próprio requerente. O parecer de primeira instância que fundamenta um indeferimento sem citar o artigo correto, ou inconsistente com os erros apontados nos quadros do parecer, pode constituir Vício de procedimento se de fato o recorrente não exercer seu direito de defesa por conta desses problemas.",
+        "Modelos": [1],
+        "Despacho": "Despacho 100.2. Recurso conhecido e provido para correção do Vício de procedimento. Anulado o indeferimento para retorno dos autos à Primeira Instância."
     }
 ]
 
