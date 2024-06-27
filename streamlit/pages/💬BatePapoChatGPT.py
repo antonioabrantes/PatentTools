@@ -102,6 +102,10 @@ st.write(resposta)
 # Introdução do assistente virtual
 st.write("A Assistente Virtual Sophia está aqui para te ajudar a tirar suas dúvidas sobre o processamento de recursos de pedidos de patente! Atualmente o assistente tem informações mais comuns já cadastradas. Vamos começar?")
 
+# Inicializa a conversa do assistente virtual
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
+    
 # Exibe o histórico de conversa
 for message in st.session_state.chat_history:
     if message['role'] == "user":
