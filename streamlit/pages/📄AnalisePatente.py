@@ -90,30 +90,31 @@ if pedido is not None:
         st.write("Há algum tema específico que você gostaria que eu focasse no resumo?")
         st.session_state.specific_focus = st.text_input("Pontos específicos para focar:", "")
 
-    messagem_resumo = (
-        f"Olá Sophia, faça o resumo do documento em português {st.session_state.patent_text} "
-        f" focando nos seguintes pontos: {st.session_state.specific_focus}. "
-    )
-    if st.button('Faça resumo do documento'):
-        if 'abstract' not in st.session_state:
+    if 'abstract' not in st.session_state:
+        st.session_state:messagem_resumo = (
+            f"Olá Sophia, faça o resumo do documento em português {st.session_state.patent_text} "
+            f" focando nos seguintes pontos: {st.session_state.specific_focus}. "
+        )
+        if st.button('Faça resumo do documento'):
             with st.spinner("Processando..."):
                 st.session_state.abstract = model.generate_content(messagem_resumo).text
-        st.markdown(f"**Resumo:**\n\n{st.session_state.abstract}")
+            
+    st.markdown(f"**Resumo:**\n\n{st.session_state.abstract}")
 
-        st.write("Digite o número do documento de patente:")
-        numero = st.text_input("Número:", "")
-        
-        if st.button('Acesse google patents para buscar esta patente'):
-            abstract = ''
-            title = ''
-            html = urlopen('https://patents.google.com/patent/US5000000A/en?oq=US5000000')
-            bs = BeautifulSoup(html.read(),'html.parser')
-            title = bs.title.get_text()
-            nameList = bs.findAll("div",{"class":"abstract"})
-            for name in nameList:
-                abstract = name.getText()
-            st.markdown(f"**Título:**\n\n{title}")
-            st.markdown(f"**Resumo:**\n\n{abstract}")
+    st.write("Digite o número do documento de patente:")
+    numero = st.text_input("Número:", "")
+    
+    if st.button('Acesse google patents para buscar esta patente'):
+        abstract = ''
+        title = ''
+        html = urlopen('https://patents.google.com/patent/US5000000A/en?oq=US5000000')
+        bs = BeautifulSoup(html.read(),'html.parser')
+        title = bs.title.get_text()
+        nameList = bs.findAll("div",{"class":"abstract"})
+        for name in nameList:
+            abstract = name.getText()
+        st.markdown(f"**Título:**\n\n{title}")
+        st.markdown(f"**Resumo:**\n\n{abstract}")
 
             #initial_message_analysis = (
             #    f"Olá Sophia, aponte as diferenças do pedido com a anterioridade. "
