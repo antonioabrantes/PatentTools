@@ -5,6 +5,8 @@ import os
 import time
 from PyPDF2 import PdfReader
 import pdfplumber
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
 
 from pathlib import Path
 import hashlib
@@ -65,6 +67,14 @@ if pedido is not None:
         with st.spinner("Processando..."):
             abstract = model.generate_content(messagem_resumo)
             st.markdown(f"**Resumo:**\n\n{abstract.text}")
+
+            st.write("Digite o número do documento de patente:")
+            numero = st.text_input("Número:", "")
+            
+            html = urlopen('https://patents.google.com/patent/US5000000A/en?oq=US5000000')
+            bs = BeautifulSoup(html.read(),'html.parser')
+            titulo = bs.title.get_text()
+            st.markdown(f"**Título:**\n\n{titulo}")
 
             #initial_message_analysis = (
             #    f"Olá Sophia, aponte as diferenças do pedido com a anterioridade. "

@@ -17,3 +17,4 @@ pypdf
 tiktoken
 faiss-cpu
 transformers
+beautifulsoup4
