@@ -71,7 +71,7 @@ if pedido is not None:
             st.write("Digite o número do documento de patente:")
             numero = st.text_input("Número:", "")
             
-            if numero is not None:
+            if st.button('Acesse google patents para buscar esta patente'):
                 abstract = ''
                 title = ''
                 html = urlopen('https://patents.google.com/patent/US5000000A/en?oq=US5000000')
