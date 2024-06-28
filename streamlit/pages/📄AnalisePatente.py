@@ -56,8 +56,8 @@ def view_session_state():
     s = []
     for k, v in st.session_state.items():
         if k in keys_to_reset:
-            if (len(v)>10):
-                s.append(f"{k}: {v[:10]} ...") 
+            if (len(v)>20):
+                s.append(f"{k}: {v[:20]} ...") 
             else:
                 s.append(f"{k}: {v}") 
     st.write(s)
@@ -84,11 +84,12 @@ if pedido is not None:
             st.session_state.patent_text = text_from_pdf(pedido)
         st.success('Pedido carregado com sucesso!')
         
-    st.write("Há algum tema específico que você gostaria que eu focasse no resumo?")
-    st.session_state.specific_focus = st.text_input("Pontos específicos para focar:", "")
     if 'specific_focus' in st.session_state:
         st.markdown(f"**Tema específico:**\n\n{st.session_state.specific_focus}")
-    
+    else:
+        st.write("Há algum tema específico que você gostaria que eu focasse no resumo?")
+        st.session_state.specific_focus = st.text_input("Pontos específicos para focar:", "")
+
     messagem_resumo = (
         f"Olá Sophia, faça o resumo do documento em português {st.session_state.patent_text} "
         f" focando nos seguintes pontos: {st.session_state.specific_focus}. "
