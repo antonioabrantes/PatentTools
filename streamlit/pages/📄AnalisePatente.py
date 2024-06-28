@@ -51,7 +51,7 @@ st.write("Envie o pedido de patente.")
 
 # View all key:value pairs in the session state
 
-keys_to_reset = ['patent_text', 'specific_focus', 'step', 'numero_patente', 'resumo_patente', 'titulo_patente', 'relatorio_patente']
+keys_to_reset = ['patent_text', 'specific_focus', 'step', 'numero_patente', 'resumo_patente', 'titulo_patente', 'relatorio_patente', 'relatorio_patente_portugues', 'titulo_patente_portugues']
 def view_session_state():
     s = []
     for k, v in st.session_state.items():
@@ -149,9 +149,43 @@ if pedido is not None:
         st.markdown(f"**Resumo:**\n\n{st.session_state.abstract}")
         st.markdown(f"**Patente:** {st.session_state.numero_patente}")
         st.markdown(f"**Título:**\n\n{st.session_state.titulo_patente}")
-        st.markdown(f"**Resumo:**\n\n{st.session_state.resumo_patente}")
-        st.markdown(f"**relatório:**\n\n{st.session_state.relatorio_patente}")
+        #st.markdown(f"**Resumo:**\n\n{st.session_state.resumo_patente}")
+        #st.markdown(f"**relatório:**\n\n{st.session_state.relatorio_patente}")
+
+        messagem = (
+            f"Olá Sophia, traduza o título em português {st.session_state.titulo_patente} "
+        )
+        with st.spinner("Processando..."):
+            st.session_state.titulo_patente_portugues = model.generate_content(messagem).text
+        st.session_state.step = 6
+        st.experimental_rerun()
             
+    if st.session_state.step == 6:
+        st.markdown(f"**Tema específico de busca:** {st.session_state.specific_focus}")
+        st.markdown(f"**Resumo:**\n\n{st.session_state.abstract}")
+        st.markdown(f"**Patente:** {st.session_state.numero_patente}")
+        st.markdown(f"**Título:**\n\n{st.session_state.titulo_patente}")
+        st.markdown(f"**Título:**\n\n{st.session_state.titulo_patente_portugues}")
+        #st.markdown(f"**Resumo:**\n\n{st.session_state.resumo_patente}")
+        #st.markdown(f"**relatório:**\n\n{st.session_state.relatorio_patente}")
+
+        messagem = (
+            f"Olá Sophia, traduza o relatório em português {st.session_state.relatorio_patente} "
+        )
+        with st.spinner("Processando..."):
+            st.session_state.titulo_patente_portugues = model.generate_content(messagem).text
+        st.session_state.step = 7
+        st.experimental_rerun()
+
+    if st.session_state.step == 7:
+        st.markdown(f"**Tema específico de busca:** {st.session_state.specific_focus}")
+        st.markdown(f"**Resumo:**\n\n{st.session_state.abstract}")
+        st.markdown(f"**Patente:** {st.session_state.numero_patente}")
+        st.markdown(f"**Título:**\n\n{st.session_state.titulo_patente}")
+        st.markdown(f"**Título:**\n\n{st.session_state.titulo_patente_portugues}")
+        #st.markdown(f"**Resumo:**\n\n{st.session_state.resumo_patente}")
+        st.markdown(f"**relatório:**\n\n{st.session_state.relatorio_patente_portugues}")
+
             #initial_message_analysis = (
             #    f"Olá Sophia, aponte as diferenças do pedido com a anterioridade. "
             #    f"Aqui está o pedido: {patent_text} "
