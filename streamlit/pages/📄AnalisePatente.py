@@ -118,9 +118,11 @@ if pedido is not None:
         st.markdown(f"**Resumo:**\n\n{st.session_state.abstract}")
 
         st.write("Digite o número do documento de patente:")
-        st.session_state.numero_patente = st.text_input("Patente:", "")
-        st.session_state.step = 4
-        st.experimental_rerun()
+        numero_patente = st.text_input("Patente:", "")
+        if numero_patente:
+            st.session_state.numero_patente = numero_patente
+            st.session_state.step = 4
+            st.experimental_rerun()
 
     if st.session_state.step == 4:
         st.markdown(f"**Tema específico de busca:** {st.session_state.specific_focus}")
