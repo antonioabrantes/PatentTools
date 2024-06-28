@@ -12,15 +12,17 @@ from pathlib import Path
 import hashlib
 
 # View all key:value pairs in the session state
-s = []
-for k, v in st.session_state.items():
-    s.append(f"{k}: {v}")
-st.write(s)
+def view_session_state():
+    s = []
+    for k, v in st.session_state.items():
+        s.append(f"{k}: {v}")
+    st.write(s)
 
 # Função para resetar o estado da sessão
 def reset_session_state():
     for key in st.session_state.keys():
-        del st.session_state[key]
+        # del st.session_state[key]
+        st.write(key)
         
 # https://share.streamlit.io/
 load_dotenv()
