@@ -51,7 +51,7 @@ st.write("Envie o pedido de patente.")
 
 # View all key:value pairs in the session state
 
-keys_to_reset = ['patent_text', 'specific_focus', 'step', 'patente']
+keys_to_reset = ['patent_text', 'specific_focus', 'step', 'numero_patente', 'resumo_patente', 'titulo_patente']
 def view_session_state():
     s = []
     for k, v in st.session_state.items():
@@ -118,26 +118,33 @@ if pedido is not None:
         st.markdown(f"**Resumo:**\n\n{st.session_state.abstract}")
 
         st.write("Digite o número do documento de patente:")
-        st.session_state.patente = st.text_input("Patente:", "")
+        st.session_state.numero_patente = st.text_input("Patente:", "")
         st.session_state.step = 4
         st.experimental_rerun()
 
     if st.session_state.step == 4:
         st.markdown(f"**Tema específico de busca:** {st.session_state.specific_focus}")
         st.markdown(f"**Resumo:**\n\n{st.session_state.abstract}")
-        st.markdown(f"**Patente:** {st.session_state.patente}")
+        st.markdown(f"**Patente:** {st.session_state.numero_patente}")
         
         if st.button('Acesse google patents para buscar esta patente'):
-            abstract = ''
-            title = ''
+            st.session_state.resumo_patente = ''
+            st.session_state.titulo_patente = ''
             html = urlopen('https://patents.google.com/patent/US5000000A/en?oq=US5000000')
             bs = BeautifulSoup(html.read(), 'html.parser')
-            title = bs.title.get_text()
+            st.session_state.titulo_patente = bs.title.get_text()
             nameList = bs.findAll("div", {"class": "abstract"})
             for name in nameList:
-                abstract = name.getText()
-            st.markdown(f"**Título:**\n\n{title}")
-            st.markdown(f"**Resumo:**\n\n{abstract}")
+                st.session_state.resumo_patente = name.getText()
+            st.session_state.step = 5
+            st.experimental_rerun()
+
+    if st.session_state.step == 5:
+        st.markdown(f"**Tema específico de busca:** {st.session_state.specific_focus}")
+        st.markdown(f"**Resumo:**\n\n{st.session_state.abstract}")
+        st.markdown(f"**Patente:** {st.session_state.numero_patente}")
+        st.markdown(f"**Título:**\n\n{st.session_state.titulo_patente}")
+        st.markdown(f"**Resumo:**\n\n{st.session_state.resumo_patente}")
             
             #initial_message_analysis = (
             #    f"Olá Sophia, aponte as diferenças do pedido com a anterioridade. "
