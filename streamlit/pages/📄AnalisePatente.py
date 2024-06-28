@@ -18,7 +18,7 @@ genai.configure(api_key=api_key)
 
 # Carregando as instruções do sistema para o Gemini
 system_instruction = """
-Seu nome é Sophia, uma assistente virtual que ajuda um examinador de patentes a analisar um pedido de patente.
+Seu nome é Sophia, uma assistente virtual que ajuda um examinador de patentes a analisar um documento em PDF carregado pelo usuário.
 Você deve fornecer o resumo do pedido de patente enviado em formato PDF.
 """
 
@@ -54,36 +54,27 @@ if pedido is not None:
         patent_text = text_from_pdf(pedido)
     st.success('Pedido carregado com sucesso!')
     
-    initial_message = f"Olá Sophia, faça o resumo do pedido {patent_text}."
-    if st.button('Faça resumo do pedido'):
+    st.write("Há algum ponto específico que você gostaria que eu focasse no resumo?")
+    specific_focus = st.text_input("Pontos específicos para focar:", "")
+
+    messagem_resumo = (
+        f"Olá Sophia, faça o resumo do documento em português {patent_text} "
+        f" focando nos seguintes pontos: {specific_focus}. "
+    )
+    if st.button('Faça resumo do documento'):
         with st.spinner("Processando..."):
-            ai_query_patent = model.generate_content(initial_message)
-            st.markdown(f"**Resumo do Pedido:**\n\n{ai_query_patent.text}")
+            abstract = model.generate_content(initial_message_prior_art)
+            st.markdown(f"**Resumo:**\n\n{abstract.text}")
 
     st.write("Envie a anterioridade.")
     prior_art = st.file_uploader("Upload da anterioridade:", type=['pdf'])
 
     if prior_art is not None:
-        st.write("Qual o idioma original da seção de anterioridade?")
-        original_language = st.text_input("Idioma original:", "")
-        
-        st.write("Há algum ponto específico que você gostaria que eu focasse no resumo?")
-        specific_focus = st.text_input("Pontos específicos para focar:", "")
 
         if original_language and specific_focus:
             with st.spinner('Carregando anterioridade...'):
                 prior_art_text = text_from_pdf(prior_art)
             st.success('Anterioridade carregada com sucesso!')
-
-            initial_message_prior_art = (
-                f"Olá Sophia, faça o resumo da anterioridade no idioma original ({original_language}) "
-                f"e traduza para o português, focando nos seguintes pontos: {specific_focus}. "
-                f"Aqui está o texto da anterioridade: {prior_art_text}"
-            )
-            if st.button('Faça resumo da anterioridade'):
-                with st.spinner("Processando..."):
-                    ai_query_prior_art = model.generate_content(initial_message_prior_art)
-                    st.markdown(f"**Resumo da Anterioridade:**\n\n{ai_query_prior_art.text}")
 
             initial_message_analysis = (
                 f"Olá Sophia, aponte as diferenças do pedido com a anterioridade. "
