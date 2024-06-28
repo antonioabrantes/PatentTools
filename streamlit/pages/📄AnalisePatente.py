@@ -51,7 +51,7 @@ st.write("Envie o pedido de patente.")
 
 # View all key:value pairs in the session state
 
-keys_to_reset = ['patent_text', 'specific_focus', 'step']
+keys_to_reset = ['patent_text', 'specific_focus', 'step', 'patente']
 def view_session_state():
     s = []
     for k, v in st.session_state.items():
@@ -102,7 +102,7 @@ if pedido is not None:
             st.experimental_rerun()
 
     if st.session_state.step == 2:
-        st.markdown(f"**Tema:**\n\n{st.session_state.specific_focus}")
+        st.markdown(f"**Tema específico de busca:** {st.session_state.specific_focus}")
         messagem_resumo = (
             f"Olá Sophia, faça o resumo do documento em português {st.session_state.patent_text} "
             f"focando nos seguintes pontos: {st.session_state.specific_focus}. "
@@ -114,11 +114,19 @@ if pedido is not None:
             st.experimental_rerun()
 
     if st.session_state.step == 3:
+        st.markdown(f"**Tema específico de busca:** {st.session_state.specific_focus}")
         st.markdown(f"**Resumo:**\n\n{st.session_state.abstract}")
 
         st.write("Digite o número do documento de patente:")
-        numero = st.text_input("Número:", "")
+        st.session_state.patente = st.text_input("Patente:", "")
+        st.session_state.step = 4
+        st.experimental_rerun()
 
+    if st.session_state.step == 4:
+        st.markdown(f"**Tema específico de busca:** {st.session_state.specific_focus}")
+        st.markdown(f"**Resumo:**\n\n{st.session_state.abstract}")
+        st.markdown(f"**Patente:** {st.session_state.patente}")
+        
         if st.button('Acesse google patents para buscar esta patente'):
             abstract = ''
             title = ''
