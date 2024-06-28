@@ -50,18 +50,20 @@ st.title('AnalisePatente 📄')
 st.write("Envie o pedido de patente.")
 
 # View all key:value pairs in the session state
+
+keys_to_reset = ['patent_text', 'specific_focus', 'abstract']
 def view_session_state():
     s = []
     for k, v in st.session_state.items():
-        if k=='specific_focus':
+        if k in keys_to_reset:
             s.append(f"{k}: {v}")
     st.write(s)
 
 # Função para resetar o estado da sessão
 def reset_session_state():
-    for k, v in st.session_state.items():
-        if k=='specific_focus':
-            del st.session_state[k]
+    for key in keys_to_reset:
+        if key in st.session_state:
+            del st.session_state[key]
 
 # Botão para resetar a aplicação
 if st.button("Resetar aplicação"):
