@@ -51,7 +51,7 @@ st.write("Envie o pedido de patente.")
 
 # View all key:value pairs in the session state
 
-keys_to_reset = ['patent_text', 'specific_focus']
+keys_to_reset = ['patent_text', 'specific_focus', 'step']
 def view_session_state():
     s = []
     for k, v in st.session_state.items():
@@ -75,47 +75,54 @@ if st.button("Resetar aplicação"):
     
 view_session_state()
 
-# Upload do currículo
+# Upload do pedido
 st.write("Por favor, faça o upload do pedido em formato PDF")
 pedido = st.file_uploader("Upload do pedido:", type=['pdf'])
+
 if pedido is not None:
     if 'patent_text' not in st.session_state:
         with st.spinner('Carregando pedido...'):
             st.session_state.patent_text = text_from_pdf(pedido)
         st.success('Pedido carregado com sucesso!')
-        
-    if 'specific_focus' in st.session_state:
-        st.markdown(f"**Tema específico:**\n\n{st.session_state.specific_focus}")
-    else:
-        st.write("Há algum tema específico que você gostaria que eu focasse no resumo?")
-        st.session_state.specific_focus = st.text_input("Pontos específicos para focar:", "")
+        st.session_state.step = 1
 
-    if 'abstract' not in st.session_state:
-        st.session_state:messagem_resumo = (
+    if st.session_state.step == 1:
+        st.write("Há algum tema específico que você gostaria que eu focasse no resumo?")
+        specific_focus = st.text_input("Pontos específicos para focar:", "")
+        if specific_focus:
+            st.session_state.specific_focus = specific_focus
+            st.session_state.step = 2
+            st.experimental_rerun()
+
+    if st.session_state.step == 2:
+        messagem_resumo = (
             f"Olá Sophia, faça o resumo do documento em português {st.session_state.patent_text} "
-            f" focando nos seguintes pontos: {st.session_state.specific_focus}. "
+            f"focando nos seguintes pontos: {st.session_state.specific_focus}. "
         )
         if st.button('Faça resumo do documento'):
             with st.spinner("Processando..."):
                 st.session_state.abstract = model.generate_content(messagem_resumo).text
+            st.session_state.step = 3
+            st.experimental_rerun()
+
+    if st.session_state.step == 3:
+        st.markdown(f"**Resumo:**\n\n{st.session_state.abstract}")
+
+        st.write("Digite o número do documento de patente:")
+        numero = st.text_input("Número:", "")
+
+        if st.button('Acesse google patents para buscar esta patente'):
+            abstract = ''
+            title = ''
+            html = urlopen('https://patents.google.com/patent/US5000000A/en?oq=US5000000')
+            bs = BeautifulSoup(html.read(), 'html.parser')
+            title = bs.title.get_text()
+            nameList = bs.findAll("div", {"class": "abstract"})
+            for name in nameList:
+                abstract = name.getText()
+            st.markdown(f"**Título:**\n\n{title}")
+            st.markdown(f"**Resumo:**\n\n{abstract}")
             
-    st.markdown(f"**Resumo:**\n\n{st.session_state.abstract}")
-
-    st.write("Digite o número do documento de patente:")
-    numero = st.text_input("Número:", "")
-    
-    if st.button('Acesse google patents para buscar esta patente'):
-        abstract = ''
-        title = ''
-        html = urlopen('https://patents.google.com/patent/US5000000A/en?oq=US5000000')
-        bs = BeautifulSoup(html.read(),'html.parser')
-        title = bs.title.get_text()
-        nameList = bs.findAll("div",{"class":"abstract"})
-        for name in nameList:
-            abstract = name.getText()
-        st.markdown(f"**Título:**\n\n{title}")
-        st.markdown(f"**Resumo:**\n\n{abstract}")
-
             #initial_message_analysis = (
             #    f"Olá Sophia, aponte as diferenças do pedido com a anterioridade. "
             #    f"Aqui está o pedido: {patent_text} "
