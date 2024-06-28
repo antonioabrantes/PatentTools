@@ -75,6 +75,9 @@ if st.button("Resetar aplicação"):
     
 view_session_state()
 
+if 'step' not in st.session_state:
+    st.session_state.step = 0
+
 # Upload do pedido
 st.write("Por favor, faça o upload do pedido em formato PDF")
 pedido = st.file_uploader("Upload do pedido:", type=['pdf'])
