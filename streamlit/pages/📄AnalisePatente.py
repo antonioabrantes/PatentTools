@@ -102,6 +102,7 @@ if pedido is not None:
             st.experimental_rerun()
 
     if st.session_state.step == 2:
+        st.markdown(f"**Tema:**\n\n{st.session_state.specific_focus}")
         messagem_resumo = (
             f"Olá Sophia, faça o resumo do documento em português {st.session_state.patent_text} "
             f"focando nos seguintes pontos: {st.session_state.specific_focus}. "
