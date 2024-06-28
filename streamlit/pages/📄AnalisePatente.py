@@ -75,8 +75,8 @@ if pedido is not None:
             st.session_state.patent_text = text_from_pdf(pedido)
         st.success('Pedido carregado com sucesso!')
         
+    st.write("Há algum tema específico que você gostaria que eu focasse no resumo?")
     if 'specific_focus' not in st.session_state:
-        st.write("Há algum tema específico que você gostaria que eu focasse no resumo?")
         st.session_state.specific_focus = st.text_input("Pontos específicos para focar:", "")
     else:
         st.markdown(f"**Tema específico:**\n\n{st.session_state.specific_focus}")
