@@ -61,7 +61,7 @@ if pedido is not None:
     specific_focus = st.text_input("Pontos específicos para focar:", "")
 
     messagem_resumo = (
-        f"Olá Sophia, faça o resumo do documento em português {patent_text} "
+        f"Olá Sophia, faça o resumo do documento em português {st.session_state.patent_text} "
         f" focando nos seguintes pontos: {specific_focus}. "
     )
     if st.button('Faça resumo do documento'):
