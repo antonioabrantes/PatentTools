@@ -63,31 +63,17 @@ if pedido is not None:
     )
     if st.button('Faça resumo do documento'):
         with st.spinner("Processando..."):
-            abstract = model.generate_content(initial_message_prior_art)
+            abstract = model.generate_content(messagem_resumo)
             st.markdown(f"**Resumo:**\n\n{abstract.text}")
 
-    st.write("Envie a anterioridade.")
-    prior_art = st.file_uploader("Upload da anterioridade:", type=['pdf'])
-
-    if prior_art is not None:
-
-        if original_language and specific_focus:
-            with st.spinner('Carregando anterioridade...'):
-                prior_art_text = text_from_pdf(prior_art)
-            st.success('Anterioridade carregada com sucesso!')
-
-            initial_message_analysis = (
-                f"Olá Sophia, aponte as diferenças do pedido com a anterioridade. "
-                f"Aqui está o pedido: {patent_text} "
-                f"E aqui está a anterioridade: {prior_art_text}"
-            )
-            if st.button('Faça análise dos documentos'):
-                with st.spinner("Processando..."):
-                    ai_query_analysis = model.generate_content(initial_message_analysis)
-                    st.markdown(ai_query_analysis.text)
-        else:
-            st.warning('Por favor, preencha o idioma original da anterioridade e os pontos específicos para focar antes de continuar.')
-    else:
-        st.warning('Por favor, faça o upload da anterioridade antes de continuar.')
+            #initial_message_analysis = (
+            #    f"Olá Sophia, aponte as diferenças do pedido com a anterioridade. "
+            #    f"Aqui está o pedido: {patent_text} "
+            #    f"E aqui está a anterioridade: {prior_art_text}"
+            #)
+            #if st.button('Faça análise dos documentos'):
+            #    with st.spinner("Processando..."):
+            #        ai_query_analysis = model.generate_content(initial_message_analysis)
+            #        st.markdown(ai_query_analysis.text)
 else:
     st.warning('Por favor, faça o upload do pedido antes de continuar.')
