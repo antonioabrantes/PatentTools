@@ -11,6 +11,17 @@ from bs4 import BeautifulSoup
 from pathlib import Path
 import hashlib
 
+# View all key:value pairs in the session state
+s = []
+for k, v in st.session_state.items():
+    s.append(f"{k}: {v}")
+st.write(s)
+
+# Função para resetar o estado da sessão
+def reset_session_state():
+    for key in st.session_state.keys():
+        del st.session_state[key]
+        
 # https://share.streamlit.io/
 load_dotenv()
 # Obtém a chave da API da variável de ambiente
@@ -48,6 +59,11 @@ def text_from_pdf(pdf):
 st.title('AnalisePatente 📄')
 st.write("Envie o pedido de patente.")
 
+# Botão para resetar a aplicação
+if st.button("Resetar aplicação"):
+    reset_session_state()
+    st.experimental_rerun()
+    
 # Upload do currículo
 st.write("Por favor, faça o upload do pedido em formato PDF")
 pedido = st.file_uploader("Upload do pedido:", type=['pdf'])
