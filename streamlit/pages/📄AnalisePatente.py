@@ -51,7 +51,7 @@ st.write("Envie o pedido de patente.")
 
 # View all key:value pairs in the session state
 
-keys_to_reset = ['patent_text', 'specific_focus', 'step', 'numero_patente', 'resumo_patente', 'titulo_patente']
+keys_to_reset = ['patent_text', 'specific_focus', 'step', 'numero_patente', 'resumo_patente', 'titulo_patente', 'relatorio_patente']
 def view_session_state():
     s = []
     for k, v in st.session_state.items():
@@ -134,12 +134,15 @@ if pedido is not None:
             st.session_state.titulo_patente = ''
             html = urlopen('https://patents.google.com/patent/US5000000A/en?oq=US5000000')
             bs = BeautifulSoup(html.read(), 'html.parser')
-            st.session_state.titulo_patente = bs.title.get_text()
-            nameList = bs.findAll("div", {"class": "abstract"})
+            st.session_state.titulo_patente = bs.title.get_text() # <title></title>
+            nameList = bs.findAll("div", {"class": "abstract"}) # <div class="abstract"></div>
             for name in nameList:
                 st.session_state.resumo_patente = name.getText()
+            nameList = bs.findAll("section", {"itemprop": "description"}) # <section itemprop="description" itemscope>
+            for name in nameList:
+                st.session_state.relatorio_patente = name.getText()
             st.session_state.step = 5
-            st.experimental_rerun()
+            st.experimental_rerun()  
 
     if st.session_state.step == 5:
         st.markdown(f"**Tema específico de busca:** {st.session_state.specific_focus}")
@@ -147,6 +150,7 @@ if pedido is not None:
         st.markdown(f"**Patente:** {st.session_state.numero_patente}")
         st.markdown(f"**Título:**\n\n{st.session_state.titulo_patente}")
         st.markdown(f"**Resumo:**\n\n{st.session_state.resumo_patente}")
+        st.markdown(f"**relatório:**\n\n{st.session_state.relatorio_patente}")
             
             #initial_message_analysis = (
             #    f"Olá Sophia, aponte as diferenças do pedido com a anterioridade. "
