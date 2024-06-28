@@ -56,7 +56,10 @@ def view_session_state():
     s = []
     for k, v in st.session_state.items():
         if k in keys_to_reset:
-            s.append(f"{k}: {v}")
+            if (len(v)>10):
+                s.append(f"{k}: {v[:10]} ...") 
+            else:
+                s.append(f"{k}: {v}") 
     st.write(s)
 
 # Função para resetar o estado da sessão
