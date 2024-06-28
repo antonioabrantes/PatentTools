@@ -56,7 +56,11 @@ def view_session_state():
     s = []
     for k, v in st.session_state.items():
         if k in keys_to_reset:
-            if (len(v)>20):
+            if isinstance(v, str):
+                l = len(v)
+            else:
+                l = 0
+            if  l > 20:
                 s.append(f"{k}: {v[:20]} ...") 
             else:
                 s.append(f"{k}: {v}") 
