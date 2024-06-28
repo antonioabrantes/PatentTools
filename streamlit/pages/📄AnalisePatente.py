@@ -53,7 +53,8 @@ st.write("Envie o pedido de patente.")
 def view_session_state():
     s = []
     for k, v in st.session_state.items():
-        s.append(f"{k}: {v}")
+        if k=='specific_focus':
+            s.append(f"{k}: {v}")
     st.write(s)
 
 # Função para resetar o estado da sessão
