@@ -51,7 +51,7 @@ st.write("Envie o pedido de patente.")
 
 # View all key:value pairs in the session state
 
-keys_to_reset = ['patent_text', 'specific_focus', 'abstract']
+keys_to_reset = ['patent_text', 'specific_focus']
 def view_session_state():
     s = []
     for k, v in st.session_state.items():
