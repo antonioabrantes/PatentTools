@@ -59,9 +59,9 @@ def view_session_state():
 
 # Função para resetar o estado da sessão
 def reset_session_state():
-    for key in st.session_state.keys():
-        # del st.session_state[key]
-        st.write(key)
+    for k, v in st.session_state.items():
+        if k=='specific_focus':
+            del st.session_state[k]
 
 # Botão para resetar a aplicação
 if st.button("Resetar aplicação"):
