@@ -58,10 +58,10 @@ if pedido is not None:
         st.success('Pedido carregado com sucesso!')
         
     if 'specific_focus' not in st.session_state:
-        st.write("Há algum ponto específico que você gostaria que eu focasse no resumo?")
+        st.write("Há algum tema específico que você gostaria que eu focasse no resumo?")
         st.session_state.specific_focus = st.text_input("Pontos específicos para focar:", "")
     else:
-        st.write(st.session_state.specific_focus)
+        st.markdown(f"**Tema específico:**\n\n{st.session_state.specific_focus}")
     
     messagem_resumo = (
         f"Olá Sophia, faça o resumo do documento em português {st.session_state.patent_text} "
