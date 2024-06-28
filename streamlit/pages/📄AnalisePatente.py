@@ -71,10 +71,17 @@ if pedido is not None:
             st.write("Digite o número do documento de patente:")
             numero = st.text_input("Número:", "")
             
-            html = urlopen('https://patents.google.com/patent/US5000000A/en?oq=US5000000')
-            bs = BeautifulSoup(html.read(),'html.parser')
-            titulo = bs.title.get_text()
-            st.markdown(f"**Título:**\n\n{titulo}")
+            if numero is not None:
+                abstract = ''
+                title = ''
+                html = urlopen('https://patents.google.com/patent/US5000000A/en?oq=US5000000')
+                bs = BeautifulSoup(html.read(),'html.parser')
+                title = bs.title.get_text()
+                nameList = bs.findAll("div",{"class":"abstract"})
+                for name in nameList:
+                    abstract = name.getText()
+                st.markdown(f"**Título:**\n\n{title}")
+                st.markdown(f"**Resumo:**\n\n{abstract}")
 
             #initial_message_analysis = (
             #    f"Olá Sophia, aponte as diferenças do pedido com a anterioridade. "
