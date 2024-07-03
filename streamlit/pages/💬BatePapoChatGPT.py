@@ -90,8 +90,8 @@ embeddings = OpenAIEmbeddings(openai_api_key=api_key, model="text-embedding-ada-
 
 db = FAISS.from_documents(chunks, embeddings)
 
-# query = "Na segunda instância existe prescrição para uma exigência técnica não cumprida na primeira instância?"
-# docs = db.similarity_search(query)
+query = "Na segunda instância existe prescrição para uma exigência técnica não cumprida na primeira instância?"
+docs = db.similarity_search(query)
 # st.write(docs[0].page_content)
 
 chain = load_qa_chain(OpenAI(openai_api_key=api_key, temperature=0), chain_type="stuff")
