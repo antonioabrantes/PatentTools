@@ -486,6 +486,22 @@ jobs_details = [
         "Resposta": "Sim, é possível a formulação de exigências técnicas na fase recursal sem a necessidade deste pedido retornar para a primeira instância. ",
         "Modelos": [1],
         "Despacho": "Despacho 121. Exigência técnica."
+    },
+    {
+        "id": 61,
+        "Tema": "Parecer recursal",
+        "Pergunta": "Uma exigência não cumprida cabe preclusão, mas e uma ciência de parecer 7.1 sem manifestação, cabe preclusão também ? ",
+        "Resposta": "Não, neste caso cabe recurso podendo a decisão de indeferimento ser revertida diante da manifestação do recorrente. No caso de uma exigência técnica (6.1) o INPi já indicou as correções necessárias no pedido para que pudesse ter sua patente concedida. se o requerente não apresentou manifestação a esta exigência técnica (6.1) cabe o arquivamento definitivo do pedido, sem direito ao recurso, portanto. Nestes casos aplica-se a preclusão administrativa, ou seja, da mesma forma uma eigência técnica não cumprida na primeira instância não poderá ser cumprida na fase recursal. No caso de uma ciência de parecer a situação é diferente, pois neste caso o INPI entende que o pedido não tem correções possíveis que possam tornar o pedido objeto de uma patente. Não há nenhuma exigência técnica meste caso, e portanto, não há preclusão, o recorrente pode voltar com toda a argumentação na fase recursal. ",
+        "Modelos": [1],
+        "Despacho": "Despacho 121. Exigência técnica."
+    },
+    {
+        "id": 62,
+        "Tema": "Parecer recursal",
+        "Pergunta": "No caso do recorrente apresentar no recurso um novo quadro reivindicatório que traga elementos do relatório descritivo não presente no quadro reivindicatório do indeferimento, este quadro reivincatório novo pode ser aceito no recurso ? ",
+        "Resposta": "Sim, esta emenda é prevista ns restrições do item 6.4 da Resolução n° 10/2024 onde há que se distinguir duas situações: i) quando esta emenda implica a mudança do objeto reivindicado e a necessidade de novas buscas, neste caso tal emenda nao é aceita, ii) a emenda ocorre para melhor esclarecer o texto mas ainda se encontra dentro do mesmo campo de busca original, ou seja, não setrata de nova invenção, neste caso tal emenda pode ser aceita. As disposições transitórias do item 7 contudo, aceitam tais emendas que tragam elementos do relatório descritivo não presentes no quadro reivindicatório do indeferimento. Nestes casos, na fase transitória, em que a emenda conduz a uma mudança de objeto e nova invenção, então automaticamente este pedido deve ser devolvido à primeira instância. ",
+        "Modelos": [1],
+        "Despacho": "Despacho 121. Exigência técnica."
     }
 ]
 
