@@ -26,7 +26,7 @@ try:
     # st.markdown("![Screenshot of a comment](https://myoctocat.com/assets/images/base-octocat.svg)")
     st.markdown(
     """
-    <img src="https://myoctocat.com/assets/images/base-octocat.svg" width="300"/>
+    <img src="https://myoctocat.com/assets/images/base-octocat.svg" width="200"/>
     """, 
     unsafe_allow_html=True
     )
