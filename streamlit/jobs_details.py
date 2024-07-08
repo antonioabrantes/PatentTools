@@ -507,7 +507,7 @@ jobs_details = [
         "id": 63,
         "Tema": "Parecer recursal",
         "Pergunta": "Pedido teve indeferimento por não manifestação a uma ciência de parecer. Na ciência de parecer foi apontada violação do artigo 10 da LPI mas no indeferimento administrativo foram citados artigo 10 da LPI e também falta de atividade inventiva (artigo 8 combinado com artigo 13 da LPI). A segunda instância concorda que, de fato, existe uma violação do artigo 10 da LPI. Temos um vício de procedimento neste caso ?",
-        "Resposta": "Não. O Vício de procedimento somente deve ser apontado pela segunda inst^ncia nos casos em que o examinador não consiga avançar em seu exame. O problema apontado não impede que o examinador de segunda instância mantenha o indeferimento por violação de artigo 10 da LPI. Neste caso o examinador de segunda instância não deve apontar a presença de vício de procedimento, mas como um mero lapso do parecer de indeferimento, pois este pedido não irá retornar à primeira instância. ",
+        "Resposta": "Não. O Vício de procedimento somente deve ser apontado pela segunda instância nos casos em que o examinador não consiga avançar em seu exame. O problema apontado não impede que o examinador de segunda instância mantenha o indeferimento por violação de artigo 10 da LPI. Neste caso o examinador de segunda instância não deve apontar a presença de vício de procedimento, mas como um mero lapso do parecer de indeferimento, pois este pedido não irá retornar à primeira instância. ",
         "Modelos": [1],
         "Despacho": "Despacho 121. Exigência técnica."
     }
