@@ -502,6 +502,14 @@ jobs_details = [
         "Resposta": "Sim, esta emenda é prevista ns restrições do item 6.4 da Resolução n° 10/2024 onde há que se distinguir duas situações: i) quando esta emenda implica a mudança do objeto reivindicado e a necessidade de novas buscas, neste caso tal emenda nao é aceita, ii) a emenda ocorre para melhor esclarecer o texto mas ainda se encontra dentro do mesmo campo de busca original, ou seja, não setrata de nova invenção, neste caso tal emenda pode ser aceita. As disposições transitórias do item 7 contudo, aceitam tais emendas que tragam elementos do relatório descritivo não presentes no quadro reivindicatório do indeferimento. Nestes casos, na fase transitória, em que a emenda conduz a uma mudança de objeto e nova invenção, então automaticamente este pedido deve ser devolvido à primeira instância. ",
         "Modelos": [1],
         "Despacho": "Despacho 121. Exigência técnica."
+    },
+    {
+        "id": 63,
+        "Tema": "Parecer recursal",
+        "Pergunta": "Pedido teve indeferimento por não manifestação a uma ciência de parecer. Na ciência de parecer foi apontada violação do artigo 10 da LPI mas no indeferimento administrativo foram citados artigo 10 da LPI e também falta de atividade inventiva (artigo 8 combinado com artigo 13 da LPI). A segunda instância concorda que, de fato, existe uma violação do artigo 10 da LPI. Temos um vício de procedimento neste caso ?",
+        "Resposta": "Não. O Vício de procedimento somente deve ser apontado pela segunda inst^ncia nos casos em que o examinador não consiga avançar em seu exame. O problema apontado não impede que o examinador de segunda instância mantenha o indeferimento por violação de artigo 10 da LPI. Neste caso o examinador de segunda instância não deve apontar a presença de vício de procedimento, mas como um mero lapso do parecer de indeferimento, pois este pedido não irá retornar à primeira instância. ",
+        "Modelos": [1],
+        "Despacho": "Despacho 121. Exigência técnica."
     }
 ]
 
