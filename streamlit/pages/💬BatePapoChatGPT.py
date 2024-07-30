@@ -149,7 +149,7 @@ if user_query is not None and user_query != '':
         
         voice='TX3LPaxmHKxFdv7VOQHJ'
         audio = client.generate(
-            text=resposta,
+            text='testando',
             voice=Voice(voice_id=voice,
                         settings=VoiceSettings(stability=0.35,
                                                similarity_boost=0.4,
