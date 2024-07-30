@@ -20,7 +20,7 @@ import pandas as pd
 from elevenlabs import play, save, Voice, VoiceSettings
 from elevenlabs.client import ElevenLabs
 import pygame
-from pygame import error as pygame_error
+#from pygame import error as pygame_error
 
 from transformers import GPT2TokenizerFast
 from langchain.document_loaders import PyPDFLoader
@@ -62,7 +62,7 @@ def use_pydub_alternative():
         st.write(f"Erro ao usar Pydub: {e}")
 
 # Inicializar o mixer do Pygame
-init_pygame_mixer()
+#init_pygame_mixer()
 
 
 # Título da página
