@@ -17,6 +17,10 @@ from dotenv import load_dotenv
 import PyPDF2
 import os
 import pandas as pd
+from elevenlabs import play, save, Voice, VoiceSettings
+from elevenlabs.client import ElevenLabs
+import pygame
+
 from transformers import GPT2TokenizerFast
 from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -29,6 +33,11 @@ from langchain.chains import ConversationalRetrievalChain
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY2")
 openai.api_key = api_key
+
+chave_eleven = os.getenv("ELEVENLABS_API_KEY")
+client = ElevenLabs(
+  api_key=chave_eleven  # Defaults to ELEVEN_API_KEY
+)
 
 # Título da página
 st.title('BatePapo 💬')
@@ -137,7 +146,22 @@ if user_query is not None and user_query != '':
     # Exibe a resposta do assistente
     with st.chat_message("assistant"):
         st.markdown(resposta)
-
+        
+        voice='TX3LPaxmHKxFdv7VOQHJ'
+        audio = client.generate(
+            text=resposta,
+            voice=Voice(voice_id=voice,
+                        settings=VoiceSettings(stability=0.35,
+                                               similarity_boost=0.4,
+                                               style=0.55,
+                                               use_speaker_boost=False)),
+            model='eleven_multilingual_v2'
+        )
+        
+        filename = "./resposta.mp3"
+        save(audio=audio,filename=filename)
+        filename = os.path.abspath(filename)
+        playsound(filename)
 
 
 # pages = loader.load_and_split()
