@@ -185,17 +185,17 @@ if user_query is not None and user_query != '':
         )
         
         filename = "./resposta.mp3"
-        #save(audio=audio,filename=filename)
-        #filename = os.path.abspath(filename)
-        #playsound(filename)
-        
-        if not os.path.exists(filename):
-            save(audio=audio, filename=os.path.abspath(filename))
+        save(audio=audio,filename=os.path.abspath(filename))
         filename = os.path.abspath(filename)
-        pygame.mixer.music.load(filename)
-        pygame.mixer.music.play()
-        while pygame.mixer.music.get_busy():
-            pygame.time.Clock().tick(10)
+        playsound(filename)
+        
+        #if not os.path.exists(filename):
+        #    save(audio=audio, filename=os.path.abspath(filename))
+        #filename = os.path.abspath(filename)
+        #pygame.mixer.music.load(filename)
+        #pygame.mixer.music.play()
+        #while pygame.mixer.music.get_busy():
+        #    pygame.time.Clock().tick(10)
 
 # pages = loader.load_and_split()
 
