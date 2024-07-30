@@ -95,7 +95,7 @@ docs = db.similarity_search(query)
 # st.write(docs[0].page_content)
 
 llm = OpenAI(openai_api_key=api_key, temperature=0)
-chain = load_qa_chain(OpenAI(openai_api_key=api_key, temperature=0), chain_type="stuff")
+chain = load_qa_chain(llm, chain_type="stuff")
 # resposta = chain.run(input_documents=docs, question=query)    
 # st.write(query)
 # st.write(resposta)
