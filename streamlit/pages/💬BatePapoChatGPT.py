@@ -190,7 +190,7 @@ if user_query is not None and user_query != '':
         #playsound(filename)
         
         if not os.path.exists(filename):
-            save(audio=audio, filename=filename)
+            save(audio=audio, filename=os.path.abspath(filename))
         filename = os.path.abspath(filename)
         pygame.mixer.music.load(filename)
         pygame.mixer.music.play()
