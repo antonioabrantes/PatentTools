@@ -185,7 +185,7 @@ if user_query is not None and user_query != '':
         )
         
         filename = "./resposta.mp3"
-        save(audio=audio,filename=os.path.abspath(filename))
+        #save(audio=audio,filename=os.path.abspath(filename))
         filename = os.path.abspath(filename)
         playsound(filename)
         
