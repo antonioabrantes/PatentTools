@@ -158,10 +158,10 @@ if user_query is not None and user_query != '':
             model='eleven_multilingual_v2'
         )
         
-        filename = "./resposta.mp3"
-        save(audio=audio,filename=filename)
-        filename = os.path.abspath(filename)
-        playsound(filename)
+        #filename = "./resposta.mp3"
+        #save(audio=audio,filename=filename)
+        #filename = os.path.abspath(filename)
+        #playsound(filename)
 
 
 # pages = loader.load_and_split()
