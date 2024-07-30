@@ -49,7 +49,7 @@ pdf_path = "streamlit/chatbot_cgrec.pdf"  # Especifique o caminho do PDF
 # Verificar se o arquivo existe no caminho especificado
 if os.path.exists(pdf_path):
     loader = PyPDFLoader(pdf_path)
-    st.write("PDF carregado com sucesso!")
+    st.write("Arquivo chatbot_cgrec.pdf carregado com sucesso!")
 else:
     st.error(f"O arquivo {pdf_path} não foi encontrado. Verifique o caminho e tente novamente.")
     
@@ -73,7 +73,7 @@ with open(pdf_path, "rb") as file:
 # st.write(all_text)
 text = all_text
 
-tokenizer = GPT2TokenizerFast.from_pretrained("gpt2", use_ssl=False)  # este gpt2 é gratuito não precisa de api_key
+tokenizer = GPT2TokenizerFast.from_pretrained("gpt2", use_ssl=False)  # este gpt2 é gratuito para calcular número de tokens, não precisa de api_key
 
 def count_tokens(text: str) -> int:
     return len(tokenizer.encode(text))
@@ -94,10 +94,12 @@ query = "Na segunda instância existe prescrição para uma exigência técnica 
 docs = db.similarity_search(query)
 # st.write(docs[0].page_content)
 
+llm = OpenAI(openai_api_key=api_key, temperature=0)
 chain = load_qa_chain(OpenAI(openai_api_key=api_key, temperature=0), chain_type="stuff")
 # resposta = chain.run(input_documents=docs, question=query)    
 # st.write(query)
 # st.write(resposta)
+
 
 # Inicializa a conversa do assistente virtual
 if "chat_history" not in st.session_state:
