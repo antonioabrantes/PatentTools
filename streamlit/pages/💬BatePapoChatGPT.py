@@ -39,6 +39,8 @@ client = ElevenLabs(
   api_key=chave_eleven  # Defaults to ELEVEN_API_KEY
 )
 
+pygame.mixer.init()
+
 # Título da página
 st.title('BatePapo 💬')
 
@@ -158,11 +160,18 @@ if user_query is not None and user_query != '':
             model='eleven_multilingual_v2'
         )
         
-        #filename = "./resposta.mp3"
+        filename = "./resposta.mp3"
         #save(audio=audio,filename=filename)
         #filename = os.path.abspath(filename)
         #playsound(filename)
-
+        
+        if not os.path.exists(filename):
+            save(audio=audio, filename=filename)
+        filename = os.path.abspath(filename)
+        pygame.mixer.music.load(filename)
+        pygame.mixer.music.play()
+        while pygame.mixer.music.get_busy():
+            pygame.time.Clock().tick(10)
 
 # pages = loader.load_and_split()
 
