@@ -18,3 +18,5 @@ tiktoken
 faiss-cpu
 transformers
 beautifulsoup4
+elevenlabs
+pygame
