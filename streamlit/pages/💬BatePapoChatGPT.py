@@ -20,6 +20,7 @@ import pandas as pd
 from elevenlabs import play, save, Voice, VoiceSettings
 from elevenlabs.client import ElevenLabs
 import pygame
+from pygame import error as pygame_error
 
 from transformers import GPT2TokenizerFast
 from langchain.document_loaders import PyPDFLoader
@@ -39,7 +40,30 @@ client = ElevenLabs(
   api_key=chave_eleven  # Defaults to ELEVEN_API_KEY
 )
 
-pygame.mixer.init()
+def init_pygame_mixer():
+    try:
+        pygame.mixer.init()
+        print("Pygame mixer inicializado com sucesso!")
+    except pygame_error as e:
+        print(f"Erro ao inicializar o mixer do Pygame: {e}")
+        # Aqui você pode optar por usar uma alternativa ou lidar com o erro de outra forma
+        use_pydub_alternative()
+
+# Função alternativa usando Pydub
+def use_pydub_alternative():
+    try:
+        from pydub import AudioSegment
+
+        # Exemplo de uso do Pydub para carregar e salvar áudio
+        audio = AudioSegment.from_file("path/to/your/audiofile.mp3")
+        audio.export("output.wav", format="wav")
+        print("Áudio processado com sucesso usando Pydub!")
+    except Exception as e:
+        print(f"Erro ao usar Pydub: {e}")
+
+# Inicializar o mixer do Pygame
+init_pygame_mixer()
+
 
 # Título da página
 st.title('BatePapo 💬')
