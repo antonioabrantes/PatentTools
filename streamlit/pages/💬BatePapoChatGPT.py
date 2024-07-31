@@ -41,6 +41,14 @@ client = ElevenLabs(
   api_key=chave_eleven  # Defaults to ELEVEN_API_KEY
 )
 
+openai_api_key = os.getenv("OPENAI_API_KEY")
+os.environ["OPENAI_API_KEY"]=openai_api_key
+gemini_api_key = os.getenv("GEMINI_API_KEY")
+os.environ["GOOGLE_API_KEY"] = gemini_api_key
+anthropic_api_key = os.getenv("ANTHROPIC_API_KEY")
+# os.environ["ANTHROPIC_API_KEY"]=anthropic_api_key
+# os.environ["ANTHROPIC_API_KEY"] = getpass.getpass("Enter your Anthropic API key: ")
+
 def init_pygame_mixer():
     try:
         pygame.mixer.init()
