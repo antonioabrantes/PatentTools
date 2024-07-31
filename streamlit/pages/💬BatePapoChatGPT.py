@@ -141,6 +141,7 @@ docs = db.similarity_search(query)
 def create_chain(model_type):
     template="""Question: {question} Answer: Let's think step by step."""
     prompt = ChatPromptTemplate.from_template(template)
+    output_parser = StrOutputParser()
     if model_type == "ollama": # https://python.langchain.com/v0.2/docs/integrations/chat/ollama/
         model = Chatollama (model="llama3.1", base_url=os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434"))
     elif model_type == "openai": # https://python.langchain.com/v0.2/docs/integrations/chat/openai/
@@ -153,10 +154,13 @@ def create_chain(model_type):
         model = ChatGoogleGenerativeAI(temperature=0, model="gemini-1.5-pro", max_tokens=256, timeout=None, max_retries=2)
     else:
         raise ValueError("Unsupported model type: {model_type}")
-    return prompt | model
+    return prompt | model | output_parser
+
+chain = create_chain("openai-gpt-3.5-turbo")
 
 llm = OpenAI(openai_api_key=api_key, temperature=0)
 chain = load_qa_chain(llm, chain_type="stuff")
+
 # resposta = chain.run(input_documents=docs, question=query)    
 # st.write(query)
 # st.write(resposta)
@@ -192,7 +196,7 @@ if user_query is not None and user_query != '':
         st.markdown(user_query)
 
     # Processa a mensagem do usuário e gera a resposta
-    resposta = chain.run(input_documents=docs, question=user_query)
+    resposta = chain.invoke(input_documents=docs, question=user_query)
     
     # Adiciona a resposta do assistente ao histórico
     st.session_state.chat_history.append({'role': 'assistant', 'content': resposta})
