@@ -141,7 +141,7 @@ query = "Na segunda instância existe prescrição para uma exigência técnica 
 docs = db.similarity_search(query)
 # st.write(docs[0].page_content)
 
-def create_chain(model_type):
+def create_chain(model_type, retriever):
     template="""Questão: {question} Resposta: Vaos pensar passo a passo."""
     prompt = ChatPromptTemplate.from_template(template)
     output_parser = StrOutputParser()
@@ -158,10 +158,13 @@ def create_chain(model_type):
         model = ChatGoogleGenerativeAI(temperature=0, model="gemini-1.5-pro", max_tokens=256, timeout=None, max_retries=2)
     else:
         raise ValueError("Unsupported model type: {model_type}")
-    return prompt | model | output_parser
+    return prompt | model | output_parser | {"context": retriever, "question": RunnablePassthrough()}
 
-chain = create_chain("openai-gpt-3.5-turbo")
+# Primeira opção de chain: pela seleção de runnables
+retriever=db.as_retriever()
+chain = create_chain("openai-gpt-3.5-turbo",retriever)
 
+# Segunda opção de chain: pela chamada do llm simples
 llm = OpenAI(openai_api_key=api_key, temperature=0)
 chain = load_qa_chain(llm, chain_type="stuff")
 
@@ -169,6 +172,7 @@ chain = load_qa_chain(llm, chain_type="stuff")
 # st.write(query)
 # st.write(resposta)
 
+# Terceira oção de chain: pelo retriever sem runnables
 from langchain.chains import RetrievalQA 
 retriever=db.as_retriever()
 chain = RetrievalQA.from_chain_type(llm, retriever=retriever)
