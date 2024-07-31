@@ -174,7 +174,24 @@ chain1 = (
 )
 
 # Segunda opção de chain: pela chamada do llm simples
-llm = OpenAI(openai_api_key=api_key, temperature=0)
+def create_llm(model_type):
+    if model_type == "ollama": # https://python.langchain.com/v0.2/docs/integrations/chat/ollama/
+        model = Chatollama (model="llama3.1", base_url=os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434"))
+    elif model_type == "openai": # https://python.langchain.com/v0.2/docs/integrations/chat/openai/
+        model = OpenAI(openai_api_key=api_key, temperature=0)
+    elif model_type == "openai-gpt-3.5-turbo": # https://python.langchain.com/v0.2/docs/integrations/chat/openai/
+        model = ChatOpenAI(temperature=0.0, model="gpt-3.5-turbo", max_tokens=256, openai_api_key=openai_api_key)
+        #model = ChatOpenAI()
+    elif model_type == "anthropic": # https://python.langchain.com/v0.2/docs/integrations/chat/anthropic/
+        model = ChatAnthropíc(temperature=0.0, model="claude-3-5-sonnet-20240620", max_tokens=256, timeout=None, max_retries=2)
+    elif model_type == "gemini": # https://python.langchain.com/v0.2/docs/integrations/chat/google_generative_ai/
+        model = ChatGoogleGenerativeAI(temperature=0, model="gemini-1.5-pro", max_tokens=256, timeout=None, max_retries=2)
+    else:
+        raise ValueError("Unsupported model type: {model_type}")
+    return model
+    
+#llm = OpenAI(openai_api_key=api_key, temperature=0)
+llm = create_llm("openai")
 chain2 = load_qa_chain(llm, chain_type="stuff")
 
 # resposta = chain.run(input_documents=docs, question=query)    
@@ -186,7 +203,7 @@ from langchain.chains import RetrievalQA
 retriever=db.as_retriever()
 chain3 = RetrievalQA.from_chain_type(llm, retriever=retriever)
 
-chain = chain3
+chain = chain2
 
 # Inicializa a conversa do assistente virtual
 if "chat_history" not in st.session_state:
