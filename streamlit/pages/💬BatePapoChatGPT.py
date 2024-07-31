@@ -162,13 +162,11 @@ def create_chain(model_type):
 chain = create_chain("openai")
 
 llm = OpenAI(openai_api_key=api_key, temperature=0)
-chain = load_qa_chain(llm, chain_type="stuff")
+#chain = load_qa_chain(llm, chain_type="stuff")
 
 # resposta = chain.run(input_documents=docs, question=query)    
 # st.write(query)
 # st.write(resposta)
-
-
 
 #retriever=db.as_retriever()
 #chain = RetrievalQA.from_chain_type(llm, retriever=retriever)
