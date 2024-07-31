@@ -198,7 +198,7 @@ if user_query is not None and user_query != '':
         st.markdown(user_query)
 
     # Processa a mensagem do usuário e gera a resposta
-    resposta = chain.run(input_documents=docs, question=user_query)
+    #resposta = chain.run(input_documents=docs, question=user_query)
     #resposta = chain.invoke({"question": user_query})
     resposta = chain.run(user_query)
     
