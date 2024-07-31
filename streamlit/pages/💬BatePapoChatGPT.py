@@ -21,6 +21,7 @@ import pygame
 from playsound import playsound
 #from pygame import error as pygame_error
 
+from langchain_chroma import Chroma
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI
@@ -31,7 +32,6 @@ from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
-#from langchain_chroma import Chroma
 from langchain.chains.question_answering import load_qa_chain
 from langchain.llms import OpenAI
 from langchain.chains import ConversationalRetrievalChain
@@ -134,7 +134,8 @@ text_splitter = RecursiveCharacterTextSplitter( # divide o PDF em blocos/chunks 
 
 chunks = text_splitter.create_documents([text])
 
-embeddings = OpenAIEmbeddings(openai_api_key=api_key, model="text-embedding-ada-002")
+#embeddings = OpenAIEmbeddings(openai_api_key=api_key, model="text-embedding-ada-002")
+embeddings = OpenAIEmbeddings(openai_api_key=api_key, model="text-embedding-3-small")
 
 db = FAISS.from_documents(chunks, embeddings)
 
