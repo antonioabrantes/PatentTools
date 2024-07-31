@@ -206,8 +206,8 @@ if user_query is not None and user_query != '':
 
     # Processa a mensagem do usuário e gera a resposta
     #resposta = chain.run(input_documents=docs, question=user_query)
-    #resposta = chain.invoke({"question": user_query})
-    resposta = chain.run(user_query)
+    resposta = chain.invoke({"question": user_query})
+    #resposta = chain.run(user_query)
     
     # Adiciona a resposta do assistente ao histórico
     st.session_state.chat_history.append({'role': 'assistant', 'content': resposta})
