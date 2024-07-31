@@ -162,6 +162,8 @@ def create_chain(model_type, retriever):
 # Primeira opção de chain: pela seleção de runnables
 retriever=db.as_retriever()
 chain1 = create_chain("openai",retriever)
+template="""Questão: {question} Resposta: Vamos pensar passo a passo."""
+prompt = ChatPromptTemplate.from_template(template)
 chain1 = (
     {"context": retriever, "question": RunnablePassthrough()}
     | prompt
