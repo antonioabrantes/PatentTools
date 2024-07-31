@@ -138,11 +138,30 @@ query = "Na segunda instância existe prescrição para uma exigência técnica 
 docs = db.similarity_search(query)
 # st.write(docs[0].page_content)
 
+def create_chain(model_type):
+    template="""Question: {question} Answer: Let's think step by step."""
+    prompt = ChatPromptTemplate.from_template(template)
+    if model_type == "ollama": # https://python.langchain.com/v0.2/docs/integrations/chat/ollama/
+        model = Chatollama (model="llama3.1", base_url=os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434"))
+    elif model_type == "openai": # https://python.langchain.com/v0.2/docs/integrations/chat/openai/
+        model = ChatOpenAI()
+    elif model_type == "openai-gpt-3.5-turbo": # https://python.langchain.com/v0.2/docs/integrations/chat/openai/
+        model = ChatOpenAI(temperature=0.0, model="gpt-3.5-turbo", max_tokens=256, timeout=None, max_retries=2, openai_api_key=openai_api_key)
+    elif model_type == "anthropic": # https://python.langchain.com/v0.2/docs/integrations/chat/anthropic/
+        model = ChatAnthropíc(temperature=0.0, model="claude-3-5-sonnet-20240620", max_tokens=256, timeout=None, max_retries=2)
+    elif model_type == "gemini": # https://python.langchain.com/v0.2/docs/integrations/chat/google_generative_ai/
+        model = ChatGoogleGenerativeAI(temperature=0, model="gemini-1.5-pro", max_tokens=256, timeout=None, max_retries=2)
+    else:
+        raise ValueError("Unsupported model type: {model_type}")
+    return prompt | model
+
 llm = OpenAI(openai_api_key=api_key, temperature=0)
 chain = load_qa_chain(llm, chain_type="stuff")
 # resposta = chain.run(input_documents=docs, question=query)    
 # st.write(query)
 # st.write(resposta)
+
+
 
 #retriever=db.as_retriever()
 #chain = RetrievalQA.from_chain_type(llm, retriever=retriever)
@@ -197,7 +216,7 @@ if user_query is not None and user_query != '':
         #save(audio=audio,filename=os.path.abspath(filename))
         filename = os.path.abspath(filename)
         #playsound(filename)
-        st.write(filename)
+        #st.write(filename) # /mount/src/patenttools/resposta.mp3
         
         #if not os.path.exists(filename):
         #    save(audio=audio, filename=os.path.abspath(filename))
