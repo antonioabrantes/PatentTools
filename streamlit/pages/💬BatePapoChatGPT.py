@@ -36,7 +36,7 @@ from langchain.chains import ConversationalRetrievalChain
 
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY2")
-openai.api_key = api_key
+#openai.api_key = api_key
 
 chave_eleven = os.getenv("ELEVENLABS_API_KEY")
 client = ElevenLabs(
