@@ -147,9 +147,10 @@ def create_chain(model_type):
     if model_type == "ollama": # https://python.langchain.com/v0.2/docs/integrations/chat/ollama/
         model = Chatollama (model="llama3.1", base_url=os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434"))
     elif model_type == "openai": # https://python.langchain.com/v0.2/docs/integrations/chat/openai/
-        model = ChatOpenAI()
+        model = OpenAI(openai_api_key=api_key, temperature=0)
     elif model_type == "openai-gpt-3.5-turbo": # https://python.langchain.com/v0.2/docs/integrations/chat/openai/
         #model = ChatOpenAI(temperature=0.0, model="gpt-3.5-turbo", max_tokens=256, timeout=None, max_retries=2, openai_api_key=openai_api_key)
+        model = ChatOpenAI()
     elif model_type == "anthropic": # https://python.langchain.com/v0.2/docs/integrations/chat/anthropic/
         model = ChatAnthropíc(temperature=0.0, model="claude-3-5-sonnet-20240620", max_tokens=256, timeout=None, max_retries=2)
     elif model_type == "gemini": # https://python.langchain.com/v0.2/docs/integrations/chat/google_generative_ai/
@@ -158,7 +159,7 @@ def create_chain(model_type):
         raise ValueError("Unsupported model type: {model_type}")
     return prompt | model | output_parser
 
-chain = create_chain("openai-gpt-3.5-turbo")
+chain = create_chain("openai")
 
 llm = OpenAI(openai_api_key=api_key, temperature=0)
 chain = load_qa_chain(llm, chain_type="stuff")
