@@ -142,7 +142,7 @@ docs = db.similarity_search(query)
 # st.write(docs[0].page_content)
 
 def create_chain(model_type, retriever):
-    template="""Questão: {question} Resposta: Vaos pensar passo a passo."""
+    template="""Questão: {question} Resposta: Vamos pensar passo a passo."""
     prompt = ChatPromptTemplate.from_template(template)
     output_parser = StrOutputParser()
     if model_type == "ollama": # https://python.langchain.com/v0.2/docs/integrations/chat/ollama/
@@ -177,7 +177,7 @@ from langchain.chains import RetrievalQA
 retriever=db.as_retriever()
 chain3 = RetrievalQA.from_chain_type(llm, retriever=retriever)
 
-chain = chain1
+chain = chain3
 
 # Inicializa a conversa do assistente virtual
 if "chat_history" not in st.session_state:
