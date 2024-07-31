@@ -23,6 +23,7 @@ import pygame
 from playsound import playsound
 #from pygame import error as pygame_error
 
+from langchain_core.prompts import ChatPromptTemplate
 from transformers import GPT2TokenizerFast
 from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
