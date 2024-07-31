@@ -6,8 +6,6 @@ import time
 from jobs_details import jobs_details as data
 
 from typing import List
-import openai
-from openai import OpenAI
 import os
 from dotenv import load_dotenv
 
