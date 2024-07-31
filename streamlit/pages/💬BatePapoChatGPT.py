@@ -140,10 +140,6 @@ embeddings = OpenAIEmbeddings(openai_api_key=api_key, model="text-embedding-3-sm
 
 db = FAISS.from_documents(chunks, embeddings)
 
-query = "Na segunda instância existe prescrição para uma exigência técnica não cumprida na primeira instância?"
-docs = db.similarity_search(query)
-# st.write(docs[0].page_content)
-
 def create_chain(model_type, retriever):
     template="""Questão: {question} Resposta: Vamos pensar passo a passo."""
     prompt = ChatPromptTemplate.from_template(template)
@@ -180,7 +176,7 @@ from langchain.chains import RetrievalQA
 retriever=db.as_retriever()
 chain3 = RetrievalQA.from_chain_type(llm, retriever=retriever)
 
-chain = chain3
+chain = chain2
 
 # Inicializa a conversa do assistente virtual
 if "chat_history" not in st.session_state:
@@ -211,6 +207,8 @@ if user_query is not None and user_query != '':
     if (chain==chain1):
         resposta = chain.invoke({"question": user_query})
     if (chain==chain2):
+        docs = db.similarity_search(user_query)
+        # st.write(docs[0].page_content)
         resposta = chain.run(input_documents=docs, question=user_query)
     if (chain==chain3):
         resposta = chain.run(user_query)
