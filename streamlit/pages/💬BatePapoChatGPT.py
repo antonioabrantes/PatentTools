@@ -174,7 +174,7 @@ chain1 = (
 )
 
 # Segunda opção de chain: pela chamada do llm simples
-def create_llm(model_type):
+def create_model(model_type):
     if model_type == "ollama": # https://python.langchain.com/v0.2/docs/integrations/chat/ollama/
         model = Chatollama (model="llama3.1", base_url=os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434"))
     elif model_type == "openai": # https://python.langchain.com/v0.2/docs/integrations/chat/openai/
@@ -191,8 +191,8 @@ def create_llm(model_type):
     return model
     
 #llm = OpenAI(openai_api_key=api_key, temperature=0)
-llm = create_llm("openai")
-llm = create_llm("openai-gpt-3.5-turbo")
+llm = create_model("openai")
+llm = create_model("openai-gpt-3.5-turbo")
 chain2 = load_qa_chain(llm, chain_type="stuff")
 
 # resposta = chain.run(input_documents=docs, question=query)    
