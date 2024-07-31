@@ -192,6 +192,7 @@ def create_llm(model_type):
     
 #llm = OpenAI(openai_api_key=api_key, temperature=0)
 llm = create_llm("openai")
+llm = create_llm("openai-gpt-3.5-turbo")
 chain2 = load_qa_chain(llm, chain_type="stuff")
 
 # resposta = chain.run(input_documents=docs, question=query)    
