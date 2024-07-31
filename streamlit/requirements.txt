@@ -23,3 +23,4 @@ pygame
 pydub
 playsound
 langchain_openai
+langchain_chroma
