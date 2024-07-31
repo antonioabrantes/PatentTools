@@ -205,7 +205,7 @@ if user_query is not None and user_query != '':
 
     # Processa a mensagem do usuário e gera a resposta
     if (chain==chain1):
-        resposta = chain.invoke({"question": user_query})
+        resposta = chain.invoke(user_query)
     if (chain==chain2):
         docs = db.similarity_search(user_query)
         # st.write(docs[0].page_content)
