@@ -177,7 +177,7 @@ from langchain.chains import RetrievalQA
 retriever=db.as_retriever()
 chain3 = RetrievalQA.from_chain_type(llm, retriever=retriever)
 
-chain = chain2
+chain = chain1
 
 # Inicializa a conversa do assistente virtual
 if "chat_history" not in st.session_state:
