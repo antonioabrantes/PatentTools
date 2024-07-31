@@ -22,3 +22,4 @@ elevenlabs
 pygame
 pydub
 playsound
+langchain_openai
