@@ -141,7 +141,7 @@ docs = db.similarity_search(query)
 # st.write(docs[0].page_content)
 
 def create_chain(model_type):
-    template="""Question: {question} Answer: Let's think step by step."""
+    template="""Questão: {question} Resposta: Vaos pensar passo a passo."""
     prompt = ChatPromptTemplate.from_template(template)
     output_parser = StrOutputParser()
     if model_type == "ollama": # https://python.langchain.com/v0.2/docs/integrations/chat/ollama/
