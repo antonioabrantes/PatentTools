@@ -162,11 +162,11 @@ def create_chain(model_type, retriever):
 
 # Primeira opção de chain: pela seleção de runnables
 retriever=db.as_retriever()
-chain = create_chain("openai-gpt-3.5-turbo",retriever)
+chain1 = create_chain("openai-gpt-3.5-turbo",retriever)
 
 # Segunda opção de chain: pela chamada do llm simples
 llm = OpenAI(openai_api_key=api_key, temperature=0)
-chain = load_qa_chain(llm, chain_type="stuff")
+chain2 = load_qa_chain(llm, chain_type="stuff")
 
 # resposta = chain.run(input_documents=docs, question=query)    
 # st.write(query)
@@ -175,7 +175,9 @@ chain = load_qa_chain(llm, chain_type="stuff")
 # Terceira oção de chain: pelo retriever sem runnables
 from langchain.chains import RetrievalQA 
 retriever=db.as_retriever()
-chain = RetrievalQA.from_chain_type(llm, retriever=retriever)
+chain3 = RetrievalQA.from_chain_type(llm, retriever=retriever)
+
+chain = chain1
 
 # Inicializa a conversa do assistente virtual
 if "chat_history" not in st.session_state:
