@@ -21,8 +21,8 @@ import pygame
 from playsound import playsound
 #from pygame import error as pygame_error
 
-from chromadb.config import Settings as ChromaSettings
-from chromadb.client import Client as ChromaClient
+#from chromadb.config import Settings as ChromaSettings
+#from chromadb.client import Client as ChromaClient
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI
