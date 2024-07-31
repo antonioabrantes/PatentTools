@@ -23,7 +23,7 @@ from playsound import playsound
 
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from langchain_openai import ChatOpenAI
+#from langchain_openai import ChatOpenAI
 
 from transformers import GPT2TokenizerFast
 from langchain.document_loaders import PyPDFLoader
@@ -162,7 +162,7 @@ def create_chain(model_type):
 chain = create_chain("openai-gpt-3.5-turbo")
 
 llm = OpenAI(openai_api_key=api_key, temperature=0)
-#chain = load_qa_chain(llm, chain_type="stuff")
+chain = load_qa_chain(llm, chain_type="stuff")
 
 # resposta = chain.run(input_documents=docs, question=query)    
 # st.write(query)
@@ -197,8 +197,8 @@ if user_query is not None and user_query != '':
         st.markdown(user_query)
 
     # Processa a mensagem do usuário e gera a resposta
-    #resposta = chain.run(input_documents=docs, question=user_query)
-    resposta = chain.invoke({"question": user_query})
+    resposta = chain.run(input_documents=docs, question=user_query)
+    #resposta = chain.invoke({"question": user_query})
     
     # Adiciona a resposta do assistente ao histórico
     st.session_state.chat_history.append({'role': 'assistant', 'content': resposta})
