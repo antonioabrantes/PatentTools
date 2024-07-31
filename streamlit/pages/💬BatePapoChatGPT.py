@@ -28,6 +28,7 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI
 from langchain_core.runnables import RunnablePassthrough
 from langchain.callbacks.tracers import LangChainTracer
+from langfuse.callback import CallbackHandler
 
 from transformers import GPT2TokenizerFast
 from langchain.document_loaders import PyPDFLoader
@@ -55,7 +56,10 @@ anthropic_api_key = os.getenv("ANTHROPIC_API_KEY")
 # os.environ["ANTHROPIC_API_KEY"]=anthropic_api_key
 # os.environ["ANTHROPIC_API_KEY"] = getpass.getpass("Enter your Anthropic API key: ")
 
-tracer = LangChainTracer(project_name="My Project")
+#tracer = LangChainTracer(project_name="My Project")
+
+langfuse_handler = CallbackHandler()
+langfuse_handler.auth_check()
 
 def init_pygame_mixer():
     try:

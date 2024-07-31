@@ -25,3 +25,5 @@ playsound
 langchain_openai
 chromadb
 langsmith
+httpx==0.27.0
+langfuse
