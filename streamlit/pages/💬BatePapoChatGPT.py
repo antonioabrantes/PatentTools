@@ -158,11 +158,11 @@ def create_chain(model_type, retriever):
         model = ChatGoogleGenerativeAI(temperature=0, model="gemini-1.5-pro", max_tokens=256, timeout=None, max_retries=2)
     else:
         raise ValueError("Unsupported model type: {model_type}")
-    return prompt | model | output_parser | {"context": retriever, "question": RunnablePassthrough()}
+    return {"context": retriever, "question": RunnablePassthrough()} | prompt | model | output_parser
 
 # Primeira opção de chain: pela seleção de runnables
 retriever=db.as_retriever()
-chain1 = create_chain("openai-gpt-3.5-turbo",retriever)
+chain1 = create_chain("openai",retriever)
 
 # Segunda opção de chain: pela chamada do llm simples
 llm = OpenAI(openai_api_key=api_key, temperature=0)
@@ -177,7 +177,7 @@ from langchain.chains import RetrievalQA
 retriever=db.as_retriever()
 chain3 = RetrievalQA.from_chain_type(llm, retriever=retriever)
 
-chain = chain3
+chain = chain1
 
 # Inicializa a conversa do assistente virtual
 if "chat_history" not in st.session_state:
