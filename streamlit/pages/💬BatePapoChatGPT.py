@@ -55,6 +55,8 @@ anthropic_api_key = os.getenv("ANTHROPIC_API_KEY")
 # os.environ["ANTHROPIC_API_KEY"]=anthropic_api_key
 # os.environ["ANTHROPIC_API_KEY"] = getpass.getpass("Enter your Anthropic API key: ")
 
+tracer = LangChainTracer(project_name="My Project")
+
 def init_pygame_mixer():
     try:
         pygame.mixer.init()
