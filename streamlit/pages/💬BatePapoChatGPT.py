@@ -23,7 +23,7 @@ from playsound import playsound
 
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from langchain_openai import ChatOpenAI
+#from langchain_openai import ChatOpenAI
 
 from transformers import GPT2TokenizerFast
 from langchain.document_loaders import PyPDFLoader
@@ -149,7 +149,7 @@ def create_chain(model_type):
     elif model_type == "openai": # https://python.langchain.com/v0.2/docs/integrations/chat/openai/
         model = ChatOpenAI()
     elif model_type == "openai-gpt-3.5-turbo": # https://python.langchain.com/v0.2/docs/integrations/chat/openai/
-        model = ChatOpenAI(temperature=0.0, model="gpt-3.5-turbo", max_tokens=256, timeout=None, max_retries=2, openai_api_key=openai_api_key)
+        #model = ChatOpenAI(temperature=0.0, model="gpt-3.5-turbo", max_tokens=256, timeout=None, max_retries=2, openai_api_key=openai_api_key)
     elif model_type == "anthropic": # https://python.langchain.com/v0.2/docs/integrations/chat/anthropic/
         model = ChatAnthropíc(temperature=0.0, model="claude-3-5-sonnet-20240620", max_tokens=256, timeout=None, max_retries=2)
     elif model_type == "gemini": # https://python.langchain.com/v0.2/docs/integrations/chat/google_generative_ai/
