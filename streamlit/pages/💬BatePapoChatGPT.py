@@ -243,7 +243,7 @@ if user_query is not None and user_query != '':
     if (chain==chain2):
         docs = db.similarity_search(user_query)
         # st.write(docs[0].page_content)
-        resposta = chain.run(input_documents=docs, question=user_query)
+        resposta = chain.run(input_documents=docs, question=user_query, callbacks=[tracer])
     if (chain==chain3):
         resposta = chain.run(user_query)
     
