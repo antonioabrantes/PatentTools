@@ -27,6 +27,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI
 from langchain_core.runnables import RunnablePassthrough
+from langchain.callbacks.tracers import LangChainTracer
 
 from transformers import GPT2TokenizerFast
 from langchain.document_loaders import PyPDFLoader
