@@ -159,7 +159,7 @@ def create_chain(model_type):
         raise ValueError("Unsupported model type: {model_type}")
     return prompt | model | output_parser
 
-chain = create_chain("openai")
+chain = create_chain("openai-gpt-3.5-turbo")
 
 llm = OpenAI(openai_api_key=api_key, temperature=0)
 chain = load_qa_chain(llm, chain_type="stuff")
