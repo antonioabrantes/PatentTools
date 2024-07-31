@@ -168,8 +168,9 @@ chain = load_qa_chain(llm, chain_type="stuff")
 # st.write(query)
 # st.write(resposta)
 
-#retriever=db.as_retriever()
-#chain = RetrievalQA.from_chain_type(llm, retriever=retriever)
+from langchain.chains import RetrievalQA 
+retriever=db.as_retriever()
+chain = RetrievalQA.from_chain_llm(llm, retriever=retriever)
 
 # Inicializa a conversa do assistente virtual
 if "chat_history" not in st.session_state:
@@ -197,8 +198,9 @@ if user_query is not None and user_query != '':
         st.markdown(user_query)
 
     # Processa a mensagem do usuário e gera a resposta
-    resposta = chain.run(input_documents=docs, question=user_query)
+    #resposta = chain.run(input_documents=docs, question=user_query)
     #resposta = chain.invoke({"question": user_query})
+    resposta = chain.invoke(user_query)
     
     # Adiciona a resposta do assistente ao histórico
     st.session_state.chat_history.append({'role': 'assistant', 'content': resposta})
