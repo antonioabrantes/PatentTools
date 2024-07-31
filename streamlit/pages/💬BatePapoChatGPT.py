@@ -162,6 +162,12 @@ def create_chain(model_type, retriever):
 # Primeira opção de chain: pela seleção de runnables
 retriever=db.as_retriever()
 chain1 = create_chain("openai",retriever)
+chain1 = (
+    {"context": retriever, "question": RunnablePassthrough()}
+    | prompt
+    | model
+    | StrOutputParser()
+)
 
 # Segunda opção de chain: pela chamada do llm simples
 llm = OpenAI(openai_api_key=api_key, temperature=0)
