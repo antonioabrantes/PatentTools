@@ -152,7 +152,7 @@ def create_chain(model_type, retriever):
     prompt = ChatPromptTemplate.from_template(template)
     output_parser = StrOutputParser()
     if model_type == "ollama": # https://python.langchain.com/v0.2/docs/integrations/chat/ollama/
-        model = Chatollama (model="llama3.1", base_url=os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434"))
+        model = Chatollama(model="llama3.1", base_url=os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434"))
     elif model_type == "openai": # https://python.langchain.com/v0.2/docs/integrations/chat/openai/
         model = OpenAI(openai_api_key=api_key, temperature=0)
     elif model_type == "openai-gpt-3.5-turbo": # https://python.langchain.com/v0.2/docs/integrations/chat/openai/
