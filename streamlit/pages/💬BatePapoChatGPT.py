@@ -279,6 +279,7 @@ if user_query is not None and user_query != '':
         #while pygame.mixer.music.get_busy():
         #    pygame.time.Clock().tick(10)
         
+        st.markdown("testando")
         tts = gTTS(text=resposta, lang='pt', slow=False)
         temp_audio_file = "./temp_audio.mp3"
         tts.save(temp_audio_file)
