@@ -20,6 +20,7 @@ from elevenlabs.client import ElevenLabs
 import pygame
 from playsound import playsound
 #from pygame import error as pygame_error
+from gtts import gTTS
 
 #from chromadb.config import Settings as ChromaSettings
 #from chromadb.client import Client as ChromaClient
@@ -254,17 +255,16 @@ if user_query is not None and user_query != '':
     with st.chat_message("assistant"):
         st.markdown(resposta)
         
-        voice='TX3LPaxmHKxFdv7VOQHJ'
-        audio = client.generate(
-            text='testando',
-            voice=Voice(voice_id=voice,
-                        settings=VoiceSettings(stability=0.35,
-                                               similarity_boost=0.4,
-                                               style=0.55,
-                                               use_speaker_boost=False)),
-            model='eleven_multilingual_v2'
-        )
-        
+        #voice='TX3LPaxmHKxFdv7VOQHJ'
+        #audio = client.generate(
+        #    text='testando',
+        #    voice=Voice(voice_id=voice,
+        #                settings=VoiceSettings(stability=0.35,
+        #                                       similarity_boost=0.4,
+        #                                       style=0.55,
+        #                                       use_speaker_boost=False)),
+        #    model='eleven_multilingual_v2'
+        #)
         filename = "./resposta.mp3"
         #save(audio=audio,filename=os.path.abspath(filename))
         filename = os.path.abspath(filename)
@@ -278,6 +278,18 @@ if user_query is not None and user_query != '':
         #pygame.mixer.music.play()
         #while pygame.mixer.music.get_busy():
         #    pygame.time.Clock().tick(10)
+        
+        tts = gTTS(text=resposta, lang='pt', slow=False)
+        temp_audio_file = "./temp_audio.mp3"
+        tts.save(temp_audio_file)
+        pygame.mixer.init()
+        pygame.mixer.music.load(temp_audio_file)
+        pygame.mixer.music.play()
+        while pygame.mixer.music.get_busy():
+            pygame.time.Clock().tick(10)  # Control the playback speed
+        pygame.mixer.music.stop()
+        pygame.mixer.quit()
+        os.remove(temp_audio_file)
 
 # pages = loader.load_and_split()
 
