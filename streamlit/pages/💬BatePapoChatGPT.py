@@ -56,6 +56,9 @@ gemini_api_key = os.getenv("GEMINI_API_KEY")
 anthropic_api_key = os.getenv("ANTHROPIC_API_KEY")
 # os.environ["ANTHROPIC_API_KEY"]=anthropic_api_key
 # os.environ["ANTHROPIC_API_KEY"] = getpass.getpass("Enter your Anthropic API key: ")
+groq_api_key = os.getenv("GROQ_API_KEY")
+#os.environ["GROQ_API_KEY"] = groq_api_key
+
 
 tracer = LangChainTracer(project_name="My Project")
 #langfuse_handler = CallbackHandler()
@@ -162,6 +165,8 @@ def create_chain(model_type, retriever):
         model = ChatAnthropíc(temperature=0.0, model="claude-3-5-sonnet-20240620", max_tokens=256, timeout=None, max_retries=2)
     elif model_type == "gemini": # https://python.langchain.com/v0.2/docs/integrations/chat/google_generative_ai/
         model = ChatGoogleGenerativeAI(temperature=0, model="gemini-1.5-pro", max_tokens=256, timeout=None, max_retries=2)
+    elif model_type == "groq": # 
+        model = ChatGroq(temperature=0, model_name="llama3-8b-8192", groq_api_key=groq_api_key)
     else:
         raise ValueError("Unsupported model type: {model_type}")
     return {"context": retriever, "question": RunnablePassthrough()} | prompt | model | output_parser
@@ -193,6 +198,8 @@ def create_model(model_type):
         model = ChatAnthropíc(temperature=0.0, model="claude-3-5-sonnet-20240620", max_tokens=256, timeout=None, max_retries=2)
     elif model_type == "gemini": # https://python.langchain.com/v0.2/docs/integrations/chat/google_generative_ai/
         model = ChatGoogleGenerativeAI(temperature=0, model="gemini-1.5-pro", max_tokens=256, timeout=None, max_retries=2)
+    elif model_type == "groq": # 
+        model = ChatGroq(temperature=0, model_name="llama3-8b-8192", groq_api_key=groq_api_key)
     else:
         raise ValueError("Unsupported model type: {model_type}")
     return model
