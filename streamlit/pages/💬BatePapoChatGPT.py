@@ -260,9 +260,8 @@ if user_query is not None and user_query != '':
     st.markdown(response)
     
     if response['tipo'] == 1:
-        st.markdown("Tipo 1 detectado")
         numero = utils.extrair_numero_pedido(user_query)
-        # numero = '102023024151'
+        numero = '102023024151'
         query = '"' + "mysql_query" + '"' ":" + '"' + f" * FROM arquivados where numero='{numero}' and anulado=0 order by data desc" + '"'
         url = f"http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={query}"
         data = utils.acessar_sinergias(url)
@@ -282,8 +281,6 @@ if user_query is not None and user_query != '':
 
             st.markdown("Última publicação: ",despacho,f"(publicado em {formatted_date})", resumo,'. ', descricao)
     else:
-        st.markdown("Tipo não identificado")
-
         # Processa a mensagem do usuário e gera a resposta
         if (chain==chain1):
             resposta = chain.invoke(user_query)
