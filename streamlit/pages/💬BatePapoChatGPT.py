@@ -283,7 +283,11 @@ if user_query is not None and user_query != '':
                 data = utils.acessar_sinergias(url)
                 descricao = data['patents'][0]['descricao'].strip()
                 resumo = data['patents'][0]['resumo'].strip()
-                resposta = f"Última publicação: {despacho} (publicado em {formatted_date}), {resumo}. {descricao}"
+                if resumo<>descricao:
+                    resposta = f"Última publicação: {despacho} (publicado em {formatted_date}), {resumo}. {descricao}"
+                else:
+                    resposta = f"Última publicação: {despacho} (publicado em {formatted_date}), {resumo}."
+                
         except:
             resposta = f"Erro na consulta {url}"
 
