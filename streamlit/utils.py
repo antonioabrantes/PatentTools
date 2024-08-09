@@ -215,10 +215,10 @@ def acessar_sinergias(url):
         print(f"An unexpected error occurred: {err}")    
     return -1
     
-# teste expressão regular online
+# teste expressão regular online https://regex101.com/
 
 def extrair_numero_pedido(texto):
-    padrao = r"(PI|MU|C1|C2|C3|C4|C5|C6|C7|C8|C9)\s*\d{7}(?:-\d)?|(?:BR\s*)?(?:\d{2}\s*)?(?:\d{4}\s*)?\d{6}(?:-\d)?"
+    padrao = r"(PI|MU|C1|C2|C3|C4|C5|C6|C7|C8|C9)\s*\d{7}(?:-\d)?|(?:BR\s*)?(?:\d{2}\s*)?(?:\d{4}\s*)?\b\d{12}\b"
     match = re.search(padrao, texto)
     if match:
         numero_pedido = match.group()
