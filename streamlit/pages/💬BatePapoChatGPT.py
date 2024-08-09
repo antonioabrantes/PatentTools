@@ -277,9 +277,12 @@ if user_query is not None and user_query != '':
             query = '"' + "mysql_query" + '"' ":" + '"' + f" * FROM despachos WHERE despacho='{despacho}'" + '"'
             url = f"http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={query}"
             data = utils.acessar_sinergias(url)
-            descricao = data['patents'][0]['descricao'].strip()
-            resumo = data['patents'][0]['resumo'].strip()
-            resposta = f"Última publicação: {despacho} (publicado em {formatted_date}), {resumo}. {descricao}"
+            try:
+                descricao = data['patents'][0]['descricao'].strip()
+                resumo = data['patents'][0]['resumo'].strip()
+                resposta = f"Última publicação: {despacho} (publicado em {formatted_date}), {resumo}. {descricao}"
+            except:
+                resposta = f"Erro na consulta {url}"
     else:
         # Processa a mensagem do usuário e gera a resposta
         if (chain==chain1):
