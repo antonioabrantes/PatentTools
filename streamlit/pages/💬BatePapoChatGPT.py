@@ -5,8 +5,8 @@ import sys
 import time
 from jobs_details import jobs_details as data
 
-#import utils
-from utils import calcular_digito_verificador
+import utils
+#from utils import calcular_digito_verificador
 
 from typing import List
 import os
@@ -98,7 +98,7 @@ st.title('BatePapos 💬')
 numero_pedido = "BR102023024151-9" # digito = 4
 numero_pedido = "PI9808989" # digito 7
 numero_pedido = "PI 0605203-7"
-digito = calcular_digito_verificador(numero_pedido)
+digito = utils.calcular_digito_verificador(numero_pedido)
 st.write("Dígito verificador:", digito)
 
 
