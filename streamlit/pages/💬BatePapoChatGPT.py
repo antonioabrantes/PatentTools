@@ -279,7 +279,7 @@ if user_query is not None and user_query != '':
             data = utils.acessar_sinergias(url)
             descricao = data['patents'][0]['descricao'].strip()
             resumo = data['patents'][0]['resumo'].strip()
-
+            resposta = f"Última publicação: {despacho} (publicado em {formatted_date}), {resumo}. {descricao}"
             #st.markdown("Última publicação: ",despacho,f"(publicado em {formatted_date})", resumo,'. ', descricao)
     else:
         # Processa a mensagem do usuário e gera a resposta
@@ -292,8 +292,7 @@ if user_query is not None and user_query != '':
         if (chain==chain3):
             resposta = chain.run(user_query)
     
-    
-    
+        
     # Adiciona a resposta do assistente ao histórico
     st.session_state.chat_history.append({'role': 'assistant', 'content': resposta})
     
