@@ -262,6 +262,9 @@ if user_query is not None and user_query != '':
     if response['tipo'] == 1:
         numero = utils.extrair_numero_pedido(user_query)
         # numero = '102023024151' PI9809089 11201300558 
+        numero= '11201300558'
+        # https://www.cientistaspatentes.com.br/apiphp/patents/query/?q="mysql_query":"* FROM arquivados where numero='112013005558' and anulado=0 order by data desc"
+        
         query = '"' + "mysql_query" + '"' ":" + '"' + f" * FROM arquivados where numero='{numero}' and anulado=0 order by data desc" + '"'
         url = f"http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={query}"
         data = utils.acessar_sinergias(url)
