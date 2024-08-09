@@ -1,4 +1,14 @@
 
+#Patentes de Invenção: 
+#10 – para pedidos depositados por nacionais e via CUP (antigo PI); 
+#11 – para pedidos depositados via PCT (antigo PI PCT); 
+#12 – para pedidos divididos (antigo PI); 
+#13 – para certificado de adição (antigo C1, C2, etc). 
+#Patentes de Modelo de Utilidade: 
+#20 – para pedidos depositados por nacionais e via CUP (antigo MU); 
+#21 – para pedidos depositados via PCT (antigo MU PCT); 
+#22 – para pedidos divididos (antigo MU).
+
 
 def extrair_digito_verificador(numero_pedido):
     # Remover espaços e prefixo "BR" se presente
@@ -88,3 +98,72 @@ def calcular_digito_verificador(numero_pedido):
         #digito_verificador = -3
 
     return digito_verificador
+    
+import requests
+from datetime import datetime
+
+month_names = {
+    1: "janeiro",
+    2: "fevereiro",
+    3: "março",
+    4: "abril",
+    5: "maio",
+    6: "junho",
+    7: "julho",
+    8: "agosto",
+    9: "setembro",
+    10: "outubro",
+    11: "novembro",
+    12: "dezembro"
+}
+
+def convert_date(date_str):
+    # Parse the date string
+    date_obj = datetime.strptime(date_str, '%Y-%m-%d')
+    
+    # Extract the day, month, and year
+    day = date_obj.day
+    month = month_names[date_obj.month]
+    year = date_obj.year
+    
+    # Format the date in the desired format
+    formatted_date = f"{day} de {month} de {year}"
+    return formatted_date
+    
+# Definindo cabeçalhos para a requisição
+headers = {
+    "Accept": "application/json",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+}
+
+
+def acessar_sinergias(url):
+    try:
+        # Requisição para obter os dados JSON
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()  # Verificar se a requisição foi bem-sucedida
+    
+        # Tentar decodificar o JSON
+        data = response.json()
+        #print(data)
+    
+        # Carregar os dados JSON em um DataFrame
+        #df = pd.DataFrame(data['despacho'])
+        #df['despacho'] = df['despacho'].fillna('Unknown')
+    
+        #print(df)
+    
+        # Verificar e converter a coluna 'count' para inteiro
+        #df['tempo'] = pd.to_numeric(df['tempo'], errors='coerce')
+        return data
+    
+    except requests.exceptions.HTTPError as http_err:
+        print(f"HTTP error occurred: {http_err}")
+    except requests.exceptions.RequestException as req_err:
+        print(f"Error occurred during request: {req_err}")
+    except ValueError as json_err:
+        print(f"JSON decode error: {json_err}")
+    except Exception as err:
+        print(f"An unexpected error occurred: {err}")    
+    return -1
+

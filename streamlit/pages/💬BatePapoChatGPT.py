@@ -1,3 +1,5 @@
+# Billing: https://platform.openai.com/settings/organization/billing/overview
+
 import streamlit as st
 
 from pathlib import Path
@@ -95,13 +97,26 @@ def use_pydub_alternative():
 # Título da página
 st.title('BatePapos 💬')
 
-numero_pedido = "BR102023024151-9" # digito = 4
-numero_pedido = "PI9808989" # digito 7
-numero_pedido = "PI 0605203-7"
-digito = utils.calcular_digito_verificador(numero_pedido)
-st.write("Dígito verificador:", digito)
+numero = '102023024151'
+query = '"' + "mysql_query" + '"' ":" + '"' + f" * FROM arquivados where numero='{numero}' and anulado=0 order by data desc" + '"'
+url = f"http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={query}"
+data = utils.acessar_sinergias(url)
 
+if 'patents' in data and len(data['patents']) > 0 and 'despacho' in data['patents'][0]:
+    #despachos = [patent['despacho'] for patent in data['patents']]
+    #for despacho in despachos:
+    #    print(despacho)
+        
+    despacho = data['patents'][0]['despacho'].strip()
+    formatted_date = utils.convert_date(data['patents'][0]['data'])
+    query = '"' + "mysql_query" + '"' ":" + '"' + f" * FROM despachos WHERE despacho='{despacho}'" + '"'
+    url = f"http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={query}"
+    data = utils.acessar_sinergias(url)
+    descricao = data['patents'][0]['descricao'].strip()
+    resumo = data['patents'][0]['resumo'].strip()
 
+    st.write("Última publicação: ",despacho,f"(publicado em {formatted_date})", resumo,'. ', descricao)
+    
 # Introdução do assistente virtual
 st.write("A Assistente Virtual Sophia está aqui para te ajudar a tirar suas dúvidas sobre o processamento de recursos de paedidos de patente! Atualmente o assistente tem informações mais comuns já cadastradas. Vamos começar?")
 
