@@ -257,12 +257,14 @@ if user_query is not None and user_query != '':
     { "tipo" : 1 }
     """
     response = utils.send_message(user_query, sistema, True)
-    if response['tipo'] == 0:
-        st.markdown("Tipo 0 detectado")
-    elif response['tipo'] == 1:
-        st.markdown("Tipo 1 detectado")
-    else:
-        st.markdown("Tipo não identificado")
+    st.markdown(response)
+    
+    #if response['tipo'] == 0:
+    #    st.markdown("Tipo 0 detectado")
+    #elif response['tipo'] == 1:
+    #    st.markdown("Tipo 1 detectado")
+    #else:
+    #    st.markdown("Tipo não identificado")
 
     numero = '102023024151'
     query = '"' + "mysql_query" + '"' ":" + '"' + f" * FROM arquivados where numero='{numero}' and anulado=0 order by data desc" + '"'
