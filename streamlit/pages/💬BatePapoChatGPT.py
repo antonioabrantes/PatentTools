@@ -256,7 +256,7 @@ if user_query is not None and user_query != '':
     Formato da resposta deve ser um JSON conforme o modelo:
     { "tipo" : 1 }
     """
-    response = utils.send_message(user_query, sistema, True, api_key=api_key)
+    response = utils.send_message(user_query, sistema, True, api_key=api_key )
     st.markdown(response)
     
     #if response['tipo'] == 0:
