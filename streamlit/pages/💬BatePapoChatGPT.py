@@ -5,6 +5,8 @@ import sys
 import time
 from jobs_details import jobs_details as data
 
+import utils
+
 from typing import List
 import os
 from dotenv import load_dotenv
@@ -91,6 +93,13 @@ def use_pydub_alternative():
 
 # Título da página
 st.title('BatePapo 💬')
+
+numero_pedido = "BR102023024151-9" # digito = 4
+numero_pedido = "PI9808989" # digito 7
+numero_pedido = "PI 0605203-7"
+digito = calcular_digito_verificador(numero_pedido)
+st.write("Dígito verificador:", digito)
+
 
 # Introdução do assistente virtual
 st.write("A Assistente Virtual Sophia está aqui para te ajudar a tirar suas dúvidas sobre o processamento de recursos de paedidos de patente! Atualmente o assistente tem informações mais comuns já cadastradas. Vamos começar?")
