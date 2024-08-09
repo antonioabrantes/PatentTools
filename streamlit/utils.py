@@ -45,8 +45,8 @@ def send_message(prompt, sistema = "", json_format = False):
             return json.loads(response_json['choices'][0]['message']['content'])
         return response_json['choices'][0]['message']['content']
     else:
-        st.write(f"Error: {response.status_code}, {response.text}")
-        return None
+        return f"Error: {response.status_code}, {response.text}, {url}, {data}"
+        #return None
         
 #Patentes de Invenção: 
 #10 – para pedidos depositados por nacionais e via CUP (antigo PI); 
