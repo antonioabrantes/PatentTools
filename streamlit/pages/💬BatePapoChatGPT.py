@@ -5,7 +5,8 @@ import sys
 import time
 from jobs_details import jobs_details as data
 
-import utils
+#import utils
+from utils import calcular_digito_verificador
 
 from typing import List
 import os
