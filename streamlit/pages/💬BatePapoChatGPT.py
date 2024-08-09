@@ -264,10 +264,18 @@ user_query = st.chat_input('Você pode falar ou digitar sua resposta aqui:')
 if user_query is not None and user_query != '':
     # Adiciona a mensagem do usuário ao histórico
     st.session_state.chat_history.append({'role': 'user', 'content': user_query})
-    
     # Exibe a mensagem do usuário
     with st.chat_message("user"):
         st.markdown(user_query)
+        
+    user_query = """Seu nome é Sophia.
+    Caso você receba uma mensagem pedindo pelo andamento ou status de um pedido de patente, responda tipo 1.
+    Nos outros casos responda tipo 0.
+
+    Pergunta: {user_query}
+    Formato da resposta deve ser um JSON conforme o modelo:
+    { "tipo" : 1 }
+    """
 
     # Processa a mensagem do usuário e gera a resposta
     if (chain==chain1):
@@ -276,6 +284,13 @@ if user_query is not None and user_query != '':
         docs = db.similarity_search(user_query)
         # st.write(docs[0].page_content)
         resposta = chain.run(input_documents=docs, question=user_query, callbacks=[tracer])
+        if response['tipo'] == 0:
+            st.markdown("Tipo 0 detectado")
+        elif response['tipo'] == 1:
+            st.markdown("Tipo 1 detectado")
+        else:
+            st.markdown("Tipo não identificado")
+            
     if (chain==chain3):
         resposta = chain.run(user_query)
     

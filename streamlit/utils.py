@@ -45,7 +45,7 @@ def send_message(prompt, sistema = "", json_format = False):
             return json.loads(response_json['choices'][0]['message']['content'])
         return response_json['choices'][0]['message']['content']
     else:
-        print(f"Error: {response.status_code}, {response.text}")
+        st.write(f"Error: {response.status_code}, {response.text}")
         return None
         
 #Patentes de Invenção: 
