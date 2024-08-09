@@ -8,7 +8,6 @@ import time
 from jobs_details import jobs_details as data
 
 import utils
-#from utils import calcular_digito_verificador
 
 from typing import List
 import os
