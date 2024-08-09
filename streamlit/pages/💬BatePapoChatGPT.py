@@ -262,34 +262,37 @@ if user_query is not None and user_query != '':
     if response['tipo'] == 1:
         numero = utils.extrair_numero_pedido(user_query)
         # numero = '102023024151' PI9809089 11201300558 
-        numero= '11201300558'
-        numero= '112013005558'
+        # numero= '11201300558'
+        # numero= '112013005558'
         # https://www.cientistaspatentes.com.br/apiphp/patents/query/?q="mysql_query":"* FROM arquivados where numero='112013005558' and anulado=0 order by data desc"
         
-        query = '"' + "mysql_query" + '"' ":" + '"' + f" * FROM arquivados where numero='{numero}' and anulado=0 order by data desc" + '"'
-        url = f"http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={query}"
-        data = utils.acessar_sinergias(url)
+        if numero is not None:
+            query = '"' + "mysql_query" + '"' ":" + '"' + f" * FROM arquivados where numero='{numero}' and anulado=0 order by data desc" + '"'
+            url = f"http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={query}"
+            data = utils.acessar_sinergias(url)
 
-        try:
-            if 'patents' in data and len(data['patents']) > 0 and 'despacho' in data['patents'][0]:
-                #despachos = [patent['despacho'] for patent in data['patents']]
-                #for despacho in despachos:
-                #    print(despacho)
+            try:
+                if 'patents' in data and len(data['patents']) > 0 and 'despacho' in data['patents'][0]:
+                    #despachos = [patent['despacho'] for patent in data['patents']]
+                    #for despacho in despachos:
+                    #    print(despacho)
+                        
+                    despacho = data['patents'][0]['despacho'].strip()
+                    formatted_date = utils.convert_date(data['patents'][0]['data'])
+                    query = '"' + "mysql_query" + '"' ":" + '"' + f" * FROM despachos WHERE despacho='{despacho}'" + '"'
+                    url = f"http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={query}"
+                    data = utils.acessar_sinergias(url)
+                    descricao = data['patents'][0]['descricao'].strip()
+                    resumo = data['patents'][0]['resumo'].strip()
+                    if resumo != descricao:
+                        resposta = f"Última publicação: {despacho} (publicado em {formatted_date}), {resumo}. {descricao}"
+                    else:
+                        resposta = f"Última publicação: {despacho} (publicado em {formatted_date}), {resumo}."
                     
-                despacho = data['patents'][0]['despacho'].strip()
-                formatted_date = utils.convert_date(data['patents'][0]['data'])
-                query = '"' + "mysql_query" + '"' ":" + '"' + f" * FROM despachos WHERE despacho='{despacho}'" + '"'
-                url = f"http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={query}"
-                data = utils.acessar_sinergias(url)
-                descricao = data['patents'][0]['descricao'].strip()
-                resumo = data['patents'][0]['resumo'].strip()
-                if resumo != descricao:
-                    resposta = f"Última publicação: {despacho} (publicado em {formatted_date}), {resumo}. {descricao}"
-                else:
-                    resposta = f"Última publicação: {despacho} (publicado em {formatted_date}), {resumo}."
-                
-        except:
-            resposta = f"Erro na consulta {url}"
+            except:
+                resposta = f"Erro na consulta {url}"
+        else:
+            resposta = "Número inválido"
 
     else:
         # Processa a mensagem do usuário e gera a resposta
