@@ -92,7 +92,7 @@ def use_pydub_alternative():
 
 
 # Título da página
-st.title('BatePapo 💬')
+st.title('BatePapos 💬')
 
 numero_pedido = "BR102023024151-9" # digito = 4
 numero_pedido = "PI9808989" # digito 7
