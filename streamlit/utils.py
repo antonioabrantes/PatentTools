@@ -1,4 +1,53 @@
+import os
+import re
+# https://www.youtube.com/watch?v=JbiTQVKvNew&t=597s
+# Fazendo um Sistema de Agentes com I.A do Zero Sem CrewAI
+# https://github.com/inteligenciamilgrau/videos_tutoriais/tree/main/crewai_sem_crewai
 
+import requests
+import json
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+app_dir = os.path.join(os.getcwd(), "app")
+load_dotenv(os.path.join(app_dir, ".env"))
+
+def send_message(prompt, sistema = "", json_format = False):
+
+    api_key = os.getenv("OPENAI_API_KEY")  # Get the API key from the environment
+    url = "https://api.openai.com/v1/chat/completions"
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json"
+    }
+
+    formato = "text"
+    if json_format:
+        formato = "json_object"
+
+    mensagem = []
+    if sistema != "":
+        mensagem.append({"role": "system", "content": sistema})
+    mensagem.append({"role": "user", "content": prompt})
+
+    data = {
+        "model": "gpt-3.5-turbo",  # Ensure to specify the correct model
+        "messages": mensagem,
+        "max_tokens": 512,  # You can adjust this as needed
+        "response_format": { "type": formato },
+    }
+
+    response = requests.post(url, headers=headers, json=data)
+
+    if response.status_code == 200:
+        response_json = response.json()
+        if json_format:
+            return json.loads(response_json['choices'][0]['message']['content'])
+        return response_json['choices'][0]['message']['content']
+    else:
+        print(f"Error: {response.status_code}, {response.text}")
+        return None
+        
 #Patentes de Invenção: 
 #10 – para pedidos depositados por nacionais e via CUP (antigo PI); 
 #11 – para pedidos depositados via PCT (antigo PI PCT); 
@@ -166,4 +215,16 @@ def acessar_sinergias(url):
     except Exception as err:
         print(f"An unexpected error occurred: {err}")    
     return -1
+    
+# teste expressão regular online
+
+def extrair_numero_pedido(texto):
+    padrao = r"(PI|MU|C1|C2|C3|C4|C5|C6|C7|C8|C9)\s*\d{7}(?:-\d)?|(?:BR\s*)?(?:\d{2}\s*)?(?:\d{4}\s*)?\d{6}(?:-\d)?"
+    match = re.search(padrao, texto)
+    if match:
+        numero_pedido = match.group()
+        numero_pedido = numero_pedido.replace(" ", "").upper().strip()
+        return numero_pedido
+    else:
+        return None
 
