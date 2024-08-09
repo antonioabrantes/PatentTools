@@ -265,6 +265,7 @@ if user_query is not None and user_query != '':
         query = '"' + "mysql_query" + '"' ":" + '"' + f" * FROM arquivados where numero='{numero}' and anulado=0 order by data desc" + '"'
         url = f"http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={query}"
         data = utils.acessar_sinergias(url)
+        print(data)
 
         if 'patents' in data and len(data['patents']) > 0 and 'despacho' in data['patents'][0]:
             #despachos = [patent['despacho'] for patent in data['patents']]
@@ -279,7 +280,7 @@ if user_query is not None and user_query != '':
             descricao = data['patents'][0]['descricao'].strip()
             resumo = data['patents'][0]['resumo'].strip()
 
-            st.markdown("Última publicação: ",despacho,f"(publicado em {formatted_date})", resumo,'. ', descricao)
+            #st.markdown("Última publicação: ",despacho,f"(publicado em {formatted_date})", resumo,'. ', descricao)
     else:
         # Processa a mensagem do usuário e gera a resposta
         if (chain==chain1):
