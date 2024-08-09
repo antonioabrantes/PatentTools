@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 app_dir = os.path.join(os.getcwd(), "app")
 load_dotenv(os.path.join(app_dir, ".env"))
 
-def send_message(prompt, sistema = "", json_format = False, api_key):
+def send_message(prompt, sistema = "", json_format = False, api_key=""):
 
     url = "https://api.openai.com/v1/chat/completions"
     headers = {
