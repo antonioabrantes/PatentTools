@@ -320,12 +320,15 @@ if user_query is not None and user_query != '':
     with st.chat_message("assistant"):
         st.markdown(resposta)
         
-        with open('mensagens.txt', 'a') as file:
-            now = datetime.now()
-            formatted_now = now.strftime("%Y-%m-%d %H:%M:%S")
-            file.write(formatted_now + "\n")
-            file.write(user_query + "\n")
-            file.write(resposta + "\n\n")
+        try:
+            with open('mensagens.txt', 'a') as file:
+                now = datetime.now()
+                formatted_now = now.strftime("%Y-%m-%d %H:%M:%S")
+                file.write(formatted_now + "\n")
+                file.write(user_query + "\n")
+                file.write(resposta + "\n\n")
+        except Exception as e:
+            st.markdown("Ocorreu um erro ao tentar abrir ou escrever no arquivo:", str(e))
             
             
         #voice='TX3LPaxmHKxFdv7VOQHJ'
