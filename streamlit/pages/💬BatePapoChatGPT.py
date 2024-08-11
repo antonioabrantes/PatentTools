@@ -8,6 +8,7 @@ import time
 from jobs_details import jobs_details as data
 
 import utils
+from datetime import datetime
 
 from typing import List
 import os
@@ -319,6 +320,14 @@ if user_query is not None and user_query != '':
     with st.chat_message("assistant"):
         st.markdown(resposta)
         
+        with open('mensagens.txt', 'a') as file:
+            now = datetime.now()
+            formatted_now = now.strftime("%Y-%m-%d %H:%M:%S")
+            file.write(formatted_now + "\n")
+            file.write(user_query + "\n")
+            file.write(resposta + "\n\n")
+            
+            
         #voice='TX3LPaxmHKxFdv7VOQHJ'
         #audio = client.generate(
         #    text='testando',
