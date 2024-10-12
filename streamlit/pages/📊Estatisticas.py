@@ -8,7 +8,7 @@ import random
 from pyecharts.charts import Bar
 from pyecharts import options as opts
 from streamlit_echarts import st_pyecharts
-
+import numpy as np
 
 # https://echarts.streamlit.app/
 # Adicionando título 
