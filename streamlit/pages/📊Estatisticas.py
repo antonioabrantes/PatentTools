@@ -31,7 +31,7 @@ option2 = {
 }
 
 # Widget de seleção para escolher entre os gráficos
-chart_selection = st.radio("Selecione o gráfico:", ("Patentes concedidas (16.1)", "Tempo de concessão de PI", "Tempo de concessão de PI (zoom)", "Gráfico 4", "Pedidos sub judice por Divisão Técnica (15.23)"))
+chart_selection = st.radio("Selecione o gráfico:", ("Patentes concedidas (16.1)", "Tempo de concessão de PI", "Tempo de concessão de PI (zoom)", "Gráfico 4", "Pedidos sub judice por Divisão Técnica (15.23)","Gráfico 5"))
 
 # Renderiza o gráfico selecionado com base na seleção do usuário
 
@@ -267,9 +267,35 @@ elif chart_selection == "Gráfico 4":
         ],
     }
     st_echarts(options=options, height="400px")
+
+elif chart_selection == "Gráfico 5":
+        fig, ax = plt.subplots()
+        df['ano'] = [2020, 2021, 2022, 2023, 2024]
+        df['prj'] = [2033, 2032, 2031, 2030, 2029]
+        
+        ax.plot(df['ano'], df['prj'], marker='o')
+
+        # Adicionar linhas verticais
+        for i, label in enumerate(df['ano']):
+            ax.axvline(x=i, color='gray', linestyle='--', linewidth=0.5)
+
+        # Adicionar linhas horizontais
+        for count in df['prj']:
+            ax.axhline(y=count, color='gray', linestyle='--', linewidth=0.5)
+            
+        # Adicionar rótulos e título
+        ax.set_xlabel('Ano')
+        ax.set_ylabel('Projeção')
+        ax.set_title('Projeção de primeiro exame')
+        ax.set_xticks(range(len(df['ano'])))
+        ax.set_xticklabels(df['ano'], rotation=90)
+
+        # Mostrar o gráfico no Streamlit
+        st.pyplot(fig)
 else:
     url = "http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={%22mysql_query%22:%22divisao,count(*)%20FROM%20arquivados%20where%20despacho=%2715.23%27%20and%20year(data)%3E=2000%20group%20by%20divisao%20order%20by%20count(*)%20desc%22}"
     # Definindo cabeçalhos para a requisição
+    # http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={"mysql_query":"divisao,count(*) FROM arquivados where despacho='15.23' and year(data)>=2000  group by divisao order by count(*) desc"
     headers = {
         "Accept": "application/json",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
