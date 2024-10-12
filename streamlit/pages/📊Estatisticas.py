@@ -288,8 +288,7 @@ elif chart_selection == "Gráfico 5":
         # Desenhar a reta de mínimos quadrados
         coef = np.polyfit(df['ano'], df['prj'], 1)
         poly1d_fn = np.poly1d(coef)
-        #ax.plot(df['ano'], poly1d_fn(df['ano']), color='red', linestyle='-', label='Reta de Mínimos Quadrados')
-        ax.plot(anos_extendidos, poly1d_fn(anos_extendidos), color='red', linestyle='-', label='Reta de Mínimos Quadrados')
+        ax.plot(anos_extendidos, poly1d_fn(anos_extendidos), color='red', linestyle='--', label='Reta de Mínimos Quadrados')
 
         # escreve em cada ponto o valor de y
         for i, (ano, prj) in enumerate(zip(df['ano'], df['prj'])):
