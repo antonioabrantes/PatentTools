@@ -285,16 +285,19 @@ elif chart_selection == "Gráfico 5":
             ax.axhline(y=count, color='gray', linestyle='--', linewidth=0.5)
  
         # Desenhar a reta de mínimos quadrados
+        anos_extendidos = np.arange(2020, 2031)
         coef = np.polyfit(df['ano'], df['prj'], 1)
         poly1d_fn = np.poly1d(coef)
-        ax.plot(df['ano'], poly1d_fn(df['ano']), color='red', linestyle='-', label='Reta de Mínimos Quadrados')
- 
-        # Adicionar rótulos e título
+        #ax.plot(df['ano'], poly1d_fn(df['ano']), color='red', linestyle='-', label='Reta de Mínimos Quadrados')
+        ax.plot(anos_extendidos, poly1d_fn(anos_extendidos), color='red', linestyle='-', label='Reta de Mínimos Quadrados')
+
+         # Adicionar rótulos e título
         ax.set_xlabel('Ano')
         ax.set_ylabel('Projeção')
         ax.set_title('Projeção de primeiro exame')
         ax.set_xticks(df['ano'])
         ax.set_xticklabels(df['ano'], rotation=90)
+        ax.legend()
 
         # Mostrar o gráfico no Streamlit
         st.pyplot(fig)
