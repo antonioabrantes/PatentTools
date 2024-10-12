@@ -277,7 +277,8 @@ elif chart_selection == "Gráfico 5":
         ax.plot(df['ano'], df['prj'], marker='o')
 
         # Adicionar linhas verticais
-        for label in df['ano']:
+        anos_extendidos = np.arange(2020, 2031)
+        for label in anos_extendidos:
             ax.axvline(x=label, color='gray', linestyle='--', linewidth=0.5)
 
         # Adicionar linhas horizontais
@@ -285,7 +286,6 @@ elif chart_selection == "Gráfico 5":
             ax.axhline(y=count, color='gray', linestyle='--', linewidth=0.5)
  
         # Desenhar a reta de mínimos quadrados
-        anos_extendidos = np.arange(2020, 2031)
         coef = np.polyfit(df['ano'], df['prj'], 1)
         poly1d_fn = np.poly1d(coef)
         #ax.plot(df['ano'], poly1d_fn(df['ano']), color='red', linestyle='-', label='Reta de Mínimos Quadrados')
