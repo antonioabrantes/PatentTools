@@ -291,9 +291,17 @@ elif chart_selection == "Gráfico 5":
         #ax.plot(df['ano'], poly1d_fn(df['ano']), color='red', linestyle='-', label='Reta de Mínimos Quadrados')
         ax.plot(anos_extendidos, poly1d_fn(anos_extendidos), color='red', linestyle='-', label='Reta de Mínimos Quadrados')
 
+        # escreve em cada ponto o valor de y
         for i, (ano, prj) in enumerate(zip(df['ano'], df['prj'])):
             ax.annotate(f'{prj}', (ano, prj), textcoords="offset points", xytext=(0,5), ha='center', fontsize=8)
 
+        # Encontrar o ponto em que y = x na reta de mínimos quadrados
+        for ano in anos_extendidos:
+            y_value = poly1d_fn(ano)
+            if np.isclose(y_value, ano, atol=1):  # Checar se y é aproximadamente igual a x (ano)
+                ax.plot(ano, y_value, 'bo', label='Projeção')
+                break
+                
         # Adicionar rótulos e título
         ax.set_xlabel('Ano')
         ax.set_ylabel('Projeção')
