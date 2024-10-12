@@ -277,7 +277,7 @@ elif chart_selection == "Gráfico 5":
         ax.plot(df['ano'], df['prj'], marker='o')
 
         # Adicionar linhas verticais
-        for label in enumerate(df['ano']):
+        for label in df['ano']:
             ax.axvline(x=label, color='gray', linestyle='--', linewidth=0.5)
 
         # Adicionar linhas horizontais
