@@ -288,7 +288,7 @@ elif chart_selection == "Gráfico 5":
         ax.set_xlabel('Ano')
         ax.set_ylabel('Projeção')
         ax.set_title('Projeção de primeiro exame')
-        ax.set_xticks(range(len(df['ano'])))
+        ax.set_xticks(df['ano'])
         ax.set_xticklabels(df['ano'], rotation=90)
 
         # Mostrar o gráfico no Streamlit
