@@ -270,6 +270,7 @@ elif chart_selection == "Gráfico 4":
 
 elif chart_selection == "Gráfico 5":
         fig, ax = plt.subplots()
+        df = pd.DataFrame()
         df['ano'] = [2020, 2021, 2022, 2023, 2024]
         df['prj'] = [2033, 2032, 2031, 2030, 2029]
         
