@@ -291,7 +291,10 @@ elif chart_selection == "Gráfico 5":
         #ax.plot(df['ano'], poly1d_fn(df['ano']), color='red', linestyle='-', label='Reta de Mínimos Quadrados')
         ax.plot(anos_extendidos, poly1d_fn(anos_extendidos), color='red', linestyle='-', label='Reta de Mínimos Quadrados')
 
-         # Adicionar rótulos e título
+        for i, (ano, prj) in enumerate(zip(df['ano'], df['prj'])):
+            ax.annotate(f'{prj}', (ano, prj), textcoords="offset points", xytext=(0,5), ha='center')
+
+        # Adicionar rótulos e título
         ax.set_xlabel('Ano')
         ax.set_ylabel('Projeção')
         ax.set_title('Projeção de primeiro exame')
