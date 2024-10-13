@@ -297,10 +297,10 @@ elif chart_selection == "Gráfico 5":
             df['ano'] = pd.to_numeric(df['ano'], errors='coerce')
             st.write(df['ano'])
         
-            df['ano'] = [2020, 2021, 2022, 2023, 2024]
+            df['anox'] = [2020, 2021, 2022, 2023, 2024]
             df['prj'] = [2033.9, 2030.5, 2031.5, 2030.5, 2029.8]
             
-            ax.plot(df['ano'], df['prj'], marker='o')
+            ax.plot(df['anox'], df['prj'], marker='o')
 
             # Adicionar linhas verticais
             anos_extendidos = np.arange(2020, 2031)
@@ -312,19 +312,19 @@ elif chart_selection == "Gráfico 5":
                 ax.axhline(y=count, color='gray', linestyle='--', linewidth=0.5)
      
             # Desenhar a reta de mínimos quadrados
-            coef = np.polyfit(df['ano'], df['prj'], 1)
+            coef = np.polyfit(df['anox'], df['prj'], 1)
             poly1d_fn = np.poly1d(coef)
             ax.plot(anos_extendidos, poly1d_fn(anos_extendidos), color='red', linestyle='--', label='Reta de Mínimos Quadrados')
 
             # escreve em cada ponto o valor de y
-            for i, (ano, prj) in enumerate(zip(df['ano'], df['prj'])):
-                ax.annotate(f'{prj}', (ano, prj), textcoords="offset points", xytext=(0,5), ha='center', fontsize=8)
+            for i, (anox, prj) in enumerate(zip(df['anox'], df['prj'])):
+                ax.annotate(f'{prj}', (anox, prj), textcoords="offset points", xytext=(0,5), ha='center', fontsize=8)
 
             # Encontrar o ponto em que y = x na reta de mínimos quadrados
-            for ano in anos_extendidos:
-                y_value = poly1d_fn(ano)
-                if np.isclose(y_value, ano, atol=1):  # Checar se y é aproximadamente igual a x (ano)
-                    ax.plot(ano, y_value, 'bo', label='Projeção')
+            for anox in anos_extendidos:
+                y_value = poly1d_fn(anox)
+                if np.isclose(y_value, anox, atol=1):  # Checar se y é aproximadamente igual a x (ano)
+                    ax.plot(anox, y_value, 'bo', label='Projeção')
                     break
                     
             # Adicionar rótulos e título
