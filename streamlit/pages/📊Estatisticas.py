@@ -288,7 +288,7 @@ elif chart_selection == "Gráfico 5":
             data = response.json()
 
             # Carregar os dados JSON em um DataFrame
-            #df = pd.DataFrame(data['patents'])
+            df = pd.DataFrame(data['patents'])
             #df['divisao'] = df['divisao'].fillna('Unknown')
 
             # Verificar e converter a coluna 'count' para inteiro
