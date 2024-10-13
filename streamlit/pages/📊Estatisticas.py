@@ -288,14 +288,14 @@ elif chart_selection == "Gráfico 5":
             data = response.json()
 
             # Carregar os dados JSON em um DataFrame
-            df = pd.DataFrame(data['patents'])
-            df['divisao'] = df['divisao'].fillna('Unknown')
+            #df = pd.DataFrame(data['patents'])
+            #df['divisao'] = df['divisao'].fillna('Unknown')
 
             # Verificar e converter a coluna 'count' para inteiro
             #df['producao'] = pd.to_numeric(df['producao'], errors='coerce')
-            df['estoque'] = pd.to_numeric(df['estoque'], errors='coerce')
-            df['ano'] = pd.to_numeric(df['ano'], errors='coerce')
-            st.write(df['ano'])
+            #df['estoque'] = pd.to_numeric(df['estoque'], errors='coerce')
+            #df['ano'] = pd.to_numeric(df['ano'], errors='coerce')
+            #st.write(df['ano'])
         
             df['anox'] = [2020, 2021, 2022, 2023, 2024]
             df['prj'] = [2033.9, 2030.5, 2031.5, 2030.5, 2029.8]
