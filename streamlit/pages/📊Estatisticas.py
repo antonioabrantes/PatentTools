@@ -269,48 +269,83 @@ elif chart_selection == "Gráfico 4":
     st_echarts(options=options, height="400px")
 
 elif chart_selection == "Gráfico 5":
+
+        url = "https://cientistaspatentes.com.br/central/data/cgrec_json.txt"
         fig, ax = plt.subplots()
         df = pd.DataFrame()
-        df['ano'] = [2020, 2021, 2022, 2023, 2024]
-        df['prj'] = [2033.9, 2030.5, 2031.5, 2030.5, 2029.8]
         
-        ax.plot(df['ano'], df['prj'], marker='o')
+        headers = {
+            "Accept": "application/json",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+        }
 
-        # Adicionar linhas verticais
-        anos_extendidos = np.arange(2020, 2031)
-        for label in anos_extendidos:
-            ax.axvline(x=label, color='gray', linestyle='--', linewidth=0.5)
+        try:
+            # Requisição para obter os dados JSON
+            response = requests.get(url, headers=headers)
+            response.raise_for_status()  # Verificar se a requisição foi bem-sucedida
 
-        # Adicionar linhas horizontais
-        for count in df['prj']:
-            ax.axhline(y=count, color='gray', linestyle='--', linewidth=0.5)
- 
-        # Desenhar a reta de mínimos quadrados
-        coef = np.polyfit(df['ano'], df['prj'], 1)
-        poly1d_fn = np.poly1d(coef)
-        ax.plot(anos_extendidos, poly1d_fn(anos_extendidos), color='red', linestyle='--', label='Reta de Mínimos Quadrados')
+            # Tentar decodificar o JSON
+            data = response.json()
 
-        # escreve em cada ponto o valor de y
-        for i, (ano, prj) in enumerate(zip(df['ano'], df['prj'])):
-            ax.annotate(f'{prj}', (ano, prj), textcoords="offset points", xytext=(0,5), ha='center', fontsize=8)
+            # Carregar os dados JSON em um DataFrame
+            df = pd.DataFrame(data['patents'])
+            df['divisao'] = df['divisao'].fillna('Unknown')
 
-        # Encontrar o ponto em que y = x na reta de mínimos quadrados
-        for ano in anos_extendidos:
-            y_value = poly1d_fn(ano)
-            if np.isclose(y_value, ano, atol=1):  # Checar se y é aproximadamente igual a x (ano)
-                ax.plot(ano, y_value, 'bo', label='Projeção')
-                break
-                
-        # Adicionar rótulos e título
-        ax.set_xlabel('Ano')
-        ax.set_ylabel('Projeção')
-        ax.set_title('Projeção de primeiro exame')
-        ax.set_xticks(anos_extendidos)
-        ax.set_xticklabels(anos_extendidos, rotation=90)
-        ax.legend()
+            # Verificar e converter a coluna 'count' para inteiro
+            #df['producao'] = pd.to_numeric(df['producao'], errors='coerce')
+            df['estoque'] = pd.to_numeric(df['estoque'], errors='coerce')
+            df['ano'] = pd.to_numeric(df['ano'], errors='coerce')
+            st.write(df['ano'])
+        
+            df['ano'] = [2020, 2021, 2022, 2023, 2024]
+            df['prj'] = [2033.9, 2030.5, 2031.5, 2030.5, 2029.8]
+            
+            ax.plot(df['ano'], df['prj'], marker='o')
 
-        # Mostrar o gráfico no Streamlit
-        st.pyplot(fig)
+            # Adicionar linhas verticais
+            anos_extendidos = np.arange(2020, 2031)
+            for label in anos_extendidos:
+                ax.axvline(x=label, color='gray', linestyle='--', linewidth=0.5)
+
+            # Adicionar linhas horizontais
+            for count in df['prj']:
+                ax.axhline(y=count, color='gray', linestyle='--', linewidth=0.5)
+     
+            # Desenhar a reta de mínimos quadrados
+            coef = np.polyfit(df['ano'], df['prj'], 1)
+            poly1d_fn = np.poly1d(coef)
+            ax.plot(anos_extendidos, poly1d_fn(anos_extendidos), color='red', linestyle='--', label='Reta de Mínimos Quadrados')
+
+            # escreve em cada ponto o valor de y
+            for i, (ano, prj) in enumerate(zip(df['ano'], df['prj'])):
+                ax.annotate(f'{prj}', (ano, prj), textcoords="offset points", xytext=(0,5), ha='center', fontsize=8)
+
+            # Encontrar o ponto em que y = x na reta de mínimos quadrados
+            for ano in anos_extendidos:
+                y_value = poly1d_fn(ano)
+                if np.isclose(y_value, ano, atol=1):  # Checar se y é aproximadamente igual a x (ano)
+                    ax.plot(ano, y_value, 'bo', label='Projeção')
+                    break
+                    
+            # Adicionar rótulos e título
+            ax.set_xlabel('Ano')
+            ax.set_ylabel('Projeção')
+            ax.set_title('Projeção de primeiro exame')
+            ax.set_xticks(anos_extendidos)
+            ax.set_xticklabels(anos_extendidos, rotation=90)
+            ax.legend()
+
+            # Mostrar o gráfico no Streamlit
+            st.pyplot(fig)
+            
+    except requests.exceptions.HTTPError as http_err:
+        st.error(f"HTTP error occurred: {http_err}")
+    except requests.exceptions.RequestException as req_err:
+        st.error(f"Error occurred during request: {req_err}")
+    except ValueError as json_err:
+        st.error(f"JSON decode error: {json_err}")
+    except Exception as err:
+        st.error(f"An unexpected error occurred: {err}")
 else:
     url = "http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={%22mysql_query%22:%22divisao,count(*)%20FROM%20arquivados%20where%20despacho=%2715.23%27%20and%20year(data)%3E=2000%20group%20by%20divisao%20order%20by%20count(*)%20desc%22}"
     # Definindo cabeçalhos para a requisição
