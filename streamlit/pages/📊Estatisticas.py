@@ -355,7 +355,8 @@ elif chart_selection == "Gráfico 5":
             st.write(f"projeção 2024={projecao_2024}")
 
             df['ano'] = [2020, 2021, 2022, 2023, 2024]
-            df['prj'] = [2033.9, 2030.5, 2031.5, 2030.5, 2029.8]
+            #df['prj'] = [2033.9, 2030.5, 2031.5, 2030.5, 2029.8]
+            df['prj'] = [projecao_2020, projecao_2021, projecao_2022, projecao_2023, projecao_2024]
             
             ax.plot(df['ano'], df['prj'], marker='o')
 
