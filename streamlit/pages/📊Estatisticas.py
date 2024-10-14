@@ -330,8 +330,20 @@ elif chart_selection == "Gráfico 5":
             st.write(f"estoque={estoque_2020}")
             
             estoque_2020 = df1.loc[df1['divisao'] == divisao, 'estoque'].values[0].get('2020')
-            st.write(f"estoque2={estoque_2020}")
+            estoque_2021 = df1.loc[df1['divisao'] == divisao, 'estoque'].values[0].get('2021')
+            estoque_2022 = df1.loc[df1['divisao'] == divisao, 'estoque'].values[0].get('2022')
+            estoque_2023 = df1.loc[df1['divisao'] == divisao, 'estoque'].values[0].get('2023')
+            estoque_2024 = df1.loc[df1['divisao'] == divisao, 'estoque'].values[0].get('2024')
 
+            producao_2020 = df1.loc[df1['divisao'] == divisao, 'producao'].values[0].get('2020')
+            producao_2021 = df1.loc[df1['divisao'] == divisao, 'producao'].values[0].get('2021')
+            producao_2022 = df1.loc[df1['divisao'] == divisao, 'producao'].values[0].get('2022')
+            producao_2023 = df1.loc[df1['divisao'] == divisao, 'producao'].values[0].get('2023')
+            producao_2024 = df1.loc[df1['divisao'] == divisao, 'producao'].values[0].get('2024')
+            st.write(f"estoque2={estoque_2020}")
+            st.write(f"producao2={producao_2020}")
+
+            projecao_2020 = ano + 
 
             df['ano'] = [2020, 2021, 2022, 2023, 2024]
             df['prj'] = [2033.9, 2030.5, 2031.5, 2030.5, 2029.8]
