@@ -327,7 +327,7 @@ elif chart_selection == "Gráfico 5":
                 if item['divisao'] == 'dicel':
                     estoque_2020 = item['estoque'].get('2020')
                     break
-            print(estoque_2020)
+            print(f"estoque={estoque_2020}")
 
             df['ano'] = [2020, 2021, 2022, 2023, 2024]
             df['prj'] = [2033.9, 2030.5, 2031.5, 2030.5, 2029.8]
