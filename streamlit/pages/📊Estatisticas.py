@@ -297,7 +297,6 @@ elif chart_selection == "Gráfico 5":
             #df['estoque'] = pd.to_numeric(df['estoque'], errors='coerce')
             #df['ano'] = pd.to_numeric(df['ano'], errors='coerce')
             st.write(df1['estoque'][0])
-            #data_dict = json.loads(df1['estoque'][0])
             st.write(df1['estoque'][0]['2020'])
         
             df['ano'] = [2020, 2021, 2022, 2023, 2024]
