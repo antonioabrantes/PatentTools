@@ -343,7 +343,7 @@ elif chart_selection == "Gráfico 5":
             st.write(f"estoque2={estoque_2020}")
             st.write(f"producao2={producao_2020}")
 
-            projecao_2020 = ano + 
+            projecao_2020 = ano + 1
 
             df['ano'] = [2020, 2021, 2022, 2023, 2024]
             df['prj'] = [2033.9, 2030.5, 2031.5, 2030.5, 2029.8]
