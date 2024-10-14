@@ -309,8 +309,8 @@ elif chart_selection == "Gráfico 5":
             df2 = pd.DataFrame(data1['patents'])
             # df2['data'] = pd.to_datetime(df2['data'])
             # ano = df2['data'].dt.year
-            ano = df2['data'].astype(str).str[:4].astype(int)
-            st.write(ano.astype(str))
+            ano = df2['data'].astype(str).str[:4].astype(int).iloc[0] 
+            st.write(ano)
         
             # url = http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={"mysql_query":"* FROM pedido where decisao in ('9.2','indeferimento') and anulado=0 and numero='PI0923431'"}
             url = f"http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={{%22mysql_query%22:%22*%20FROM%20pedido%20where%20(decisao=%279.2%27%20or%20decisao=%27indeferimento%27)%20and%20anulado=0%20and%20numero=%27{numero}%27%22}}"
@@ -319,7 +319,7 @@ elif chart_selection == "Gráfico 5":
             #st.write(url)
             data3 = response.json()
             df3 = pd.DataFrame(data3['patents'])
-            divisao = df3['divisao']
+            divisao = df3['divisao'].iloc[0] 
             st.write(divisao)
             
             estoque_2020 = None
