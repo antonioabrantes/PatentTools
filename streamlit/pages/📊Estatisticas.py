@@ -324,7 +324,7 @@ elif chart_selection == "Gráfico 5":
             
             estoque_2020 = None
             for item in data['patents']:
-                if item['divisao'] == 'dicel':
+                if item['divisao'] == divisao:
                     estoque_2020 = item['estoque'].get('2020')
                     break
             st.write(f"estoque={estoque_2020}")
