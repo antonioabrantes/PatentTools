@@ -312,6 +312,15 @@ elif chart_selection == "Gráfico 5":
             ano = df2['data'].astype(str).str[:4].astype(int)
             st.write(ano.astype(str))
         
+            # url = http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={"mysql_query":"* FROM pedido where decisao in ('9.2','indeferimento') and anulado=0 and numero='PI0923431'"}
+            url = f"http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={{%22mysql_query%22:%22*%20FROM%20pedido%20where%20(decisao=%279.2%27%20or%20decisao=%27indeferimento%27)%20and%20anulado=0%20and%20numero=%27{numero}%27%22}}"
+            response = requests.get(url, headers=headers)
+            response.raise_for_status()  # Verificar se a requisição foi bem-sucedida
+            #st.write(url)
+            data3 = response.json()
+            df3 = pd.DataFrame(data3['patents'])
+            st.write(df3['divisao'])
+
             df['ano'] = [2020, 2021, 2022, 2023, 2024]
             df['prj'] = [2033.9, 2030.5, 2031.5, 2030.5, 2029.8]
             
