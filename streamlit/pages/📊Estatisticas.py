@@ -308,7 +308,7 @@ elif chart_selection == "Gráfico 5":
             data1 = response.json()
             df2 = pd.DataFrame(data1['patents'])
             df2['data'] = pd.to_datetime(df2['data'])
-            $ano = df2['data'].dt.year
+            ano = df2['data'].dt.year
             st.write(ano)
         
             df['ano'] = [2020, 2021, 2022, 2023, 2024]
