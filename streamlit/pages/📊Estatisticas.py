@@ -329,7 +329,7 @@ elif chart_selection == "Gráfico 5":
                     break
             st.write(f"estoque={estoque_2020}")
             
-            #estoque_2020 = df3.loc[df3['divisao'] == divisao, 'estoque'].values[0].get('2020')
+            estoque_2020 = df1.loc[df1['divisao'] == divisao, 'estoque'].values[0].get('2020')
             st.write(f"estoque2={estoque_2020}")
 
 
