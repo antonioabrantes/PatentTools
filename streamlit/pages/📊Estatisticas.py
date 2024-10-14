@@ -301,7 +301,8 @@ elif chart_selection == "Gráfico 5":
             
             numero = "PI0923431"
             # url = http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={"mysql_query":"* FROM arquivados where despacho='12.2' and anulado=0 and numero='PI0923431'"}
-            url = f"http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={%22mysql_query%22:%22*%20FROM%20arquivados%20where%20despacho=%2712.2%27%20and%20anulado=0%20and%20numero=%27{numero}%27%22}"
+            url = f"http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={{%22mysql_query%22:%22*%20FROM%20arquivados%20where%20despacho=%2712.2%27%20and%20anulado=0%20and%20numero=%27{numero}%27%22}}"
+
             response = requests.get(url, headers=headers)
             response.raise_for_status()  # Verificar se a requisição foi bem-sucedida
             st.write(url)
