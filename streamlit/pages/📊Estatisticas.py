@@ -300,7 +300,7 @@ elif chart_selection == "Gráfico 5":
             st.write(df1['estoque'][0]['2020'])
             
             numero = "PI0923431"
-            url = 'http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={"mysql_query":"* FROM arquivados where despacho=' + f"12.2' and anulado=0 and numero='{numero}' + '"}'
+            url = 'http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={"mysql_query":"* FROM arquivados where despacho=' + f"12.2' and anulado=0 and numero='{numero}'" + '"}'
             response = requests.get(url, headers=headers)
             response.raise_for_status()  # Verificar se a requisição foi bem-sucedida
             st.write(url)
