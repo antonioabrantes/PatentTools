@@ -305,9 +305,7 @@ elif chart_selection == "Gráfico 5":
             response.raise_for_status()  # Verificar se a requisição foi bem-sucedida
             data = response.json()
             df2 = pd.DataFrame(data['patents'])
-            df2['ano'] = df2['data'].astype(str).str[:4]
             st.write(df2['data'])
-            st.write(df2['ano'])
         
             df['ano'] = [2020, 2021, 2022, 2023, 2024]
             df['prj'] = [2033.9, 2030.5, 2031.5, 2030.5, 2029.8]
