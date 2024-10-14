@@ -322,8 +322,12 @@ elif chart_selection == "Gráfico 5":
             divisao = df3['divisao']
             st.write(divisao)
             
-            estoque_divisao_2020 = next(item for item in data['patents'] if item['divisao'] == divisao)['estoque']['2020']
-            print(estoque_dicel_2021)
+            estoque_2020 = None
+            for item in data['patents']:
+                if item['divisao'] == divisao:
+                    estoque_2020 = item['estoque'].get('2020')
+                    break
+            print(estoque_2020)
 
             df['ano'] = [2020, 2021, 2022, 2023, 2024]
             df['prj'] = [2033.9, 2030.5, 2031.5, 2030.5, 2029.8]
