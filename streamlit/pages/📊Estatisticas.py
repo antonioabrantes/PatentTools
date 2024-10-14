@@ -343,7 +343,16 @@ elif chart_selection == "Gráfico 5":
             st.write(f"estoque2={estoque_2020}")
             st.write(f"producao2={producao_2020}")
 
-            projecao_2020 = ano + 1
+            projecao_2020 = 2020 + round(ano + estoque_2020/producao_2020, 2)
+            projecao_2021 = 2021 + round(ano + estoque_2021/producao_2021, 2)
+            projecao_2022 = 2022 + round(ano + estoque_2022/producao_2022, 2)
+            projecao_2023 = 2023 + round(ano + estoque_2023/producao_2023, 2)
+            projecao_2024 = 2024 + round(ano + estoque_2024/producao_2024, 2)
+            st.write(f"projeção 2020={projecao_2020}")
+            st.write(f"projeção 2021={projecao_2021}")
+            st.write(f"projeção 2022={projecao_2022}")
+            st.write(f"projeção 2023={projecao_2023}")
+            st.write(f"projeção 2024={projecao_2024}")
 
             df['ano'] = [2020, 2021, 2022, 2023, 2024]
             df['prj'] = [2033.9, 2030.5, 2031.5, 2030.5, 2029.8]
