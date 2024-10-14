@@ -9,6 +9,7 @@ from pyecharts.charts import Bar
 from pyecharts import options as opts
 from streamlit_echarts import st_pyecharts
 import numpy as np
+import json
 
 # https://echarts.streamlit.app/
 # Adicionando título 
