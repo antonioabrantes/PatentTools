@@ -320,7 +320,7 @@ elif chart_selection == "Gráfico 5":
             #df['producao'] = pd.to_numeric(df['producao'], errors='coerce')
             #df['estoque'] = pd.to_numeric(df['estoque'], errors='coerce')
             #df['ano'] = pd.to_numeric(df['ano'], errors='coerce')
-            st.write("estoque DIRPA")
+            st.write(f"estoque DIRPA de pedidos com 12.2 em {ano}")
             st.write(df1['estoque'][0])
             st.write("producao DIRPA")
             st.write(df1['producao'][0])
