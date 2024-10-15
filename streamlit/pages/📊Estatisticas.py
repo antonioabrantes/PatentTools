@@ -351,7 +351,7 @@ elif chart_selection == "Gráfico 5":
             #st.write(f"producao {divisao} em 2024 = {producao_2024}")
             output = f"O pedido {numero} é um recurso que teve o 12.2 em {ano}. O pedido foi indeferido pela {divisao}, que por sua vez em 2024 tem um estoque de {estoque_2024} de recursos de pedidos com 12.2 em {ano} ou anteriores. Em 2024 a produção de primeiros exames de recurso de pedidos indeferidos nesta divisão é de {producao_2024} pareceres nos primeiros 9 meses do ano. O valor anualizado da produção estimada em 2024 é de {producao_2024_anualizada} primeiros exames. " 
             if (producao_2024_anualizada>estoque_2024):
-                output = output + " Desta forma, com esse estoque de recursos com 12.2 em {ano} da {divisao}, mantida a produção atual, o pedid {numero} terá seu primeiro exame em menos de um ano."
+                output = output + f" Desta forma, com esse estoque de recursos com 12.2 em {ano} da {divisao}, mantida a produção atual, o pedid {numero} terá seu primeiro exame em menos de um ano."
             st.write(output)
 
             projecao_2020 = 2020 + round(estoque_2020/producao_2020, 2)
