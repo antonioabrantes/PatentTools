@@ -345,7 +345,7 @@ elif chart_selection == "Gráfico 5":
             producao_2022 = df1.loc[df1['divisao'] == divisao, 'producao'].values[0].get('2022')
             producao_2023 = df1.loc[df1['divisao'] == divisao, 'producao'].values[0].get('2023')
             producao_2024 = df1.loc[df1['divisao'] == divisao, 'producao'].values[0].get('2024')
-            producao_2024_anualizada =  round(producao_2024*12/9,0)
+            producao_2024_anualizada =  int(round(producao_2024*12/9,0))
             
             #st.write(f"estoque {divisao} em 2024  = {estoque_2024}")
             #st.write(f"producao {divisao} em 2024 = {producao_2024}")
