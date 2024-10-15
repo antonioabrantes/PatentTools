@@ -320,9 +320,12 @@ elif chart_selection == "Gráfico 5":
             #df['producao'] = pd.to_numeric(df['producao'], errors='coerce')
             #df['estoque'] = pd.to_numeric(df['estoque'], errors='coerce')
             #df['ano'] = pd.to_numeric(df['ano'], errors='coerce')
+            st.write("estoque DIRPA")
             st.write(df1['estoque'][0])
-            st.write("estoque_2020:")
-            st.write(df1['estoque'][0]['2020'])
+            st.write("producao DIRPA")
+            st.write(df1['producao'][0])
+            #st.write("estoque_2024:")
+            #st.write(df1['estoque'][0]['2024'])
             
             #estoque_2020 = None
             #for item in data['patents']:
@@ -342,19 +345,19 @@ elif chart_selection == "Gráfico 5":
             producao_2022 = df1.loc[df1['divisao'] == divisao, 'producao'].values[0].get('2022')
             producao_2023 = df1.loc[df1['divisao'] == divisao, 'producao'].values[0].get('2023')
             producao_2024 = df1.loc[df1['divisao'] == divisao, 'producao'].values[0].get('2024')
-            st.write(f"estoque2={estoque_2020}")
-            st.write(f"producao2={producao_2020}")
+            st.write(f"estoque {divisao} em 2024  = {estoque_2024}")
+            st.write(f"producao {divisao} em 2024 = {producao_2024}")
 
             projecao_2020 = 2020 + round(estoque_2020/producao_2020, 2)
             projecao_2021 = 2021 + round(estoque_2021/producao_2021, 2)
             projecao_2022 = 2022 + round(estoque_2022/producao_2022, 2)
             projecao_2023 = 2023 + round(estoque_2023/producao_2023, 2)
             projecao_2024 = 2024 + round(estoque_2024/producao_2024, 2)
-            st.write(f"projeção 2020={projecao_2020}")
-            st.write(f"projeção 2021={projecao_2021}")
-            st.write(f"projeção 2022={projecao_2022}")
-            st.write(f"projeção 2023={projecao_2023}")
-            st.write(f"projeção 2024={projecao_2024}")
+            #st.write(f"projeção 2020={projecao_2020}")
+            #st.write(f"projeção 2021={projecao_2021}")
+            #st.write(f"projeção 2022={projecao_2022}")
+            #st.write(f"projeção 2023={projecao_2023}")
+            #st.write(f"projeção 2024={projecao_2024}")
 
             df['ano'] = [2020, 2021, 2022, 2023, 2024]
             #df['prj'] = [2033.9, 2030.5, 2031.5, 2030.5, 2029.8]
