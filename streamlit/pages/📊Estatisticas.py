@@ -347,9 +347,10 @@ elif chart_selection == "Gráfico 5":
             producao_2024 = df1.loc[df1['divisao'] == divisao, 'producao'].values[0].get('2024')
             producao_2024_anualizada =  round(producao_2024*12/9,0)
             
-            st.write(f"estoque {divisao} em 2024  = {estoque_2024}")
-            st.write(f"producao {divisao} em 2024 = {producao_2024}")
+            #st.write(f"estoque {divisao} em 2024  = {estoque_2024}")
+            #st.write(f"producao {divisao} em 2024 = {producao_2024}")
             output = f"O pedido {numero} é um recurso que teve o 12.2 em {ano}. O pedido foi indeferido pela {divisao}, que por sua vez em 2024 tem um estoque de {estoque_2024} de recursos. Em 2024 a produção de primeiros exames de recurso de pedidos indeferidos nesta divisão é de {producao_2024} pareceres nos primeiros 9 meses do ano. O valor anualizado estimado é de {producao_2024_anualizada}." 
+            st.write(output)
 
             projecao_2020 = 2020 + round(estoque_2020/producao_2020, 2)
             projecao_2021 = 2021 + round(estoque_2021/producao_2021, 2)
