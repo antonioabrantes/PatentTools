@@ -271,7 +271,6 @@ elif chart_selection == "Gráfico 4":
 
 elif chart_selection == "Gráfico 5":
 
-        url = "https://cientistaspatentes.com.br/central/data/cgrec_json.txt"
         fig, ax = plt.subplots()
         df = pd.DataFrame()
         
@@ -281,24 +280,6 @@ elif chart_selection == "Gráfico 5":
         }
 
         try:
-            # Requisição para obter os dados JSON
-            response = requests.get(url, headers=headers)
-            response.raise_for_status()  # Verificar se a requisição foi bem-sucedida
-
-            # Tentar decodificar o JSON
-            data = response.json()
-
-            # Carregar os dados JSON em um DataFrame
-            df1 = pd.DataFrame(data['patents'])
-            #df1['divisao'] = df['divisao'].fillna('Unknown')
-
-            # Verificar e converter a coluna 'count' para inteiro
-            #df['producao'] = pd.to_numeric(df['producao'], errors='coerce')
-            #df['estoque'] = pd.to_numeric(df['estoque'], errors='coerce')
-            #df['ano'] = pd.to_numeric(df['ano'], errors='coerce')
-            st.write(df1['estoque'][0])
-            st.write(df1['estoque'][0]['2020'])
-            
             numero = "PI0923431"
             # url = http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={"mysql_query":"* FROM arquivados where despacho='12.2' and anulado=0 and numero='PI0923431'"}
             url = f"http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={{%22mysql_query%22:%22*%20FROM%20arquivados%20where%20despacho=%2712.2%27%20and%20anulado=0%20and%20numero=%27{numero}%27%22}}"
@@ -321,13 +302,33 @@ elif chart_selection == "Gráfico 5":
             df3 = pd.DataFrame(data3['patents'])
             divisao = df3['divisao'].iloc[0] 
             st.write(divisao)
+
+            url = f"https://cientistaspatentes.com.br/central/data/cgrec_json_{ano}.txt"
+
+            # Requisição para obter os dados JSON
+            response = requests.get(url, headers=headers)
+            response.raise_for_status()  # Verificar se a requisição foi bem-sucedida
+
+            # Tentar decodificar o JSON
+            data = response.json()
+
+            # Carregar os dados JSON em um DataFrame
+            df1 = pd.DataFrame(data['patents'])
+            #df1['divisao'] = df['divisao'].fillna('Unknown')
+
+            # Verificar e converter a coluna 'count' para inteiro
+            #df['producao'] = pd.to_numeric(df['producao'], errors='coerce')
+            #df['estoque'] = pd.to_numeric(df['estoque'], errors='coerce')
+            #df['ano'] = pd.to_numeric(df['ano'], errors='coerce')
+            st.write(df1['estoque'][0])
+            st.write(df1['estoque'][0]['2020'])
             
-            estoque_2020 = None
-            for item in data['patents']:
-                if item['divisao'] == divisao:
-                    estoque_2020 = item['estoque'].get('2020')
-                    break
-            st.write(f"estoque={estoque_2020}")
+            #estoque_2020 = None
+            #for item in data['patents']:
+            #    if item['divisao'] == divisao:
+            #        estoque_2020 = item['estoque'].get('2020')
+            #        break
+            #st.write(f"estoque={estoque_2020}")
             
             estoque_2020 = df1.loc[df1['divisao'] == divisao, 'estoque'].values[0].get('2020')
             estoque_2021 = df1.loc[df1['divisao'] == divisao, 'estoque'].values[0].get('2021')
