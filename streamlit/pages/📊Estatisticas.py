@@ -321,6 +321,7 @@ elif chart_selection == "Gráfico 5":
             #df['estoque'] = pd.to_numeric(df['estoque'], errors='coerce')
             #df['ano'] = pd.to_numeric(df['ano'], errors='coerce')
             st.write(df1['estoque'][0])
+            st.write("estoque_2020:")
             st.write(df1['estoque'][0]['2020'])
             
             #estoque_2020 = None
