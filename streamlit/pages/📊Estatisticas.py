@@ -291,7 +291,7 @@ elif chart_selection == "Gráfico 5":
             # df2['data'] = pd.to_datetime(df2['data'])
             # ano = df2['data'].dt.year
             ano = df2['data'].astype(str).str[:4].astype(int).iloc[0] 
-            st.write(ano)
+            #st.write(ano)
         
             # url = http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={"mysql_query":"* FROM pedido where decisao in ('9.2','indeferimento') and anulado=0 and numero='PI0923431'"}
             url = f"http://www.cientistaspatentes.com.br/apiphp/patents/query/?q={{%22mysql_query%22:%22*%20FROM%20pedido%20where%20(decisao=%279.2%27%20or%20decisao=%27indeferimento%27)%20and%20anulado=0%20and%20numero=%27{numero}%27%22}}"
@@ -301,7 +301,7 @@ elif chart_selection == "Gráfico 5":
             data3 = response.json()
             df3 = pd.DataFrame(data3['patents'])
             divisao = df3['divisao'].iloc[0] 
-            st.write(divisao)
+            #st.write(divisao)
 
             url = f"https://cientistaspatentes.com.br/central/data/cgrec_json_{ano}.txt"
 
@@ -345,14 +345,17 @@ elif chart_selection == "Gráfico 5":
             producao_2022 = df1.loc[df1['divisao'] == divisao, 'producao'].values[0].get('2022')
             producao_2023 = df1.loc[df1['divisao'] == divisao, 'producao'].values[0].get('2023')
             producao_2024 = df1.loc[df1['divisao'] == divisao, 'producao'].values[0].get('2024')
+            producao_2024_anualizada =  round(producao_2024*12/9,0)
+            
             st.write(f"estoque {divisao} em 2024  = {estoque_2024}")
             st.write(f"producao {divisao} em 2024 = {producao_2024}")
+            output = f"O pedido {numero} é um recurso que teve o 12.2 em {ano}. O pedido foi indeferido pela {divisao}, que por sua vez em 2024 tem um estoque de {estoque_2024} de recursos. Em 2024 a produção de primeiros exames de recurso de pedidos indeferidos nesta divisão é de {producao_2024} pareceres nos primeiros 9 meses do ano. O valor anualizado estimado é de {producao_2024_anualizada}." 
 
             projecao_2020 = 2020 + round(estoque_2020/producao_2020, 2)
             projecao_2021 = 2021 + round(estoque_2021/producao_2021, 2)
             projecao_2022 = 2022 + round(estoque_2022/producao_2022, 2)
             projecao_2023 = 2023 + round(estoque_2023/producao_2023, 2)
-            projecao_2024 = 2024 + round(estoque_2024/producao_2024, 2)
+            projecao_2024 = 2024 + round(estoque_2024/producao_2024_anualizada, 2)
             #st.write(f"projeção 2020={projecao_2020}")
             #st.write(f"projeção 2021={projecao_2021}")
             #st.write(f"projeção 2022={projecao_2022}")
