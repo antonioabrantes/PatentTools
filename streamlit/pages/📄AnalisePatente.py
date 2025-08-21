@@ -79,7 +79,7 @@ if st.button("Resetar aplicação"):
     
 view_session_state()
 
-if 'step' not in st.session_state:
+if 'step' not in st.session_state: 
     st.session_state.step = 0
 
 # Upload do pedido
