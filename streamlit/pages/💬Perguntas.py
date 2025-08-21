@@ -15,7 +15,7 @@ import ast
 load_dotenv()
 
 st.title('Perguntas 💬')
-st.write("histórico do chatbot.")
+st.write("testando histórico do chatbot.")
 
 with open('mensagens.txt', 'r') as file:
     content = file.read()
