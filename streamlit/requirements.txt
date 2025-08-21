@@ -21,7 +21,6 @@ beautifulsoup4
 elevenlabs
 pygame
 pydub
-playsound
 langchain_openai
 chromadb
 langsmith
