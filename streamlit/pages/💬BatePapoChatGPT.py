@@ -23,7 +23,7 @@ import pandas as pd
 from elevenlabs import play, save, Voice, VoiceSettings
 from elevenlabs.client import ElevenLabs
 import pygame
-from playsound import playsound
+#from playsound import playsound
 #from pygame import error as pygame_error
 from gtts import gTTS
 
